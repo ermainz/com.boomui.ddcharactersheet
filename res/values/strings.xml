@@ -4,6 +4,19 @@
     <string name="hello_world">Listen!</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="new_character">New Character</string>
+    <string name="new_character_button">New Character</string>
+    <string name="new_folder_button">New Folder</string>
+    <string name="dice_roller_nav">Dice Roller</string>
+    <string name="spell_lookup_nav">Spell Lookup</string>
+    <string name="title_activity_character_sheet">CharacterSheetActivity</string>
+    <string name="info_nav">Info</string>
+    <string name="combat_nav">Combat</string>
+    <string name="buffs_nav">Buffs</string>
+    <string name="skills_nav">Skills</string>
+    <string name="magic_nav">Magic</string>
+    <string name="feats_nav">Feats</string>
+    <string name="inventory_nav"/>
+    <string name="notes_nav">Notes</string>
+    <string name="character_name">Character Name</string>
 
 </resources>

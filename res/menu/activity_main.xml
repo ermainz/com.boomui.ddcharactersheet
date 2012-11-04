@@ -3,4 +3,20 @@
         android:title="@string/menu_settings"
         android:orderInCategory="100"
         android:showAsAction="never" />
+    <item android:id="@+id/new_character_button"
+        android:title="@string/new_character_button"
+        android:orderInCategory="100"
+        android:showAsAction="always" />
+    <item android:id="@+id/new_folder_button"
+        android:title="@string/new_folder_button"
+        android:orderInCategory="100"
+        android:showAsAction="always" />
+    <item android:id="@+id/dice_roller_nav"
+        android:title="@string/dice_roller_nav"
+        android:orderInCategory="100"
+        android:showAsAction="always" />
+    <item android:id="@+id/spell_lookup_nav"
+        android:title="@string/spell_lookup_nav"
+        android:orderInCategory="100"
+        android:showAsAction="always" />
 </menu>

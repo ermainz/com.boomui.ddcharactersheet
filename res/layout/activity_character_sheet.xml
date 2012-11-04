@@ -9,12 +9,6 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:text="@string/hello_world"
-        tools:context=".MainActivity" />
-    
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/new_character_button"
-        />
+        tools:context=".CharacterSheetActivity" />
 
 </RelativeLayout>
