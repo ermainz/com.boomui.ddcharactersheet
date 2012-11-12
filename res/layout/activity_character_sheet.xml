@@ -10,5 +10,10 @@
         android:layout_centerVertical="true"
         android:text="@string/hello_world"
         tools:context=".CharacterSheetActivity" />
+    <LinearLayout
+        android:id="@+id/fragment_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
 
 </RelativeLayout>
