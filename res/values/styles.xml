@@ -1,5 +1,22 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <style name="AppTheme" parent="android:style/Theme.Holo" />
+    
+    <style name = "Theme.DDCharacterSheet" parent="android:style/Theme.Holo">
+        <item name="android:actionBarTabStyle">@style/actionBarTabStyle</item>
+        <item name="android:actionBarSize">40sp</item>        
+<!--         <item name="android:actionBarTabTextStyle">@style/actionBarTabTextStyle</item> -->
+    </style>
+    
+    <style name="actionBarTabStyle" parent="android:style/Widget.Holo.ActionBar.TabView">
+        <item name="android:paddingLeft">5sp</item>
+        <item name="android:paddingRight">5sp</item>
+    </style>
+    
+    <style name="actionBarTabTextStyle" parent="android:style/Widget.Holo.ActionBar.TabText">
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:paddingRight">0dp</item>
+    </style>
+        
 
 </resources>

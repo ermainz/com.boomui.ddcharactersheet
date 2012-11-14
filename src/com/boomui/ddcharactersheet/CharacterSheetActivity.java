@@ -25,16 +25,16 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 	public CharacterSheetActivity(){
         fragmentMap = new HashMap<String, Fragment>();
         
-        fragmentMap.put("Buffs", new BuffsTabFragment() );
+        fragmentMap.put("Info", new InfoTabFragment() );
         fragmentMap.put("Combat", new CombatTabFragment() );
+        fragmentMap.put("Buffs", new BuffsTabFragment() );
         fragmentMap.put("Skills", new SkillsTabFragment() );
         fragmentMap.put("Magic", new MagicTabFragment() );
         fragmentMap.put("Feats", new FeatsTabFragment() );
-        fragmentMap.put("Inventory", new InventoryTabFragment() );
+        fragmentMap.put("Inven", new InventoryTabFragment() );
         fragmentMap.put("Notes", new NotesTabFragment() );
-        fragmentMap.put("Info", new InfoTabFragment() );
-        fragmentMap.put("DiceRoller", new DiceRollerTabFragment() );
-        fragmentMap.put("SpellLookup", new SpellLookupTabFragment() );
+        fragmentMap.put("Dice", new DiceRollerTabFragment() );
+        fragmentMap.put("Spells", new SpellLookupTabFragment() );
 	}
 	
     @Override
@@ -46,16 +46,17 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
         bar.setDisplayShowTitleEnabled(false);
         bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
            
-        bar.addTab(bar.newTab().setText("DiceRoller").setTabListener(this));
-        bar.addTab(bar.newTab().setText("SpellLookup").setTabListener(this));
         bar.addTab(bar.newTab().setText("Info").setTabListener(this));
         bar.addTab(bar.newTab().setText("Combat").setTabListener(this));
         bar.addTab(bar.newTab().setText("Buffs").setTabListener(this));
         bar.addTab(bar.newTab().setText("Skills").setTabListener(this));
         bar.addTab(bar.newTab().setText("Magic").setTabListener(this));
         bar.addTab(bar.newTab().setText("Feats").setTabListener(this));
-        bar.addTab(bar.newTab().setText("Inventory").setTabListener(this));
+        bar.addTab(bar.newTab().setText("Inven").setTabListener(this));
         bar.addTab(bar.newTab().setText("Notes").setTabListener(this));
+
+      bar.addTab(bar.newTab().setText("Dice").setTabListener(this));
+      bar.addTab(bar.newTab().setText("Spells").setTabListener(this));
         
         setContentView(R.layout.activity_character_sheet);
     }
