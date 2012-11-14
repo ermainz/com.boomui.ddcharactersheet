@@ -2,7 +2,6 @@ package com.boomui.ddcharactersheet;
 
 import java.util.HashMap;
 
-import com.boomui.ddcharactersheet.MyFragment;
 import com.boomui.ddcharactersheet.R;
 
 import android.app.ActionBar;
