@@ -5,5 +5,6 @@ public enum CharacterDataKey{
 	DEX,
 	INT,
 	STR,
-	SPELLSKNOWN
+	SPELLS_KNOWN,
+	SPELLS_PREPARED
 }

@@ -29,7 +29,41 @@ public class MagicTabFragment extends Fragment{
 	
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 		//return inflater.inflate(R.layout.magic_tab_fragment_layout, container, false);
-		return createSpellsKnown("Sorcerer");
+		return createClassView("Misc.");
+	}
+	
+	public View createClassView(String characterClass){
+		LinearLayout horizColumns = new LinearLayout(parent);
+		
+		View sk = createSpellsKnown(characterClass);
+		View sp = createSpellsPrepared(characterClass);
+		
+    	sk.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1) );
+    	sp.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1) );
+		
+		horizColumns.addView(sk);
+		horizColumns.addView(sp);
+		horizColumns.setOrientation(LinearLayout.HORIZONTAL);
+		
+		return horizColumns;
+	}
+	
+	public View createSpellsPrepared(String characterClass){
+		TextView header = getGenericView();
+		header.setText("Spells Prepared");
+		
+		ExpandableListView spellsPreparedView = new ExpandableListView(parent);
+		SpellsPrepared sp = new SpellsPrepared(com, characterClass);
+		SpellsPreparedExpandableListAdapter adapter = new SpellsPreparedExpandableListAdapter(sp, spellsPreparedView, parent);
+		spellsPreparedView.setAdapter(adapter);
+		//spellsPreparedView.setGroupIndicator(null);
+		
+		LinearLayout column = new LinearLayout(parent);
+		column.setOrientation(LinearLayout.VERTICAL);
+		column.addView(header);
+		column.addView(spellsPreparedView);
+		
+		return column;
 	}
 	
 	public View createSpellsKnown(String characterClass){
@@ -42,7 +76,6 @@ public class MagicTabFragment extends Fragment{
 		spellsKnownView.setAdapter(adapter);
 		
 		LinearLayout column = new LinearLayout(parent);
-		
 		column.setOrientation(LinearLayout.VERTICAL);
 		column.addView(header);
 		column.addView(spellsKnownView);
@@ -63,76 +96,4 @@ public class MagicTabFragment extends Fragment{
         textView.setPadding(36, 0, 0, 0);
         return textView;
     }
-}
-
-class SpellsKnownExpandableListAdapter extends BaseExpandableListAdapter{
-    private String[] groups = {"Level 0", "Level 1", "Level 2", "Level 3", "Level 4", "Level 5", "Level 6", "Level 7", "Level 8", "Level 9"};
-    private SpellsKnown children;
-    Activity parent;
-    
-    public SpellsKnownExpandableListAdapter(SpellsKnown children, Activity parent){
-    	this.children = children;
-    	this.parent = parent;
-    }
-    
-    public String getChild(int groupPosition, int childPosition) {
-        return children.get(groupPosition, childPosition);
-    }
-
-    public long getChildId(int groupPosition, int childPosition) {
-        return childPosition;
-    }
-
-    public int getChildrenCount(int groupPosition) {
-        return children.getNumSpells(groupPosition);
-    }
-
-    public TextView getGenericView() {
-        // Layout parameters for the ExpandableListView
-        AbsListView.LayoutParams lp = new AbsListView.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, 64);
-
-        TextView textView = new TextView(parent);
-        textView.setLayoutParams(lp);
-        // Center the text vertically
-        textView.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
-        // Set the text starting position
-        textView.setPadding(36, 0, 0, 0);
-        return textView;
-    }
-    
-    public View getChildView(int groupPosition, int childPosition, boolean isLastChild,
-            View convertView, ViewGroup parent) {
-        TextView textView = getGenericView();
-        textView.setText(getChild(groupPosition, childPosition) );
-        return textView;
-    }
-
-    public Object getGroup(int groupPosition) {
-        return groups[groupPosition];
-    }
-
-    public int getGroupCount() {
-        return groups.length;
-    }
-
-    public long getGroupId(int groupPosition) {
-        return groupPosition;
-    }
-
-    public View getGroupView(int groupPosition, boolean isExpanded, View convertView,
-            ViewGroup parent) {
-        TextView textView = getGenericView();
-        textView.setText(getGroup(groupPosition).toString());
-        return textView;
-    }
-
-    public boolean isChildSelectable(int groupPosition, int childPosition) {
-        return true;
-    }
-
-    public boolean hasStableIds() {
-        return true;
-    }
-
 }
