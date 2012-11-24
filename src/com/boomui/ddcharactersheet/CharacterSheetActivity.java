@@ -1,5 +1,8 @@
 package com.boomui.ddcharactersheet;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.HashMap;
 
 import com.boomui.ddcharactersheet.R;
@@ -10,6 +13,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -104,10 +108,34 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 	}
 	
 	public void saveData(CharacterDataKey tag, String data){
-		
+		try{
+			FileOutputStream fos = openFileOutput(tag.toString(), Context.MODE_PRIVATE);
+			fos.write(data.getBytes() );
+			fos.close();
+			
+			//System.out.println("Wrote: " + data + " to " + tag.toString() );
+		}
+		catch(IOException ex){
+			System.err.println("Couldn't save data: " + tag.toString() );
+		}
 	}
 	
 	public String loadData(CharacterDataKey tag){
+		try{
+			FileInputStream fis = openFileInput(tag.toString() );
+			int length = fis.available();
+			
+			byte[] bytes = new byte[length];
+			fis.read(bytes);
+			fis.close();
+			
+			String retVal = new String(bytes);
+			return retVal;
+		}
+		catch(IOException ex){
+			System.err.println("Could load data: " + tag.toString() );
+		}
+		
 		return null;
 	}
 }
