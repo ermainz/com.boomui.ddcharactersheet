@@ -64,5 +64,10 @@ public final class R {
     }
     public static final class style {
         public static final int AppTheme=0x7f050000;
+        /**          <item name="android:actionBarTabTextStyle">@style/actionBarTabTextStyle</item> 
+         */
+        public static final int Theme_DDCharacterSheet=0x7f050001;
+        public static final int actionBarTabStyle=0x7f050002;
+        public static final int actionBarTabTextStyle=0x7f050003;
     }
 }
