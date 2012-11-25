@@ -26,7 +26,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 class SpellsPreparedExpandableListAdapter extends BaseExpandableListAdapter{
-	private SpellsPrepared data;
+	final private SpellsPrepared data;
 	Activity parent;
 	final ExpandableListView controlledView;
 	
@@ -126,6 +126,17 @@ class SpellsPreparedExpandableListAdapter extends BaseExpandableListAdapter{
 		delete.setText("X");
 		delete.setLayoutParams(new LinearLayout.LayoutParams(35, 35, 0) );
 		delete.setPadding(0, 0, 0, 0);
+		
+		final int gPos = groupPosition;
+		final int cPos = childPosition;
+		final SpellsPreparedExpandableListAdapter spela = this;
+		delete.setOnClickListener(new OnClickListener(){
+			public void onClick(View v){
+				// TODO Auto-generated method stub
+				data.removeSpellByName(gPos, data.getSpellName(gPos, cPos) );
+				spela.notifyDataSetChanged();
+			}
+		});
 		
 		//Adds a red overlay, if we want it
 		//delete.getBackground().setColorFilter(Color.argb(100, 255, 0, 0), Mode.OVERLAY);

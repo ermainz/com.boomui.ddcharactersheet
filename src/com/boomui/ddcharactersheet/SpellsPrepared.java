@@ -76,6 +76,9 @@ public class SpellsPrepared{
 	public void removeLastSpell(int level){
 		levels.get(level).removeLastSpell();
 	}
+	public void removeSpellByName(int level, String name){
+		levels.get(level).removeSpellByName(name);
+	}
 	
 	/*
 	 * This method attempts to add a spell to an empty spell slot.  If one isn't found, it adds it to the end of the list instead
@@ -84,7 +87,8 @@ public class SpellsPrepared{
 		PreparedSpellLevel level = levels.get(lv);
 		for(int i = 0; i < level.getNumSpells(); i++){
 			if(level.getSpellName(i).equals(" ") ){
-				level.getSpell(i).name = name;
+				level.getSpell(i).setName(name);
+				level.sort();
 				return;
 			}
 		}
@@ -101,12 +105,18 @@ public class SpellsPrepared{
 		
 		return retVal + CHARACTER_SPLIT;
 	}
+	
+	public void sort(){
+		for(PreparedSpellLevel level : levels){
+			level.sort();
+		}
+	}
 }
 class PreparedSpellLevel{
 	private List<PreparedSpell> spells;
 	
 	public String getSpellName(int index){
-		return spells.get(index).name;
+		return spells.get(index).getName();
 	}
 	public int getNumSpells(){
 		return spells.size();
@@ -129,11 +139,40 @@ class PreparedSpellLevel{
 	
 	public void add(PreparedSpell sp){
 		spells.add(sp);
+		sort();
 	}
 	public void removeLastSpell(){
 		if(!spells.isEmpty() ){
 			spells.remove(spells.size() - 1);
 		}
+		sort();
+	}
+	public void removeSpellByName(String name){
+		for(PreparedSpell spell : spells){
+			if(spell.getName().equals(name) ){
+				spell.setName(" ");
+				break;
+			}
+		}
+		
+		sort();
+	}
+	
+	public void sort(){
+		Comparator<PreparedSpell> c = new Comparator<PreparedSpell>(){
+			public int compare(PreparedSpell a, PreparedSpell b){
+				if(a.getName().equals(" ") ){
+					return 1;
+				}
+				if(b.getName().equals(" ") ){
+					return -1;
+				}
+				
+				return a.getName().compareTo(b.getName() );
+			}
+		};
+		
+		Collections.sort(spells, c);
 	}
 	
 	public PreparedSpellLevel(){
@@ -141,7 +180,7 @@ class PreparedSpellLevel{
 	}
 }
 class PreparedSpell{
-	String name;
+	private String name;
 	boolean used;
 	
 	public PreparedSpell(String name, boolean used){
@@ -151,5 +190,12 @@ class PreparedSpell{
 	
 	public String save(){
 		return name + SpellsPrepared.SPELL_DATA_SPLIT + used;
+	}
+	
+	public String getName(){
+		return name;
+	}
+	public void setName(String newName){
+		name = newName;
 	}
 }
