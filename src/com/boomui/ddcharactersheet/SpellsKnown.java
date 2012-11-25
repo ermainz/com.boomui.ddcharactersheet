@@ -4,9 +4,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class SpellsKnown{
-	public static String CHARACTER_SPLIT = "####";
-	public static String LEVEL_SPLIT = "###@";
-	public static String SPELL_SPLIT = "##@#";
+	public static String CHARACTER_SPLIT = "!####!";
+	public static String LEVEL_SPLIT = "!###@!";
+	public static String SPELL_SPLIT = "!##@#!";
 	
 	List<List<String>> spellsKnown;
 	String characterClass;

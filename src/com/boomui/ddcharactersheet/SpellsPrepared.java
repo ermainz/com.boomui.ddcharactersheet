@@ -3,10 +3,10 @@ package com.boomui.ddcharactersheet;
 import java.util.*;
 
 public class SpellsPrepared{
-	public static String CHARACTER_SPLIT = "####";
-	public static String LEVEL_SPLIT = "###@";
-	public static String SPELL_SPLIT = "##@#";
-	public static String SPELL_DATA_SPLIT = "##@@";
+	public static String CHARACTER_SPLIT = "!####!";
+	public static String LEVEL_SPLIT = "!###@!";
+	public static String SPELL_SPLIT = "!##@#!";
+	public static String SPELL_DATA_SPLIT = "!##@@!";
 
 	private List<PreparedSpellLevel> levels;
 	String characterClass;
@@ -24,7 +24,6 @@ public class SpellsPrepared{
 		}
 		
 		//There won't be anything stored yet, this is just a sample
-		System.out.println("Saved data: |" + savedData + "|");
 		if(savedData == null){
 			savedData = "Misc."+LEVEL_SPLIT+"Detect Magic"+SPELL_DATA_SPLIT+"false"+SPELL_SPLIT+"Read Magic"+SPELL_DATA_SPLIT+"false"+SPELL_SPLIT+" "+SPELL_DATA_SPLIT+"true"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-" + CHARACTER_SPLIT + "Sorcerer."+LEVEL_SPLIT+"Acid Splash"+SPELL_DATA_SPLIT+"false"+LEVEL_SPLIT+"Magic Missile"+SPELL_DATA_SPLIT+"false"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-" + CHARACTER_SPLIT + "Wizard."+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+CHARACTER_SPLIT;
 		}
@@ -77,6 +76,20 @@ public class SpellsPrepared{
 	public void removeLastSpell(int level){
 		levels.get(level).removeLastSpell();
 	}
+	
+	/*
+	 * This method attempts to add a spell to an empty spell slot.  If one isn't found, it adds it to the end of the list instead
+	 */
+	public void addNewSpell(String name, int lv){
+		PreparedSpellLevel level = levels.get(lv);
+		for(int i = 0; i < level.getNumSpells(); i++){
+			if(level.getSpellName(i).equals(" ") ){
+				level.getSpell(i).name = name;
+				return;
+			}
+		}
+		level.add(new PreparedSpell(name, false) );
+	}
 
 	public String save(){
 		String retVal = characterClass;
@@ -104,7 +117,11 @@ class PreparedSpellLevel{
 	public String save(){
 		String retVal = "";
 		for(PreparedSpell spell : spells){
-			retVal += spell.name + SpellsPrepared.SPELL_DATA_SPLIT + spell.used + SpellsPrepared.SPELL_SPLIT;
+			retVal += spell.save() + SpellsPrepared.SPELL_SPLIT;
+		}
+		
+		if(retVal.equals("") ){
+			retVal = "-";
 		}
 		
 		return retVal;
@@ -130,5 +147,9 @@ class PreparedSpell{
 	public PreparedSpell(String name, boolean used){
 		this.name = name;
 		this.used = used;
+	}
+	
+	public String save(){
+		return name + SpellsPrepared.SPELL_DATA_SPLIT + used;
 	}
 }

@@ -98,24 +98,19 @@ class SpellsPreparedExpandableListAdapter extends BaseExpandableListAdapter{
     	CheckBox cbox = new CheckBox(parent);
     	cbox.setChecked(getChild(groupPosition, childPosition).used);
     	
-    	final SpellsPreparedExpandableListAdapter spela = this;
-    	final PreparedSpell listenerSpell = getChild(groupPosition, childPosition);
-    	cbox.setOnCheckedChangeListener(new OnCheckedChangeListener(){
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
-				listenerSpell.used = isChecked;
-				spela.notifyDataSetChanged();
-			}
-		});
-    	
     	TextView name = getGenericView();
         name.setText(data.getSpellName(groupPosition, childPosition) );
+        
+        System.out.println(name);
+        
+        //name.setBackgroundColor(Constants.SPELL_USED);
+    	
+    	PreparedSpell listenerSpell = getChild(groupPosition, childPosition);
+    	cbox.setOnCheckedChangeListener(new SpellsPreparedOnCheckedChangeListener(lView, name, listenerSpell, this) );
     	
         lView.addView(cbox);
     	lView.addView(name);
     	lView.setOrientation(LinearLayout.HORIZONTAL);
-
-    	lView.setFocusable(false);
-    	lView.setClickable(false);
     	
     	name.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT));
 
@@ -159,4 +154,39 @@ class SpellsPreparedExpandableListAdapter extends BaseExpandableListAdapter{
         return true;
     }
 
+    class SpellsPreparedOnCheckedChangeListener implements OnCheckedChangeListener{
+    	TextView colorChanger;
+    	SpellsPreparedExpandableListAdapter parent;
+    	PreparedSpell spell;
+    	LinearLayout container;
+    	
+    	public SpellsPreparedOnCheckedChangeListener(LinearLayout container, TextView colorChanger, PreparedSpell spell, SpellsPreparedExpandableListAdapter parent){
+    		this.colorChanger = colorChanger;
+    		this.parent = parent;
+    		this.spell = spell;
+    		this.container = container;
+    		
+    		//colorChanger.setBackgroundColor(Constants.SPELL_USED);
+    	}
+    	
+		public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
+			spell.used = isChecked;
+			
+			colorChanger.setText("Got here");
+			
+			if(isChecked){
+				colorChanger.setBackgroundColor(0xfff00000);
+				colorChanger.setTextColor(Constants.SPELL_USED);
+				System.out.println(colorChanger);
+				System.out.println("Got here");
+			}
+			else{
+				colorChanger.setBackgroundColor(Constants.BACKGROUND_COLOR);
+			}
+			
+			//colorChanger
+			container.postInvalidate();
+			parent.notifyDataSetChanged();
+		}
+    }
 }

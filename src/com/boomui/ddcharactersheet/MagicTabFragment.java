@@ -16,7 +16,11 @@ import android.widget.ExpandableListView.OnGroupClickListener;
 import android.widget.ExpandableListView.OnGroupCollapseListener;
 import android.widget.ExpandableListView.OnGroupExpandListener;
 
-public class MagicTabFragment extends Fragment{
+/*
+ * At some point, this will also have to save the scroll distance on each of the panes
+ */
+
+public class MagicTabFragment extends Fragment implements SpellInteractionListener{
 	public static String CLASS_SEPARATOR = "###";
 	
 	FragmentCommunicator com;
@@ -26,6 +30,8 @@ public class MagicTabFragment extends Fragment{
 	String[] classes;
 	int maxHeight = -1;
 	int selected = -1;
+	
+	List<BaseExpandableListAdapter> expandableListAdapters;
 	
 	//For saving
 	List<SpellsKnown> allSpellsKnown;
@@ -51,6 +57,7 @@ public class MagicTabFragment extends Fragment{
 			saveStr += sp.save() + SpellsPrepared.CHARACTER_SPLIT;
 		}
 		com.saveData(CharacterDataKey.SPELLS_PREPARED, saveStr);
+		
 		saveStr = "";
 		for(SpellsKnown sk : allSpellsKnown){
 			saveStr += sk.save() + SpellsKnown.CHARACTER_SPLIT;
@@ -64,6 +71,7 @@ public class MagicTabFragment extends Fragment{
 		
 		allSpellsKnown = new LinkedList<SpellsKnown>();
 		allSpellsPrepared = new LinkedList<SpellsPrepared>();
+		expandableListAdapters = new LinkedList<BaseExpandableListAdapter>();
 		
 		LinearLayout retVal = new LinearLayout(parent);
 		retVal.setOrientation(LinearLayout.VERTICAL);
@@ -112,6 +120,14 @@ public class MagicTabFragment extends Fragment{
 		}
 		
 		return retVal;
+	}
+	
+	public void spellClicked(String spellName, int level){
+		allSpellsPrepared.get(selected).addNewSpell(spellName, level);
+		
+		for(BaseExpandableListAdapter bela : expandableListAdapters){
+			bela.notifyDataSetChanged();
+		}
 	}
 	
 	public void setCurrentPane(int selected){
@@ -170,6 +186,7 @@ public class MagicTabFragment extends Fragment{
 		allSpellsPrepared.add(sp);
 		SpellsPreparedExpandableListAdapter adapter = new SpellsPreparedExpandableListAdapter(sp, spellsPreparedView, parent);
 		spellsPreparedView.setAdapter(adapter);
+		expandableListAdapters.add(adapter);
 		//spellsPreparedView.setGroupIndicator(null);
 		
 		for(int i = 0; i < adapter.getGroupCount(); i++){
@@ -209,9 +226,10 @@ public class MagicTabFragment extends Fragment{
 		final ExpandableListView spellsKnownView = new ExpandableListView(parent);
 		SpellsKnown sk = new SpellsKnown(com, characterClass);
 		allSpellsKnown.add(sk);
-		SpellsKnownExpandableListAdapter adapter = new SpellsKnownExpandableListAdapter(sk, parent);
+		SpellsKnownExpandableListAdapter adapter = new SpellsKnownExpandableListAdapter(sk, parent, this);
 		spellsKnownView.setAdapter(adapter);
 		spellsKnownView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0, 1) );
+		expandableListAdapters.add(adapter);
 		
 		for(int i = 0; i < adapter.getGroupCount(); i++){
 			String result = com.loadData(CharacterDataKey.MAGIC_TAB_SPELLS_KNOWN_LEVEL_OPEN, "" + i);
