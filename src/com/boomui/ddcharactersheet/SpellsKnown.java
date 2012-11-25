@@ -4,16 +4,19 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class SpellsKnown{
-	public static String CHARACTER_SPLIT = "####";
-	public static String LEVEL_SPLIT = "###@";
-	public static String SPELL_SPLIT = "##@#";
+	public static String CHARACTER_SPLIT = "!####!";
+	public static String LEVEL_SPLIT = "!###@!";
+	public static String SPELL_SPLIT = "!##@#!";
 	
 	List<List<String>> spellsKnown;
+	String characterClass;
 	
 	public SpellsKnown(FragmentCommunicator com, String characterClass){
-		this(com.loadData(CharacterDataKey.SPELLSKNOWN), characterClass);
+		this(com.loadData(CharacterDataKey.SPELLS_KNOWN), characterClass);
 	}
 	public SpellsKnown(String savedData, String characterClass){
+		this.characterClass = characterClass;
+		
 		spellsKnown = new LinkedList<List<String>>();
 		
 		for(int i = 0; i < 10; i++){
@@ -21,7 +24,7 @@ public class SpellsKnown{
 		}
 		
 		//There won't be anything stored yet, this is just a sample
-		savedData = "Misc."+LEVEL_SPLIT+"Detect Magic"+SPELL_SPLIT+"Read Magic"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-" + CHARACTER_SPLIT + "Sorcerer."+LEVEL_SPLIT+"Acid Splash"+LEVEL_SPLIT+"Magic Missile"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-" + CHARACTER_SPLIT + "Wizard."+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-";
+		savedData = "Misc."+LEVEL_SPLIT+"Detect Magic"+SPELL_SPLIT+"Read Magic"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-" + CHARACTER_SPLIT + "Sorcerer."+LEVEL_SPLIT+"Acid Splash"+LEVEL_SPLIT+"Magic Missile"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-" + CHARACTER_SPLIT + "Wizard."+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+CHARACTER_SPLIT;
 		
 		String[] classes = savedData.split(CHARACTER_SPLIT);
 		for(String c : classes){
@@ -29,12 +32,8 @@ public class SpellsKnown{
 				//Remove the name of the class from the list of spells
 				c = c.substring(c.indexOf(LEVEL_SPLIT) + LEVEL_SPLIT.length() );
 				
-				System.out.println("String: " + c);
-
 				String[] levels = c.split(LEVEL_SPLIT);
 				for(int i = 0; i < levels.length; i++){
-					System.out.println("level " + i + ": " + levels[i]);
-					
 					if(levels[i].equals("-") ){
 						continue;
 					}
@@ -48,6 +47,22 @@ public class SpellsKnown{
 				break;
 			}
 		}
+	}
+	
+	/*
+	 * UNTESTED
+	 */
+	public String save(){
+		String retVal = characterClass;
+		
+		for(List<String> level : spellsKnown){
+			retVal += LEVEL_SPLIT;
+			for(String spell : level){
+				retVal += spell + SPELL_SPLIT;
+			}
+		}
+		
+		return retVal + CHARACTER_SPLIT;
 	}
 	
 	public String get(int level, int index){
