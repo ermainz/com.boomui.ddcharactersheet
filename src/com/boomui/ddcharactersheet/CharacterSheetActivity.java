@@ -26,6 +26,10 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 	
 	HashMap<String, Fragment> fragmentMap;
 	
+	//We'll have to decide how to set this later.  At any rate, it will be necessary to distinguish the saved data
+	//files from different characters.
+	long uid = 3;
+	
 	public CharacterSheetActivity(){
         fragmentMap = new HashMap<String, Fragment>();
         
@@ -107,8 +111,11 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 	}
 	
 	public void saveData(CharacterDataKey tag, String data){
+		saveData(tag, null, data);
+	}
+	public void saveData(CharacterDataKey tag, String strTag, String data){
 		try{
-			FileOutputStream fos = openFileOutput(tag.toString(), Context.MODE_PRIVATE);
+			FileOutputStream fos = openFileOutput(uid + " " + tag.toString() + (strTag == null ? "" : " " + strTag), Context.MODE_PRIVATE);
 			fos.write(data.getBytes() );
 			fos.close();
 			
@@ -120,8 +127,11 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 	}
 	
 	public String loadData(CharacterDataKey tag){
+		return loadData(tag, null);
+	}
+	public String loadData(CharacterDataKey tag, String strTag){
 		try{
-			FileInputStream fis = openFileInput(tag.toString() );
+			FileInputStream fis = openFileInput(uid + " " + tag.toString() + (strTag == null ? "" : " " + strTag) );
 			int length = fis.available();
 			
 			byte[] bytes = new byte[length];
@@ -132,7 +142,7 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 			return retVal;
 		}
 		catch(IOException ex){
-			System.err.println("Could load data: " + tag.toString() );
+			System.err.println("Couldn't load data: " + tag.toString() );
 		}
 		
 		return null;

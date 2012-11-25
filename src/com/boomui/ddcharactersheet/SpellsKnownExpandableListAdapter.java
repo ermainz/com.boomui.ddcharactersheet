@@ -1,6 +1,7 @@
 package com.boomui.ddcharactersheet;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,6 +68,11 @@ class SpellsKnownExpandableListAdapter extends BaseExpandableListAdapter{
             ViewGroup parent) {
         TextView textView = getGenericView();
         textView.setText(getGroup(groupPosition).toString());
+        
+    	if(getChildrenCount(groupPosition) == 0){
+    		textView.setTextColor(Constants.DISABLED);
+    	}
+
         return textView;
     }
 

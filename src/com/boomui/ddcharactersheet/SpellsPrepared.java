@@ -24,7 +24,10 @@ public class SpellsPrepared{
 		}
 		
 		//There won't be anything stored yet, this is just a sample
-		savedData = "Misc."+LEVEL_SPLIT+"Detect Magic"+SPELL_DATA_SPLIT+"false"+SPELL_SPLIT+"Read Magic"+SPELL_DATA_SPLIT+"false"+SPELL_SPLIT+" "+SPELL_DATA_SPLIT+"true"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-" + CHARACTER_SPLIT + "Sorcerer."+LEVEL_SPLIT+"Acid Splash"+SPELL_DATA_SPLIT+"false"+LEVEL_SPLIT+"Magic Missile"+SPELL_DATA_SPLIT+"false"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-" + CHARACTER_SPLIT + "Wizard."+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+CHARACTER_SPLIT;
+		System.out.println("Saved data: |" + savedData + "|");
+		if(savedData == null){
+			savedData = "Misc."+LEVEL_SPLIT+"Detect Magic"+SPELL_DATA_SPLIT+"false"+SPELL_SPLIT+"Read Magic"+SPELL_DATA_SPLIT+"false"+SPELL_SPLIT+" "+SPELL_DATA_SPLIT+"true"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-" + CHARACTER_SPLIT + "Sorcerer."+LEVEL_SPLIT+"Acid Splash"+SPELL_DATA_SPLIT+"false"+LEVEL_SPLIT+"Magic Missile"+SPELL_DATA_SPLIT+"false"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-" + CHARACTER_SPLIT + "Wizard."+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+LEVEL_SPLIT+"-"+CHARACTER_SPLIT;
+		}
 		
 		String[] classes = savedData.split(CHARACTER_SPLIT);
 		for(String c : classes){
@@ -74,6 +77,17 @@ public class SpellsPrepared{
 	public void removeLastSpell(int level){
 		levels.get(level).removeLastSpell();
 	}
+
+	public String save(){
+		String retVal = characterClass;
+		
+		for(PreparedSpellLevel level : levels){
+			retVal += LEVEL_SPLIT;
+			retVal += level.save();
+		}
+		
+		return retVal + CHARACTER_SPLIT;
+	}
 }
 class PreparedSpellLevel{
 	private List<PreparedSpell> spells;
@@ -86,6 +100,14 @@ class PreparedSpellLevel{
 	}
 	public PreparedSpell getSpell(int index){
 		return spells.get(index);
+	}
+	public String save(){
+		String retVal = "";
+		for(PreparedSpell spell : spells){
+			retVal += spell.name + SpellsPrepared.SPELL_DATA_SPLIT + spell.used + SpellsPrepared.SPELL_SPLIT;
+		}
+		
+		return retVal;
 	}
 	
 	public void add(PreparedSpell sp){
