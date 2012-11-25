@@ -39,7 +39,7 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
         fragmentMap.put("Skills", new SkillsTabFragment() );
         fragmentMap.put("Magic", new MagicTabFragment() );
         fragmentMap.put("Feats", new FeatsTabFragment() );
-        fragmentMap.put("Inven", new InventoryTabFragment() );
+        fragmentMap.put("Items", new InventoryTabFragment() );
         fragmentMap.put("Notes", new NotesTabFragment() );
         fragmentMap.put("Dice", new DiceRollerTabFragment() );
         fragmentMap.put("Spells", new SpellLookupTabFragment() );
@@ -60,7 +60,7 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
         bar.addTab(bar.newTab().setText("Skills").setTabListener(this));
         bar.addTab(bar.newTab().setText("Magic").setTabListener(this));
         bar.addTab(bar.newTab().setText("Feats").setTabListener(this));
-        bar.addTab(bar.newTab().setText("Inven").setTabListener(this));
+        bar.addTab(bar.newTab().setText("Items").setTabListener(this));
         bar.addTab(bar.newTab().setText("Notes").setTabListener(this));
 
       bar.addTab(bar.newTab().setText("Dice").setTabListener(this));
