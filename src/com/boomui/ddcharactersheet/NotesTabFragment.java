@@ -7,9 +7,12 @@ import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.*;
 import android.widget.TextView;
+import android.widget.EditText;
 
 public class NotesTabFragment extends Fragment{
 	FragmentCommunicator com;
+	
+	View main_view;
 	
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
@@ -22,6 +25,19 @@ public class NotesTabFragment extends Fragment{
 	}
 	
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-		return inflater.inflate(R.layout.notes_tab_fragment_layout, container, false);
+		main_view = inflater.inflate(R.layout.notes_tab_fragment_layout, container, false);
+		String notes = com.loadData(CharacterDataKey.NOTES);
+		if(notes == null){
+			notes = "";
+		}
+		((EditText)main_view.findViewById(R.id.notes)).setText(notes);
+		return main_view;
 	}
+	
+	@Override
+	public void onPause(){
+		super.onPause();
+		com.saveData(CharacterDataKey.NOTES, ((EditText)main_view.findViewById(R.id.notes)).getText().toString());
+	}
+	
 }

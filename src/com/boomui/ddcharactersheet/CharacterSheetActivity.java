@@ -243,6 +243,8 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 	        View view = inflater.inflate(R.layout.edit_saves_fragment, container, false);
 	        main_view = view;
 	        
+	        
+	        
 	        String fort_misc = com.loadData(CharacterDataKey.FORT);
 	        if(fort_misc == null){
 	        	fort_misc = "0"; com.saveData(CharacterDataKey.FORT, "0");}
@@ -267,6 +269,13 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 	        	fort_buff = "0"; com.saveData(CharacterDataKey.FORT_BUFF, "0");}
 	        ((TextView)view.findViewById(R.id.save_buff)).setText(fort_buff);
 	        
+	        int fort_save = Integer.parseInt(fort_class) + 
+	    			modifier +
+	    			Integer.parseInt(fort_buff) +
+	    			Integer.parseInt(fort_misc);
+	        ((TextView)view.findViewById(R.id.save_value)).setText(fort_save+"");
+	        ((TextView)view.findViewById(R.id.save_name)).setText("Fortitude: ");
+	        
 	        ((EditText)view.findViewById(R.id.save_misc)).addTextChangedListener(new TextWatcher() {
 			    public void onTextChanged(CharSequence s, int start, int before, int count) {}
 			    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -282,7 +291,8 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 			    			Integer.parseInt(((TextView)main_view.findViewById(R.id.save_ability_score)).getText().toString()) +
 			    			Integer.parseInt(com.loadData(CharacterDataKey.FORT_CLASS));
 			    	
-			    	((Button)parent.findViewById(R.id.fort_button)).setText("Fortitude +"+fort_save);
+			    	((Button)parent.findViewById(R.id.fort_button)).setText("Fortitude: "+fort_save);
+			    	((TextView)parent.findViewById(R.id.save_value)).setText(fort_save+"");
 			    }
 			});
 	        ((EditText)view.findViewById(R.id.save_class)).addTextChangedListener(new TextWatcher() {
@@ -300,7 +310,8 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 			    			Integer.parseInt(((TextView)main_view.findViewById(R.id.save_ability_score)).getText().toString()) +
 			    			Integer.parseInt(com.loadData(CharacterDataKey.FORT));
 			    	
-			    	((Button)parent.findViewById(R.id.fort_button)).setText("Fortitude +"+fort_save);
+			    	((Button)parent.findViewById(R.id.fort_button)).setText("Fortitude: "+fort_save);
+			    	((TextView)parent.findViewById(R.id.save_value)).setText(fort_save+"");
 			    }
 			});
 	        return view;
@@ -352,6 +363,14 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 	        	ref_buff = "0"; com.saveData(CharacterDataKey.REF_BUFF, "0");}
 	        ((TextView)view.findViewById(R.id.save_buff)).setText(ref_buff);
 	        
+	        int save = Integer.parseInt(ref_class) + 
+	    			modifier +
+	    			Integer.parseInt(ref_buff) +
+	    			Integer.parseInt(ref_misc);
+	        ((TextView)view.findViewById(R.id.save_value)).setText(save+"");
+	        ((TextView)view.findViewById(R.id.save_name)).setText("Reflex: ");
+	        
+	        
 	        ((EditText)view.findViewById(R.id.save_misc)).addTextChangedListener(new TextWatcher() {
 			    public void onTextChanged(CharSequence s, int start, int before, int count) {}
 			    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -362,12 +381,13 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 			    		return;
 			    	}
 			    	com.saveData(CharacterDataKey.REF, s.toString());
-			    	int fort_save = Integer.parseInt(s.toString()) + 
+			    	int ref_save = Integer.parseInt(s.toString()) + 
 			    			Integer.parseInt(com.loadData(CharacterDataKey.REF_BUFF)) +
 			    			Integer.parseInt(((TextView)main_view.findViewById(R.id.save_ability_score)).getText().toString()) +
 			    			Integer.parseInt(com.loadData(CharacterDataKey.REF_CLASS));
 			    	
-			    	((Button)parent.findViewById(R.id.ref_button)).setText("Reflex +"+fort_save);
+			    	((Button)parent.findViewById(R.id.ref_button)).setText("Reflex: "+ref_save);
+			    	((TextView)parent.findViewById(R.id.save_value)).setText(ref_save+"");
 			    }
 			});
 	        ((EditText)view.findViewById(R.id.save_class)).addTextChangedListener(new TextWatcher() {
@@ -385,7 +405,8 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 			    			Integer.parseInt(((TextView)main_view.findViewById(R.id.save_ability_score)).getText().toString()) +
 			    			Integer.parseInt(com.loadData(CharacterDataKey.REF));
 			    	
-			    	((Button)parent.findViewById(R.id.ref_button)).setText("Reflex +"+ref_save);
+			    	((Button)parent.findViewById(R.id.ref_button)).setText("Reflex: "+ref_save);
+			    	((TextView)parent.findViewById(R.id.save_value)).setText(ref_save+"");
 			    }
 			});
 	        return view;
@@ -438,6 +459,13 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 	        	will_buff = "0"; com.saveData(CharacterDataKey.WILL_BUFF, "0");}
 	        ((TextView)view.findViewById(R.id.save_buff)).setText(will_buff);
 	        
+	        int save = Integer.parseInt(will_class) + 
+	    			modifier +
+	    			Integer.parseInt(will_buff) +
+	    			Integer.parseInt(will_misc);
+	        ((TextView)view.findViewById(R.id.save_value)).setText(save+"");
+	        ((TextView)view.findViewById(R.id.save_name)).setText("Will: ");
+	        
 	        ((EditText)view.findViewById(R.id.save_misc)).addTextChangedListener(new TextWatcher() {
 			    public void onTextChanged(CharSequence s, int start, int before, int count) {}
 			    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -448,12 +476,13 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 			    		return;
 			    	}
 			    	com.saveData(CharacterDataKey.WILL, s.toString());
-			    	int fort_save = Integer.parseInt(s.toString()) + 
+			    	int wil_save = Integer.parseInt(s.toString()) + 
 			    			Integer.parseInt(com.loadData(CharacterDataKey.WILL_BUFF)) +
 			    			Integer.parseInt(((TextView)main_view.findViewById(R.id.save_ability_score)).getText().toString()) +
 			    			Integer.parseInt(com.loadData(CharacterDataKey.WILL_CLASS));
 			    	
-			    	((Button)parent.findViewById(R.id.will_button)).setText("Will +"+fort_save);
+			    	((Button)parent.findViewById(R.id.will_button)).setText("Will: "+wil_save);
+			    	((TextView)parent.findViewById(R.id.save_value)).setText(wil_save+"");
 			    }
 			});
 	        ((EditText)view.findViewById(R.id.save_class)).addTextChangedListener(new TextWatcher() {
@@ -466,12 +495,13 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 			    		return;
 			    	}
 			    	com.saveData(CharacterDataKey.WILL_CLASS, s.toString());
-			    	int fort_save = Integer.parseInt(s.toString()) + 
+			    	int wil_save = Integer.parseInt(s.toString()) + 
 			    			Integer.parseInt(com.loadData(CharacterDataKey.WILL_BUFF)) +
 			    			Integer.parseInt(((TextView)main_view.findViewById(R.id.save_ability_score)).getText().toString()) +
 			    			Integer.parseInt(com.loadData(CharacterDataKey.WILL));
 			    	
-			    	((Button)parent.findViewById(R.id.will_button)).setText("Will +"+fort_save);
+			    	((Button)parent.findViewById(R.id.will_button)).setText("Will: "+wil_save);
+			    	((TextView)parent.findViewById(R.id.save_value)).setText(wil_save+"");
 			    }
 			});
 	        return view;
