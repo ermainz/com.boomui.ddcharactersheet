@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="5"
-        android:text="History"
+        android:text=""
         tools:context=".MyNewActivity" />
 
     <TextView
@@ -17,7 +17,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:text="Input: " />
+        android:gravity="center_vertical"
+        android:text=""
+        android:textSize="25sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,14 +32,22 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Multiplier" />
+            android:gravity="center"
+            android:text="Multiplier"
+            android:textAllCaps="true"
+            android:textScaleX="1.5"
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/dice_label"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Dice" />
+            android:gravity="center"
+            android:text="Dice"
+            android:textAllCaps="true"
+            android:textScaleX="1.5"
+            android:textSize="30sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -68,11 +78,11 @@
             android:text="3" />
 
         <Button
-            android:id="@+id/d6_button"
+            android:id="@+id/d2_button"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="d6" />
+            android:text="d2" />
 
         <Button
             android:id="@+id/d4_button"
@@ -82,11 +92,11 @@
             android:text="d4" />
 
         <Button
-            android:id="@+id/d2_button"
+            android:id="@+id/d6_button"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="d2" />
+            android:text="d6" />
     </LinearLayout>
 
     <LinearLayout
@@ -117,11 +127,11 @@
             android:text="6" />
 
         <Button
-            android:id="@+id/d12_button"
+            android:id="@+id/d8_button"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="d12" />
+            android:text="d8" />
 
         <Button
             android:id="@+id/d10_button"
@@ -131,11 +141,11 @@
             android:text="d10" />
 
         <Button
-            android:id="@+id/d8_button"
+            android:id="@+id/d12_button"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="d8" />
+            android:text="d12" />
     </LinearLayout>
 
     <LinearLayout
@@ -166,11 +176,11 @@
             android:text="9" />
 
         <Button
-            android:id="@+id/dX_button"
+            android:id="@+id/d20_button"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="dX" />
+            android:text="d20" />
 
         <Button
             android:id="@+id/d100_button"
@@ -180,11 +190,11 @@
             android:text="d100" />
 
         <Button
-            android:id="@+id/d20_button"
+            android:id="@+id/dX_button"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="d20" />
+            android:text="dX" />
     </LinearLayout>
 
     <LinearLayout
@@ -215,14 +225,14 @@
         android:orientation="horizontal" >
 
         <Button
-            android:id="@+id/clear_button"
+            android:id="@+id/dice_roller_clear_button"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="CLEAR" />
 
         <Button
-            android:id="@+id/done_button"
+            android:id="@+id/dice_roller_done_button"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
