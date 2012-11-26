@@ -3,18 +3,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="@string/hello_world"
-        tools:context=".MainActivity" />
-    
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/new_character_button"
-        />
-
+    <LinearLayout android:layout_width="wrap_content"
+    			android:layout_height="800dip"
+    			android:orientation="vertical"
+    			android:padding = "10dip">
+    <ImageButton android:src="@drawable/sorcerer_thumb"
+                    		android:layout_width="wrap_content"
+    							android:layout_height="wrap_content"
+    							android:onClick="openCharacterSheet"
+    							/>
+    <TextView android:layout_width="wrap_content"
+    			android:layout_height="wrap_content"
+    			style="@android:style/TextAppearance.Medium"
+    			android:layout_gravity="center"
+    			android:text = "Steve"/>
+    </LinearLayout>
+    <!-- - 
+    <GridView xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:id="@+id/gridview"
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent"
+    android:columnWidth="90dp"
+    android:numColumns="auto_fit"
+    android:verticalSpacing="10dp"
+    android:horizontalSpacing="10dp"
+    android:stretchMode="columnWidth"
+    android:gravity="center"
+	/>
+-->
 </RelativeLayout>

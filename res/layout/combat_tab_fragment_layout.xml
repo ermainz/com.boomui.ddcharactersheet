@@ -2,16 +2,469 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-
-    <TextView
-        android:id="@+id/edit_textA"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Combat"
-        tools:context=".MyNewActivity" />
-
-
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
     
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    	android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:orientation="horizontal" >
+            
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    			android:layout_width="300dip"
+    			android:layout_height="wrap_content"
+    			android:orientation="horizontal" >
+            	<LinearLayout
+    				android:layout_width="match_parent"
+    				android:layout_height="wrap_content"
+    				android:orientation="vertical" >
+					<LinearLayout android:layout_width="wrap_content"
+    				android:layout_height="wrap_content"
+    				android:orientation="horizontal">
+            	    	<TextView android:id="@+id/str_value"
+            		    	android:layout_width="wrap_content"
+            		    	android:layout_height="wrap_content"
+            		    	style="@android:style/TextAppearance.Medium"
+            		    	android:text="Str: 10 =  "/>
+            			<EditText android:id="@+id/str_base"
+            			    android:inputType="number"
+            			    android:layout_width="wrap_content"
+            		    	android:layout_height="wrap_content"
+            		    	android:text="10"/>
+            			<TextView android:id="@+id/str_buff"
+            			    android:layout_width="wrap_content"
+            		    	android:layout_height="wrap_content"
+            		    	style="@android:style/TextAppearance.Medium"
+            		    	android:text=""/>
+            			<TextView android:text=" Mod: " android:layout_width="wrap_content" android:layout_height="wrap_content" style="@android:style/TextAppearance.Medium"/>
+            			<TextView android:id="@+id/str_modifier"
+            			    android:layout_width="wrap_content"
+            		    	android:layout_height="wrap_content"
+            		    	style="@android:style/TextAppearance.Medium"
+            		    	android:text=" Mod: +0"/>
+            		</LinearLayout>
+            		<LinearLayout android:layout_width="wrap_content"
+    				android:layout_height="wrap_content"
+    				android:orientation="horizontal">
+            	    	<TextView android:id="@+id/dex_value"
+            		    	android:layout_width="wrap_content"
+            		    	android:layout_height="wrap_content"
+            		    	style="@android:style/TextAppearance.Medium"
+            		    	android:text="Str: 10 =  "/>
+            			<EditText android:id="@+id/dex_base"
+            			    android:inputType="number"
+            			    android:layout_width="wrap_content"
+            		    	android:layout_height="wrap_content"
+            		    	android:text="10"/>
+            			<TextView android:id="@+id/dex_buff"
+            			    android:layout_width="wrap_content"
+            		    	android:layout_height="wrap_content"
+            		    	style="@android:style/TextAppearance.Medium"
+            		    	android:text=""/>
+            			<TextView android:text=" Mod: " android:layout_width="wrap_content" android:layout_height="wrap_content" style="@android:style/TextAppearance.Medium"/>
+            			<TextView android:id="@+id/dex_modifier"
+            			    android:layout_width="wrap_content"
+            		    	android:layout_height="wrap_content"
+            		    	style="@android:style/TextAppearance.Medium"
+            		    	android:text=" Mod: +0"/>
+            		</LinearLayout>
+            		<LinearLayout android:layout_width="wrap_content"
+    				android:layout_height="wrap_content"
+    				android:orientation="horizontal">
+            	    	<TextView android:id="@+id/con_value"
+            		    	android:layout_width="wrap_content"
+            		    	android:layout_height="wrap_content"
+            		    	style="@android:style/TextAppearance.Medium"
+            		    	android:text="Str: 10 =  "/>
+            			<EditText android:id="@+id/con_base"
+            			    android:inputType="number"
+            			    android:layout_width="wrap_content"
+            		    	android:layout_height="wrap_content"
+            		    	android:text="10"/>
+            			<TextView android:id="@+id/con_buff"
+            			    android:layout_width="wrap_content"
+            		    	android:layout_height="wrap_content"
+            		    	style="@android:style/TextAppearance.Medium"
+            		    	android:text=""/>
+            			<TextView android:text="Mod: " android:layout_width="wrap_content" android:layout_height="wrap_content" style="@android:style/TextAppearance.Medium"/>
+            			<TextView android:id="@+id/con_modifier"
+            			    android:layout_width="wrap_content"
+            		    	android:layout_height="wrap_content"
+            		    	style="@android:style/TextAppearance.Medium"
+            		    	android:text=" Mod: +0"/>
+            		</LinearLayout>
+            		<LinearLayout android:layout_width="wrap_content"
+    				android:layout_height="wrap_content"
+    				android:orientation="horizontal">
+            	    	<TextView android:id="@+id/int_value"
+            		    	android:layout_width="wrap_content"
+            		    	android:layout_height="wrap_content"
+            		    	style="@android:style/TextAppearance.Medium"
+            		    	android:text="Str: 10 =  "/>
+            			<EditText android:id="@+id/int_base"
+            			    android:inputType="number"
+            			    android:layout_width="wrap_content"
+            		    	android:layout_height="wrap_content"
+            		    	android:text="10"/>
+            			<TextView android:id="@+id/int_buff"
+            			    android:layout_width="wrap_content"
+            		    	android:layout_height="wrap_content"
+            		    	style="@android:style/TextAppearance.Medium"
+            		    	android:text=""/>
+            			<TextView android:text=" Mod: " android:layout_width="wrap_content" android:layout_height="wrap_content" style="@android:style/TextAppearance.Medium"/>
+            			<TextView android:id="@+id/int_modifier"
+            			    android:layout_width="wrap_content"
+            		    	android:layout_height="wrap_content"
+            		    	style="@android:style/TextAppearance.Medium"
+            		    	android:text=" Mod: +0"/>
+            		</LinearLayout>
+            		<LinearLayout android:layout_width="wrap_content"
+    				android:layout_height="wrap_content"
+    				android:orientation="horizontal">
+            	    	<TextView android:id="@+id/wis_value"
+            		    	android:layout_width="wrap_content"
+            		    	android:layout_height="wrap_content"
+            		    	style="@android:style/TextAppearance.Medium"
+            		    	android:text="Str: 10 =  "/>
+            			<EditText android:id="@+id/wis_base"
+            			    android:inputType="number"
+            			    android:layout_width="wrap_content"
+            		    	android:layout_height="wrap_content"
+            		    	android:text="10"/>
+            			<TextView android:id="@+id/wis_buff"
+            			    android:layout_width="wrap_content"
+            		    	android:layout_height="wrap_content"
+            		    	style="@android:style/TextAppearance.Medium"
+            		    	android:text=""/>
+            			<TextView android:text=" Mod: " android:layout_width="wrap_content" android:layout_height="wrap_content" style="@android:style/TextAppearance.Medium"/>
+            			<TextView android:id="@+id/wis_modifier"
+            			    android:layout_width="wrap_content"
+            		    	android:layout_height="wrap_content"
+            		    	style="@android:style/TextAppearance.Medium"
+            		    	android:text=" Mod: +0"/>
+            		</LinearLayout>
+            		<LinearLayout android:layout_width="match_parent"
+    				android:layout_height="wrap_content"
+    				android:orientation="horizontal">
+            	    	<TextView android:id="@+id/cha_value"
+            		    	android:layout_width="wrap_content"
+            		    	android:layout_height="wrap_content"
+            		    	style="@android:style/TextAppearance.Medium"
+            		    	android:text="Str: 10 =  "/>
+            			<EditText android:id="@+id/cha_base"
+            			    android:inputType="number"
+            			    android:layout_width="wrap_content"
+            		    	android:layout_height="wrap_content"
+            		    	android:text="10"/>
+            			<TextView android:id="@+id/cha_buff"
+            			    android:layout_width="wrap_content"
+            		    	android:layout_height="wrap_content"
+            		    	style="@android:style/TextAppearance.Medium"
+            		    	android:text=""/>
+            			<TextView 
+            			    android:text=" Mod: " android:layout_width="wrap_content" android:layout_height="wrap_content" style="@android:style/TextAppearance.Medium"/>
+            			<TextView android:id="@+id/cha_modifier"
+            			    android:layout_width="wrap_content"
+            		    	android:layout_height="wrap_content"            		    	
+            		    	style="@android:style/TextAppearance.Medium"
+            		    	android:text=" Mod: +0"/>
+            		</LinearLayout>
+        		</LinearLayout>
+        		
+        	</LinearLayout>
+        	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    			android:layout_width="300dip"
+    			android:layout_height="wrap_content"
+    			android:orientation="vertical">
+        	    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    				android:layout_width="wrap_content"
+    				android:layout_height="wrap_content"
+    				android:orientation="horizontal">
+        	    	<LinearLayout android:orientation="vertical"
+        	    	    android:layout_width="wrap_content"
+    					android:layout_height="wrap_content">
+        	    	    <TextView android:text="HP" android:layout_width="wrap_content"
+    						android:layout_height="wrap_content"/>
+        	        	<EditText android:id="@+id/max_hp"
+        	            	android:inputType="number" 
+        	            	android:layout_width="100dip" 
+        	            	android:layout_height="wrap_content" />
+        			</LinearLayout>
+        			<LinearLayout android:orientation="vertical"
+        			    android:layout_width="wrap_content"
+    					android:layout_height="wrap_content">
+        	    	    <TextView android:text="Current" android:layout_width="wrap_content"
+    						android:layout_height="wrap_content"/>
+        	        	<EditText android:id="@+id/current_hp"
+        	            	android:inputType="number" 
+        	            	android:layout_width="100dip" 
+        	            	android:layout_height="wrap_content" />
+        			</LinearLayout>
+        			<LinearLayout android:orientation="vertical"
+        			    android:layout_width="wrap_content"
+    					android:layout_height="wrap_content">
+        	    	    <TextView android:text="Non-lethal" android:layout_width="wrap_content"
+    						android:layout_height="wrap_content"/>
+        	        	<EditText android:id="@+id/non_lethal_hp"
+        	            	android:inputType="number" 
+        	            	android:layout_width="100dip" 
+        	            	android:layout_height="wrap_content" />
+        			</LinearLayout>
+        	    </LinearLayout>
+        	    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    				android:layout_width="match_parent"
+    				android:layout_height="wrap_content"
+    				android:orientation="vertical">
+        			<LinearLayout android:layout_width="match_parent"
+    					android:layout_height="wrap_content"
+    					android:orientation="horizontal">
+        	    		<Button
+            		    	android:id="@+id/fort_button"
+            		    	android:layout_width="wrap_content"
+            		    	android:layout_height="wrap_content"
+            		    	android:layout_weight="1"
+            		    	android:onClick="editFortitude"
+            		    	android:text="Fort +0" />
+        	    		<ImageButton android:src="@drawable/die_roll"
+                    		android:layout_width="wrap_content"
+    							android:layout_height="wrap_content"
+    							android:onClick="roll_fort"/>
+        	    	</LinearLayout>
+        	    	
+            		<LinearLayout android:layout_width="match_parent"
+    					android:layout_height="wrap_content"
+    					android:orientation="horizontal">
+        	    		<Button
+            		    	android:id="@+id/ref_button"
+            		    	android:layout_width="wrap_content"
+            		    	android:layout_height="wrap_content"
+            		    	android:layout_weight="1"
+            		    	android:onClick="editReflex"
+            		    	android:text="Reflex +0" />
+        	    		<ImageButton android:src="@drawable/die_roll"
+                    		android:layout_width="wrap_content"
+    							android:layout_height="wrap_content"
+    							android:onClick="roll_ref"/>
+        	    	</LinearLayout>
+        	    	
+        	    	<LinearLayout android:layout_width="match_parent"
+    					android:layout_height="wrap_content"
+    					android:orientation="horizontal">
+        	    		<Button
+            		    	android:id="@+id/will_button"
+            		    	android:layout_width="wrap_content"
+            		    	android:layout_height="wrap_content"
+            		    	android:layout_weight="1"
+            		    	android:onClick="editWill"
+            		    	android:text="Will +0" />
+        	    		<ImageButton android:src="@drawable/die_roll"
+                    		android:layout_width="wrap_content"
+    							android:layout_height="wrap_content"
+    							android:onClick="roll_will"/>
+        	    	</LinearLayout>
+        	    </LinearLayout>
+        	    
+        	</LinearLayout>
+        </LinearLayout>
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    			android:layout_width="match_parent"
+    			android:layout_height="wrap_content"
+    			android:orientation="horizontal">
+        	    	<Button
+            		    android:id="@+id/ac_button"
+            		    android:layout_width="200dip"
+            		    android:layout_height="wrap_content" 
+            		    android:onClick="editAC"           		    
+            		    android:text="AC: 10" />  
+            		<Button
+            		    android:id="@+id/ff_button"
+            		    android:layout_width="200dip"
+            		    android:layout_height="wrap_content"
+            		    android:onClick="editFF" 
+            		    android:text="Flat footed: 10" />
+            		<Button
+            		    android:id="@+id/touch_button"
+            		    android:layout_width="200dip"
+            		    android:layout_height="wrap_content"
+            		    android:onClick="editTouch" 
+            		    android:text="Touch: 10" />
+        </LinearLayout>
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    			android:layout_width="match_parent"
+    			android:layout_height="wrap_content"
+    			android:orientation="horizontal">
+            		
+            <TextView android:id="@+id/initiative_text"
+            		    android:layout_width="wrap_content"
+            		    android:layout_height="wrap_content"
+            		    style="@android:style/TextAppearance.Medium"
+            		    android:layout_weight="1"
+            		    android:text="Initiative: 0 = "/>
+        	<TextView android:id="@+id/initiative_dex"
+        	    	android:layout_width="wrap_content"
+        	    	style="@android:style/TextAppearance.Medium"
+        	    	android:layout_weight="1"
+            		    android:layout_height="wrap_content"/>
+        	<TextView android:id="@+id/initiative_buff"
+        	    	android:layout_width="wrap_content"
+        	    	style="@android:style/TextAppearance.Medium"
+        	    	android:layout_weight="1"
+            		    android:layout_height="wrap_content"/>
+            <EditText android:id="@+id/initiative_misc"
+        	    		android:layout_width="wrap_content"
+            		    android:layout_height="wrap_content"
+            		    android:layout_weight="1"
+            		    android:inputType="number"/>
+        	<TextView android:id="@+id/bab_text"
+            		    android:layout_width="wrap_content"
+            		    android:layout_height="wrap_content"
+            		    style="@android:style/TextAppearance.Medium"
+            		    android:layout_weight="1"
+            		    android:text="Base Attack = "/>
+            <EditText android:id="@+id/bab_edit"
+        	    		android:layout_width="wrap_content"
+            		    android:layout_height="wrap_content"
+            		    android:layout_weight="1"
+            		    android:inputType="text"/>"
+        </LinearLayout>
+        <LinearLayout 
+            android:layout_width="match_parent"
+    			android:layout_height="wrap_content"
+    			android:orientation="vertical"
+    			android:background="@drawable/combat_border"
+    			android:padding="2dp">
+            <LinearLayout android:layout_width="match_parent"
+    			android:layout_height="wrap_content"
+    			android:orientation="horizontal">
+        	    <LinearLayout android:layout_width="wrap_content"
+    				android:layout_height="wrap_content"
+    				android:layout_weight="1"
+    				android:orientation="vertical">
+                	<TextView android:layout_width="wrap_content"
+    					android:layout_height="wrap_content"
+    					android:text="Name"
+    					/>
+                	<EditText android:layout_width="match_parent"
+    					android:layout_height="wrap_content"
+    					android:inputType="text"
+    					android:text="Longsword"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="wrap_content"
+    				android:layout_height="wrap_content"
+    				android:orientation="vertical"
+    				android:layout_weight="1">
+                	<TextView android:layout_width="wrap_content"
+    					android:layout_height="wrap_content"
+    					android:text="Attack"
+    					/>
+                	<EditText android:layout_width="match_parent"
+    					android:layout_height="wrap_content"
+    					android:inputType="text"
+    					android:text="+3"
+    					/>
+                </LinearLayout>
+                <ImageButton android:src="@drawable/die_roll"
+                    android:layout_width="wrap_content"
+    					android:layout_height="wrap_content"
+    					android:onClick="roll_attack"/>
+                
+                <LinearLayout android:layout_width="wrap_content"
+                	android:layout_height="wrap_content"
+    				android:orientation="vertical"
+    				android:layout_weight="1">
+                	<TextView android:layout_width="wrap_content"
+    					android:layout_height="wrap_content"
+    					android:text="Damage"
+    					/>
+                	<EditText android:layout_width="match_parent"
+    					android:layout_height="wrap_content"
+    					android:inputType="text"
+    					android:text="1d8 + 1"/>
+                </LinearLayout>
+                <ImageButton android:src="@drawable/die_roll"
+                    android:layout_width="wrap_content"
+    					android:layout_height="wrap_content"
+    					android:onClick="roll_damage"/>
+            </LinearLayout>            
+            <LinearLayout android:layout_width="match_parent"
+    			android:layout_height="wrap_content"
+    			android:orientation="horizontal">
+                <LinearLayout android:layout_width="wrap_content"
+    				android:layout_height="wrap_content"
+    				android:orientation="vertical"
+    				android:layout_weight="1">
+                	<TextView android:layout_width="wrap_content"
+    					android:layout_height="wrap_content"
+    					android:text="Type"
+    					/>
+                	<EditText android:layout_width="match_parent"
+    					android:layout_height="wrap_content"
+    					android:inputType="text"
+    					android:text="Slash"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="wrap_content"
+                	android:layout_height="wrap_content"
+    				android:orientation="vertical"
+    				android:layout_weight="1">
+                	<TextView android:layout_width="wrap_content"
+    					android:layout_height="wrap_content"
+    					android:text="Range"
+    					/>
+                	<EditText android:layout_width="match_parent"
+    					android:layout_height="wrap_content"
+    					android:inputType="text"
+    					android:text="NA"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="wrap_content"
+    				android:layout_height="wrap_content"
+    				android:orientation="vertical"
+    				android:layout_weight="1">
+                	<TextView android:layout_width="wrap_content"
+    					android:layout_height="wrap_content"
+    					android:text="Notes"
+    					/>
+                	<EditText android:layout_width="match_parent"
+    					android:layout_height="wrap_content"
+    					android:inputType="text"
+    					android:text="STEVE'S SWORD"/>
+                </LinearLayout>
+                
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:padding="5dp"
+            android:layout_width="match_parent"
+    			android:layout_height="wrap_content"
+    			android:orientation="horizontal">
+        	<Button 
+        	    android:id="@+id/add_attack_button"
+            		    android:layout_width="wrap_content"
+            		    android:layout_height="wrap_content"
+            		    android:text="Add Attack "/>
+        	<TextView android:layout_width="wrap_content"
+            		    android:layout_height="wrap_content"
+            		    android:layout_weight="1"/>
+			
+			<LinearLayout
+			    android:layout_width="wrap_content"
+    			android:layout_height="wrap_content"
+    			android:orientation="vertical"
+    			android:background="@drawable/combat_border"
+    			
+    			android:padding="2dp">
+			    <TextView
+			    android:id="@+id/recent_roll"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    
+			    
+			    style="@android:style/TextAppearance.Medium"
+			    android:text="Last Roll: 14 + 3 = 17" />
+			</LinearLayout>
+			
+
+        </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>
