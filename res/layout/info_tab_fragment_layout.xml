@@ -3,15 +3,149 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <TextView
-        android:id="@+id/edit_textA"
+    <ImageView
+        android:id="@+id/character_pic"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:text="@string/character_name"
+        android:contentDescription="@string/character_pic"
+        android:src="@drawable/def_sorcerer_image1" />
+    
+    <EditText
+        android:id="@+id/character_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Info"
-        tools:context=".MyNewActivity" />
-
-
+        android:layout_alignTop="@id/character_pic"
+        android:layout_toRightOf="@id/character_pic"
+        android:text="@string/character_name"
+        android:hint="@string/character_name" />
+    
+    <TextView
+        android:id="@+id/class_and_level_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/character_pic"
+        android:text="@string/class_and_level" />
+    
+    <EditText
+        android:id="@+id/class_and_level"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/class_and_level_label"
+        android:text="@string/class_and_level"
+        android:hint="@string/class_and_level" />
+    
+    <TextView
+        android:id="@+id/race_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/class_and_level"
+        android:text="@string/race" />
+    
+    <EditText
+        android:id="@+id/race"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/race_label"
+        android:text="@string/race"
+        android:hint="@string/race" />
+    
+    <EditText
+        android:id="@+id/patron_deity"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/race_label"
+        android:layout_toRightOf="@id/race"
+        android:text="@string/patron_deity"
+        android:hint="@string/patron_deity" />
+    
+    <TextView
+        android:id="@+id/patron_deity_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/class_and_level"
+        android:layout_alignLeft="@id/patron_deity"
+        android:text="@string/patron_deity" />
+    
+    <TextView
+        android:id="@+id/alignment_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/race"
+        android:text="@string/alignment" />
+    
+    <EditText
+        android:id="@+id/alignment"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/alignment_label"
+        android:text="@string/alignment"
+        android:hint="@string/alignment" />
+    
+    <EditText
+        android:id="@+id/sizeof_char"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/alignment_label"
+        android:layout_toRightOf="@id/alignment"
+        android:text="@string/size"
+        android:hint="@string/size" />
+    
+    <TextView
+        android:id="@+id/sizeof_char_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/race"
+        android:layout_alignLeft="@id/sizeof_char"
+        android:text="@string/size" />
+    
+    <EditText
+        android:id="@+id/gender"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/alignment_label"
+        android:layout_toRightOf="@id/sizeof_char"
+        android:text="@string/gender"
+        android:hint="@string/gender" />
+    
+    <TextView
+        android:id="@+id/gender_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/race"
+        android:layout_alignLeft="@id/gender"
+        android:text="@string/gender" />
+    
+    <EditText
+        android:id="@+id/age"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/alignment_label"
+        android:layout_toRightOf="@id/gender"
+        android:text="@string/age"
+        android:hint="@string/age" />
+    
+    <TextView
+        android:id="@+id/age_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/race"
+        android:layout_alignLeft="@id/age"
+        android:text="@string/age" />
+    
+    <TextView
+        android:id="@+id/character_description_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/alignment"
+        android:text="@string/character_description" />
+    
+    <EditText
+        android:id="@+id/character_description"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_below="@id/character_description_label"
+        android:text="@string/character_description"
+        android:hint="@string/character_description" />
     
 </RelativeLayout>
