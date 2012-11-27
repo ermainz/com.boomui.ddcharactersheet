@@ -38,14 +38,14 @@ class SpellsKnownExpandableListAdapter extends BaseExpandableListAdapter{
     public TextView getGenericView() {
         // Layout parameters for the ExpandableListView
         AbsListView.LayoutParams lp = new AbsListView.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, 64);
+                ViewGroup.LayoutParams.MATCH_PARENT, 48);
 
         TextView textView = new TextView(parent);
         textView.setLayoutParams(lp);
         // Center the text vertically
         textView.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
         // Set the text starting position
-        textView.setPadding(36, 0, 0, 0);
+        textView.setPadding(50, 0, 0, 0);
         return textView;
     }
     
@@ -53,6 +53,7 @@ class SpellsKnownExpandableListAdapter extends BaseExpandableListAdapter{
             View convertView, ViewGroup parent) {
         TextView textView = getGenericView();
         textView.setText(getChild(groupPosition, childPosition) );
+        textView.setPadding(64, 0, 0, 0);
         
         //textView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT));
         
@@ -83,6 +84,7 @@ class SpellsKnownExpandableListAdapter extends BaseExpandableListAdapter{
             ViewGroup parent) {
         TextView textView = getGenericView();
         textView.setText(getGroup(groupPosition).toString());
+        textView.setLayoutParams(new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 64));
         
     	if(getChildrenCount(groupPosition) == 0){
     		textView.setTextColor(Constants.DISABLED);

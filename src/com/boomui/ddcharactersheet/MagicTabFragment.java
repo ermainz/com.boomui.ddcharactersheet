@@ -21,8 +21,6 @@ import android.widget.ExpandableListView.OnGroupExpandListener;
  */
 
 public class MagicTabFragment extends Fragment implements SpellInteractionListener{
-	public static String CLASS_SEPARATOR = "###";
-	
 	FragmentCommunicator com;
 	Activity parent;
 	
@@ -78,8 +76,8 @@ public class MagicTabFragment extends Fragment implements SpellInteractionListen
 		retVal.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
 
 		//This will load the set of classes later
-		String allClasses = "Misc."+CLASS_SEPARATOR+"Sorcerer"+CLASS_SEPARATOR+"Wizard";
-		classes = allClasses.split(CLASS_SEPARATOR);
+		String allClasses = Constants.defaultClasses;
+		classes = allClasses.split(Constants.CHARACTER_CLASS_SEPARATOR);
 		
 		classPanes = new LinearLayout[classes.length];
 		for(int i = 0; i < classes.length; i++){
@@ -153,7 +151,7 @@ public class MagicTabFragment extends Fragment implements SpellInteractionListen
 		classPanes[this.selected].startAnimation(shrink);
 		classPanes[selected].startAnimation(grow);*/
 		
-		TabExpansionAnimation change = new TabExpansionAnimation(classPanes[selected], classPanes[this.selected], 500);
+		TabExpansionAnimation change = new TabExpansionAnimation(classPanes[selected], classPanes[this.selected], Constants.MAGIC_TAB_ANIMATION_LENGTH);
 		classPanes[selected].startAnimation(change);
 		
 		this.selected = selected;
