@@ -85,6 +85,11 @@ public class DiceRollSequence {
 		String ret = "";
 		DiceRoll cur;
 		if (rollsList.isEmpty()) {
+			if(!currentMultipliers.isEmpty()){
+				for(int i = 0; i < currentMultipliers.size(); i++){
+					ret += currentMultipliers.get(i);
+				}
+			}
 			return ret;
 		}
 		for (int i = 0; i < rollsList.size() - 1; i++) {
