@@ -73,6 +73,13 @@ public class SpellLookupTabFragment extends Fragment implements SearchedSpellInt
 		InputMethodManager inputManager = (InputMethodManager)activity.getSystemService(Context.INPUT_METHOD_SERVICE);
 		inputManager.hideSoftInputFromWindow((null == activity.getCurrentFocus()) ? null : activity.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 	}
+
+	/*public void onResume(){
+		super.onResume();
+		
+		InputMethodManager inputManager = (InputMethodManager)parent.getSystemService(Context.INPUT_METHOD_SERVICE);
+		inputManager.hideSoftInputFromWindow((null == parent.getCurrentFocus()) ? null : parent.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+	}*/
 	
 	public void onDestroyView(){
 		super.onDestroyView();
@@ -222,7 +229,7 @@ public class SpellLookupTabFragment extends Fragment implements SearchedSpellInt
 		final ExpandableListView spellsKnownView = new ExpandableListView(parent);
 		SpellsKnown sk = new SpellsKnown(com, characterClass);
 		allSpellsKnown.add(sk);
-		SpellsKnownExpandableListAdapter adapter = new SpellsKnownExpandableListAdapter(sk, parent, this);
+		SpellsKnownExpandableListAdapter adapter = new SpellsKnownExpandableListAdapter(sk, parent, this, true);
 		spellsKnownView.setAdapter(adapter);
 		spellsKnownView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0, 1) );
 		allAdapters.add(adapter);
