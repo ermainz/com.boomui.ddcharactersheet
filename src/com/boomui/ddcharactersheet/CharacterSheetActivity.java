@@ -1,9 +1,14 @@
 package com.boomui.ddcharactersheet;
 
+import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 import com.boomui.ddcharactersheet.R;
 
@@ -15,6 +20,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
@@ -26,63 +32,45 @@ import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
-
-public class CharacterSheetActivity extends Activity implements ActionBar.TabListener, FragmentCommunicator {
+public class CharacterSheetActivity extends Activity implements ActionBar.TabListener, FragmentCommunicator, SpellLoader{
 	Fragment currentFragment;
 	
 	HashMap<String, Fragment> fragmentMap;
+	LinkedList<SpellListSpell> allLoadedSpells;
+	LinkedList<String> allCasterClasses;
 	
-	//We'll have to decide how to set this later.  At any rate, it will be necessary to distinguish the saved data
-	//files from different characters.
+	// We'll have to decide how to set this later. At any rate, it will be
+	// necessary to distinguish the saved data
+	// files from different characters.
 	long uid = 3;
 	
 	public CharacterSheetActivity(){
-        fragmentMap = new HashMap<String, Fragment>();
-        
-        fragmentMap.put("Info", new InfoTabFragment() );
-        fragmentMap.put("Combat", new CombatTabFragment() );
-        fragmentMap.put("Buffs", new BuffsTabFragment() );
-        fragmentMap.put("Skills", new SkillsTabFragment() );
-        fragmentMap.put("Magic", new MagicTabFragment() );
-        fragmentMap.put("Feats", new FeatsTabFragment() );
-        fragmentMap.put("Items", new InventoryTabFragment() );
-        fragmentMap.put("Notes", new NotesTabFragment() );
-        fragmentMap.put("Dice", new DiceRollerTabFragment() );
-        fragmentMap.put("Spells", new SpellLookupTabFragment() );
+		fragmentMap = new HashMap<String, Fragment>();
+		
+		fragmentMap.put("Info", new InfoTabFragment());
+		fragmentMap.put("Combat", new CombatTabFragment());
+		fragmentMap.put("Buffs", new BuffsTabFragment());
+		fragmentMap.put("Skills", new SkillsTabFragment());
+		fragmentMap.put("Magic", new MagicTabFragment());
+		fragmentMap.put("Feats", new FeatsTabFragment());
+		fragmentMap.put("Items", new InventoryTabFragment());
+		fragmentMap.put("Notes", new NotesTabFragment());
+		fragmentMap.put("Dice", new DiceRollerTabFragment());
+		fragmentMap.put("Spells", new SpellLookupTabFragment());
+		
+		allCasterClasses = new LinkedList<String>();
+		allCasterClasses.add("Sorcerer");
+		allCasterClasses.add("Wizard");
+		allCasterClasses.add("Cleric");
+		allCasterClasses.add("Druid");
 	}
 	
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        
-        String data_print = loadData(CharacterDataKey.BUFFS_ACTIVE);
-        System.err.println("Data active "+data_print);
-        data_print = loadData(CharacterDataKey.BUFFS_SAVED);
-        System.err.println("Data saved "+data_print);
-        
-        final ActionBar bar = getActionBar();
-        bar.setDisplayShowHomeEnabled(false);
-        bar.setDisplayShowTitleEnabled(false);
-        bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-           
-        bar.addTab(bar.newTab().setText("Info").setTabListener(this));
-        bar.addTab(bar.newTab().setText("Combat").setTabListener(this));
-        bar.addTab(bar.newTab().setText("Buffs").setTabListener(this));
-        bar.addTab(bar.newTab().setText("Skills").setTabListener(this));
-        bar.addTab(bar.newTab().setText("Magic").setTabListener(this));
-        bar.addTab(bar.newTab().setText("Feats").setTabListener(this));
-        bar.addTab(bar.newTab().setText("Items").setTabListener(this));
-        bar.addTab(bar.newTab().setText("Notes").setTabListener(this));
-
-      bar.addTab(bar.newTab().setText("Dice").setTabListener(this));
-      bar.addTab(bar.newTab().setText("Spells").setTabListener(this));
-        
-        setContentView(R.layout.activity_character_sheet);
-    }
+  
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -90,34 +78,61 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
         return true;
     }
     
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-    	switch(item.getItemId()){
 
-    	default:
-    		return false;
-    	}
-    }
 
-	public void onTabReselected(Tab tab, FragmentTransaction ft) {
+	@Override
+	public void onCreate(Bundle savedInstanceState){
+		super.onCreate(savedInstanceState);
+		
+		final ActionBar bar = getActionBar();
+		bar.setDisplayShowHomeEnabled(false);
+		bar.setDisplayShowTitleEnabled(false);
+		bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+		
+		bar.addTab(bar.newTab().setText("Info").setTabListener(this));
+		bar.addTab(bar.newTab().setText("Combat").setTabListener(this));
+		bar.addTab(bar.newTab().setText("Buffs").setTabListener(this));
+		bar.addTab(bar.newTab().setText("Skills").setTabListener(this));
+		bar.addTab(bar.newTab().setText("Magic").setTabListener(this));
+		bar.addTab(bar.newTab().setText("Feats").setTabListener(this));
+		bar.addTab(bar.newTab().setText("Items").setTabListener(this));
+		bar.addTab(bar.newTab().setText("Notes").setTabListener(this));
+		
+		bar.addTab(bar.newTab().setText("Dice").setTabListener(this));
+		bar.addTab(bar.newTab().setText("Spells").setTabListener(this));
+		
+		setContentView(R.layout.activity_character_sheet);
+	}
+	
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item){
+		switch(item.getItemId()){
+		
+			default:
+				return false;
+		}
+	}
+	
+	public void onTabReselected(Tab tab, FragmentTransaction ft){
 		// TODO Auto-generated method stub
 	}
-
-	public void onTabSelected(Tab tab, FragmentTransaction ft) {
+	
+	public void onTabSelected(Tab tab, FragmentTransaction ft){
 		// TODO Auto-generated method stub
 		
 		FragmentManager fragmentManager = getFragmentManager();
 		FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
+		
 		String tabName = tab.getText().toString();
-
+		
 		currentFragment = fragmentMap.get(tabName);
 		
 		fragmentTransaction.add(R.id.fragmentView, currentFragment);
 		fragmentTransaction.commit();
 	}
-
-	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
+	
+	public void onTabUnselected(Tab tab, FragmentTransaction ft){
 		// TODO Auto-generated method stub
 		
 		FragmentManager fragmentManager = getFragmentManager();
@@ -129,25 +144,27 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 	public void saveData(CharacterDataKey tag, String data){
 		saveData(tag, null, data);
 	}
+	
 	public void saveData(CharacterDataKey tag, String strTag, String data){
 		try{
 			FileOutputStream fos = openFileOutput(uid + " " + tag.toString() + (strTag == null ? "" : " " + strTag), Context.MODE_PRIVATE);
-			fos.write(data.getBytes() );
+			fos.write(data.getBytes());
 			fos.close();
 			
-			//System.out.println("Wrote: " + data + " to " + tag.toString() );
+			// System.out.println("Wrote: " + data + " to " + tag.toString() );
 		}
 		catch(IOException ex){
-			System.err.println("Couldn't save data: " + tag.toString() );
+			System.err.println("Couldn't save data: " + tag.toString());
 		}
 	}
 	
 	public String loadData(CharacterDataKey tag){
 		return loadData(tag, null);
 	}
+	
 	public String loadData(CharacterDataKey tag, String strTag){
 		try{
-			FileInputStream fis = openFileInput(uid + " " + tag.toString() + (strTag == null ? "" : " " + strTag) );
+			FileInputStream fis = openFileInput(uid + " " + tag.toString() + (strTag == null ? "" : " " + strTag));
 			int length = fis.available();
 			
 			byte[] bytes = new byte[length];
@@ -164,83 +181,86 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 		return null;
 	}
 	
-	
 	public void roll_damage(View v){
-		int roll = (int) (Math.random()*8);
+		int roll = (int) (Math.random() * 8);
 		int damage = roll + 1;
-		((TextView)findViewById(R.id.recent_roll)).setText("Last Roll: "+roll + " + "+ "1 = " + damage);
+		((TextView) findViewById(R.id.recent_roll)).setText("Last Roll: " + roll + " + " + "1 = " + damage);
 	}
+	
 	public void roll_attack(View v){
-		int roll = (int) (Math.random()*20);
+		int roll = (int) (Math.random() * 20);
 		int attack = roll + 3;
-		((TextView)findViewById(R.id.recent_roll)).setText("Last Roll: "+roll + " + "+ "3 = " + attack);
+		((TextView) findViewById(R.id.recent_roll)).setText("Last Roll: " + roll + " + " + "3 = " + attack);
 	}
+	
 	public void roll_fort(View v){
-		int roll = (int) (Math.random()*20);
-		int fort_save = 
-				Integer.parseInt(loadData(CharacterDataKey.FORT_CLASS)) + 
-    			Integer.parseInt(loadData(CharacterDataKey.FORT_BUFF)) +
-    			Integer.parseInt(((TextView)findViewById(R.id.con_modifier)).getText().toString()) +
-    			Integer.parseInt(loadData(CharacterDataKey.FORT));
-		int fort_total =  roll + fort_save;
-		((TextView)findViewById(R.id.recent_roll)).setText("Last Roll: "+roll + " + "+fort_save+ " = " + fort_total);
+		int roll = (int) (Math.random() * 20);
+		int fort_save = Integer.parseInt(loadData(CharacterDataKey.FORT_CLASS)) + Integer.parseInt(loadData(CharacterDataKey.FORT_BUFF)) + Integer.parseInt(((TextView) findViewById(R.id.con_modifier)).getText().toString()) + Integer.parseInt(loadData(CharacterDataKey.FORT));
+		int fort_total = roll + fort_save;
+		((TextView) findViewById(R.id.recent_roll)).setText("Last Roll: " + roll + " + " + fort_save + " = " + fort_total);
 	}
+	
 	public void roll_ref(View v){
-		int roll = (int) (Math.random()*20);
-		int save = 
-				Integer.parseInt(loadData(CharacterDataKey.REF_CLASS)) + 
-    			Integer.parseInt(loadData(CharacterDataKey.REF_BUFF)) +
-    			Integer.parseInt(((TextView)findViewById(R.id.dex_modifier)).getText().toString()) +
-    			Integer.parseInt(loadData(CharacterDataKey.REF));
-		int total =  roll + save;
-		((TextView)findViewById(R.id.recent_roll)).setText("Last Roll: "+roll + " + "+save+ " = " + total);
+		int roll = (int) (Math.random() * 20);
+		int save = Integer.parseInt(loadData(CharacterDataKey.REF_CLASS)) + Integer.parseInt(loadData(CharacterDataKey.REF_BUFF)) + Integer.parseInt(((TextView) findViewById(R.id.dex_modifier)).getText().toString()) + Integer.parseInt(loadData(CharacterDataKey.REF));
+		int total = roll + save;
+		((TextView) findViewById(R.id.recent_roll)).setText("Last Roll: " + roll + " + " + save + " = " + total);
 	}
+	
 	public void roll_will(View v){
-		int roll = (int) (Math.random()*20);
-		int save = 
-				Integer.parseInt(loadData(CharacterDataKey.WILL_CLASS)) + 
-    			Integer.parseInt(loadData(CharacterDataKey.WILL_BUFF)) +
-    			Integer.parseInt(((TextView)findViewById(R.id.wis_modifier)).getText().toString()) +
-    			Integer.parseInt(loadData(CharacterDataKey.WILL));
-		int total =  roll + save;
-		((TextView)findViewById(R.id.recent_roll)).setText("Last Roll: "+roll + " + "+save+ " = " + total);
+		int roll = (int) (Math.random() * 20);
+		int save = Integer.parseInt(loadData(CharacterDataKey.WILL_CLASS)) + Integer.parseInt(loadData(CharacterDataKey.WILL_BUFF)) + Integer.parseInt(((TextView) findViewById(R.id.wis_modifier)).getText().toString()) + Integer.parseInt(loadData(CharacterDataKey.WILL));
+		int total = roll + save;
+		((TextView) findViewById(R.id.recent_roll)).setText("Last Roll: " + roll + " + " + save + " = " + total);
+	}
+	public void roll_initiative(View v){
+		int roll = (int) (Math.random() * 20);
+		int save = Integer.parseInt(loadData(CharacterDataKey.INITIATIVE)) + 
+				Integer.parseInt(loadData(CharacterDataKey.INITIATIVE_BUFF)) + 
+				Integer.parseInt(((TextView) findViewById(R.id.dex_modifier)).getText().toString());
+		int total = roll + save;
+		((TextView) findViewById(R.id.recent_roll)).setText("Last Roll: " + roll + " + " + save + " = " + total);
 	}
 	
 	public void editFortitude(View view){
 		DialogFragment newFragment = new EditFortitudeFragment();
-	    newFragment.show(getFragmentManager(), "EditAbilityScore");
+		newFragment.show(getFragmentManager(), "EditAbilityScore");
 	}
+	
 	public void editReflex(View view){
 		DialogFragment newFragment = new EditReflexFragment();
 	    newFragment.show(getFragmentManager(), "EditAbilityScore");
 	}
+	
 	public void editWill(View view){
 		DialogFragment newFragment = new EditWillFragment();
 	    newFragment.show(getFragmentManager(), "EditAbilityScore");
 	}
+	
 	public void editAC(View view){
 		DialogFragment newFragment = new EditACFragment();
 	    newFragment.show(getFragmentManager(), "EditAbilityScore");
 	}
+	
 	public void editFF(View view){
 		DialogFragment newFragment = new EditFFFragment();
 	    newFragment.show(getFragmentManager(), "EditAbilityScore");
 	}
+	
 	public void editTouch(View view){
 		DialogFragment newFragment = new EditTouchFragment();
 	    newFragment.show(getFragmentManager(), "EditAbilityScore");
 	}
 	
-	
-	public class EditFortitudeFragment extends DialogFragment {
-	    FragmentCommunicator com;
+	public class EditFortitudeFragment extends DialogFragment{
+		FragmentCommunicator com;
 		Activity parent;
 		View main_view;
 		
 		public void onAttach(Activity activity){
 			super.onAttach(activity);
 			parent = activity;
-			com = (FragmentCommunicator)activity;			
+			com = (FragmentCommunicator) activity;
 		}
 	    
 	    @Override
@@ -333,12 +353,6 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 		Activity parent;
 		View main_view;
 		
-		public void onAttach(Activity activity){
-			super.onAttach(activity);
-			parent = activity;
-			com = (FragmentCommunicator)activity;			
-		}
-	    
 	    @Override
 	    public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
@@ -420,21 +434,21 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 			    	//((TextView)parent.findViewById(R.id.save_value)).setText(ref_save+"");
 			    }
 			});
-	        return view;
-	    }
+			return view;
+		}
 	}
 	
-	public class EditWillFragment extends DialogFragment {
-	    FragmentCommunicator com;
+	public class EditWillFragment extends DialogFragment{
+		FragmentCommunicator com;
 		Activity parent;
 		View main_view;
 		
 		public void onAttach(Activity activity){
 			super.onAttach(activity);
 			parent = activity;
-			com = (FragmentCommunicator)activity;			
+			com = (FragmentCommunicator) activity;
 		}
-	    
+
 	    @Override
 	    public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
@@ -495,6 +509,7 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 			    	((Button)parent.findViewById(R.id.will_button)).setText("Will: "+wil_save);
 			    	//((TextView)parent.findViewById(R.id.save_value)).setText(wil_save+"");
 			    }
+
 			});
 	        ((EditText)view.findViewById(R.id.save_class)).addTextChangedListener(new TextWatcher() {
 			    public void onTextChanged(CharSequence s, int start, int before, int count) {}
@@ -515,8 +530,66 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 			    	//((TextView)parent.findViewById(R.id.save_value)).setText(wil_save+"");
 			    }
 			});
-	        return view;
-	    }
+			return view;
+		}
+	}
+	
+	
+	
+	/**
+	 * This will actually load spells later.
+	 * 
+	 * Possibly the application will load spells with a separate thread, and if
+	 * this is called before they're all loaded, it will block until the rest
+	 * are loaded.
+	 * 
+	 * @return A list of SpellListSpells loaded from file
+	 */
+	public List<SpellListSpell> getAllSpells(){
+		if(allLoadedSpells == null){
+			loadAllSpells();
+		}
+		
+		return allLoadedSpells;
+	}
+	
+	private void loadAllSpells(){
+		allLoadedSpells = new LinkedList<SpellListSpell>();
+		
+		/*allLoadedSpells.add(new SpellListSpell("Acid Splash", "Sorcerer 0, Wizard 0"));
+		allLoadedSpells.add(new SpellListSpell("Cure Minor Wounds", "Cleric 0"));
+		allLoadedSpells.add(new SpellListSpell("Magic Missile", "Sorcerer 1, Wizard 1"));
+		allLoadedSpells.add(new SpellListSpell("Dragonfire Blast", "Sorcerer 2"));*/
+		
+		InputStream inputStream = getResources().openRawResource(R.raw.phbspells);
+		BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream) );
+		
+		try{
+			String s = reader.readLine();
+			while(s != null){
+				String levels = s;
+				String name = reader.readLine();
+				s = reader.readLine();
+				s = reader.readLine();
+				
+				//System.out.println("Name: " + name + ", Levels: " + levels);
+				
+				allLoadedSpells.add(new SpellListSpell(name, levels) );
+			}
+		}
+		catch(IOException ex){
+			ex.printStackTrace();
+		}
+	}
+	
+	public boolean isNameOfClass(String name){
+		for(String className : allCasterClasses){
+			if(className.equalsIgnoreCase(name) ){
+				return true;
+			}
+		}
+		
+		return false;
 	}
 	
 	

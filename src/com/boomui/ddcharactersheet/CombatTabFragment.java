@@ -252,7 +252,8 @@ public class CombatTabFragment extends Fragment implements CombatTabRollListener
 		int initiative_total = 0;
 		String initiative_misc = com.loadData(CharacterDataKey.INITIATIVE);
 		if(initiative_misc == null || initiative_misc.equals("")){
-			initiative_misc = "0"; com.saveData(CharacterDataKey.INITIATIVE, "0");}
+			initiative_misc = "0"; com.saveData(CharacterDataKey.INITIATIVE, "0");
+		}
 		else initiative_total += Integer.parseInt(initiative_misc);
 		((EditText)view.findViewById(R.id.initiative_misc)).setText(initiative_misc);
 		
@@ -635,7 +636,7 @@ public class CombatTabFragment extends Fragment implements CombatTabRollListener
 	
 	public void roll(String value){
 		if(value != null && !value.isEmpty())
-			((TextView)main_view.findViewById(R.id.recent_roll)).setText(value);
+			((TextView)main_view.findViewById(R.id.recent_roll)).setText("Last Roll: "+value);
 	}
 	
 	public void onDestroyView(){

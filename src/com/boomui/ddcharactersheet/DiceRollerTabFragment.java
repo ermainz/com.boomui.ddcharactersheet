@@ -1,30 +1,57 @@
 package com.boomui.ddcharactersheet;
 
-import android.annotation.SuppressLint;
+import java.util.ArrayList;
+
 import android.app.*;
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
 import android.view.*;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class DiceRollerTabFragment extends Fragment {
 
 	View mainView;
 	TextView inputField;
+	ListView historyListView;
+	ArrayAdapter<String> historyListAdapter;
+	ArrayList<String> historyList;
+	// TextView history;
 
 	DiceRollSequence diceRolls = new DiceRollSequence();
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 	}
+	
+	public void onAttach(Activity activity){
+		super.onAttach(activity);
+		
+		//This code hides the keyboard
+		InputMethodManager inputManager = (InputMethodManager)activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+		inputManager.hideSoftInputFromWindow((null == activity.getCurrentFocus()) ? null : activity.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+	}
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		mainView = inflater.inflate(R.layout.dice_roller_tab_fragment_layout,
 				container, false);
+
 		inputField = (TextView) mainView.findViewById(R.id.input_viewer);
+
+		historyList = new ArrayList<String>();
+
+		historyListAdapter = new ArrayAdapter<String>(getActivity()
+				.getApplicationContext(), android.R.layout.simple_list_item_1,
+				historyList);
+
+		historyListView = (ListView) mainView
+				.findViewById(R.id.dice_roll_history);
+		historyListView.setAdapter(historyListAdapter);
 
 		View.OnClickListener onClickListener = new View.OnClickListener() {
 
@@ -97,9 +124,9 @@ public class DiceRollerTabFragment extends Fragment {
 					break;
 				case R.id.dice_roller_done_button:
 					String seq = diceRolls.sequenceDone();
-					TextView history = (TextView) mainView.findViewById(R.id.dice_roll_history);
-					String oldHistory = history.getText().toString();
-					history.setText(oldHistory + seq + "\n");
+					historyList.add(seq);
+					historyListAdapter.notifyDataSetChanged();
+
 					break;
 				default:
 					break;
@@ -150,23 +177,15 @@ public class DiceRollerTabFragment extends Fragment {
 		Button dConstant_button = (Button) mainView
 				.findViewById(R.id.dConstant_button);
 		dConstant_button.setOnClickListener(onClickListener);
-		
-		Button doneButton = (Button) mainView.findViewById(R.id.dice_roller_done_button);
+
+		Button doneButton = (Button) mainView
+				.findViewById(R.id.dice_roller_done_button);
 		doneButton.setOnClickListener(onClickListener);
-		Button clearButton = (Button) mainView.findViewById(R.id.dice_roller_clear_button);
+		Button clearButton = (Button) mainView
+				.findViewById(R.id.dice_roller_clear_button);
 		clearButton.setOnClickListener(onClickListener);
 
 		return mainView;
 	}
 
-	public void addMultiplier(int input) {
-
-	}
-
-	public void addDiceRoll(int input) {
-
-	}
-
-	
-	
 }

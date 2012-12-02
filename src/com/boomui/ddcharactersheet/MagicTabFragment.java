@@ -5,12 +5,14 @@ import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.app.*;
+import android.content.Context;
 import android.content.Intent;
 import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.*;
 import android.view.View.*;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
 import android.widget.ExpandableListView.OnGroupClickListener;
 import android.widget.ExpandableListView.OnGroupCollapseListener;
@@ -21,8 +23,6 @@ import android.widget.ExpandableListView.OnGroupExpandListener;
  */
 
 public class MagicTabFragment extends Fragment implements SpellInteractionListener{
-	public static String CLASS_SEPARATOR = "###";
-	
 	FragmentCommunicator com;
 	Activity parent;
 	
@@ -46,6 +46,10 @@ public class MagicTabFragment extends Fragment implements SpellInteractionListen
 		
 		parent = activity;
 		com = (FragmentCommunicator)activity;
+
+		//This code hides the keyboard
+		InputMethodManager inputManager = (InputMethodManager)activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+		inputManager.hideSoftInputFromWindow((null == activity.getCurrentFocus()) ? null : activity.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 	}
 	
 	public void onDestroyView(){
@@ -78,8 +82,8 @@ public class MagicTabFragment extends Fragment implements SpellInteractionListen
 		retVal.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
 
 		//This will load the set of classes later
-		String allClasses = "Misc."+CLASS_SEPARATOR+"Sorcerer"+CLASS_SEPARATOR+"Wizard";
-		classes = allClasses.split(CLASS_SEPARATOR);
+		String allClasses = Constants.defaultClasses;
+		classes = allClasses.split(Constants.CHARACTER_CLASS_SEPARATOR);
 		
 		classPanes = new LinearLayout[classes.length];
 		for(int i = 0; i < classes.length; i++){
@@ -153,7 +157,7 @@ public class MagicTabFragment extends Fragment implements SpellInteractionListen
 		classPanes[this.selected].startAnimation(shrink);
 		classPanes[selected].startAnimation(grow);*/
 		
-		TabExpansionAnimation change = new TabExpansionAnimation(classPanes[selected], classPanes[this.selected], 500);
+		TabExpansionAnimation change = new TabExpansionAnimation(classPanes[selected], classPanes[this.selected], Constants.MAGIC_TAB_ANIMATION_LENGTH);
 		classPanes[selected].startAnimation(change);
 		
 		this.selected = selected;
