@@ -1,8 +1,11 @@
 package com.boomui.ddcharactersheet;
 
+import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -17,6 +20,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -564,10 +568,30 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 	private void loadAllSpells(){
 		allLoadedSpells = new LinkedList<SpellListSpell>();
 		
-		allLoadedSpells.add(new SpellListSpell("Acid Splash", "Sorcerer 0, Wizard 0"));
+		/*allLoadedSpells.add(new SpellListSpell("Acid Splash", "Sorcerer 0, Wizard 0"));
 		allLoadedSpells.add(new SpellListSpell("Cure Minor Wounds", "Cleric 0"));
 		allLoadedSpells.add(new SpellListSpell("Magic Missile", "Sorcerer 1, Wizard 1"));
-		allLoadedSpells.add(new SpellListSpell("Dragonfire Blast", "Sorcerer 2"));
+		allLoadedSpells.add(new SpellListSpell("Dragonfire Blast", "Sorcerer 2"));*/
+		
+		InputStream inputStream = getResources().openRawResource(R.raw.phbspells);
+		BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream) );
+		
+		try{
+			String s = reader.readLine();
+			while(s != null){
+				String levels = s;
+				String name = reader.readLine();
+				s = reader.readLine();
+				s = reader.readLine();
+				
+				//System.out.println("Name: " + name + ", Levels: " + levels);
+				
+				allLoadedSpells.add(new SpellListSpell(name, levels) );
+			}
+		}
+		catch(IOException ex){
+			ex.printStackTrace();
+		}
 	}
 	
 	public boolean isNameOfClass(String name){
