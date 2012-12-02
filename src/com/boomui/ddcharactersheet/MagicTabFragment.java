@@ -47,6 +47,7 @@ public class MagicTabFragment extends Fragment implements SpellInteractionListen
 		parent = activity;
 		com = (FragmentCommunicator)activity;
 
+		//This code hides the keyboard
 		InputMethodManager inputManager = (InputMethodManager)activity.getSystemService(Context.INPUT_METHOD_SERVICE);
 		inputManager.hideSoftInputFromWindow((null == activity.getCurrentFocus()) ? null : activity.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 	}

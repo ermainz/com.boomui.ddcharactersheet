@@ -3,8 +3,10 @@ package com.boomui.ddcharactersheet;
 import java.util.ArrayList;
 
 import android.app.*;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.*;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
@@ -24,6 +26,14 @@ public class DiceRollerTabFragment extends Fragment {
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+	}
+	
+	public void onAttach(Activity activity){
+		super.onAttach(activity);
+		
+		//This code hides the keyboard
+		InputMethodManager inputManager = (InputMethodManager)activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+		inputManager.hideSoftInputFromWindow((null == activity.getCurrentFocus()) ? null : activity.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 	}
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
