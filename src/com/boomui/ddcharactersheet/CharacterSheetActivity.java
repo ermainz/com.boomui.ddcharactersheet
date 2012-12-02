@@ -16,16 +16,19 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 
 public class CharacterSheetActivity extends Activity implements ActionBar.TabListener, FragmentCommunicator {
@@ -55,6 +58,11 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        String data_print = loadData(CharacterDataKey.BUFFS_ACTIVE);
+        System.err.println("Data active "+data_print);
+        data_print = loadData(CharacterDataKey.BUFFS_SAVED);
+        System.err.println("Data saved "+data_print);
         
         final ActionBar bar = getActionBar();
         bar.setDisplayShowHomeEnabled(false);
@@ -150,7 +158,7 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 			return retVal;
 		}
 		catch(IOException ex){
-			System.err.println("Couldn't load data: " + tag.toString() );
+			System.err.println("Couldn't load data: " + tag.toString());
 		}
 		
 		return null;
@@ -203,21 +211,24 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 	    newFragment.show(getFragmentManager(), "EditAbilityScore");
 	}
 	public void editReflex(View view){
-		DialogFragment newFragment = new EditFortitudeFragment();
+		DialogFragment newFragment = new EditReflexFragment();
 	    newFragment.show(getFragmentManager(), "EditAbilityScore");
 	}
 	public void editWill(View view){
-		DialogFragment newFragment = new EditFortitudeFragment();
+		DialogFragment newFragment = new EditWillFragment();
 	    newFragment.show(getFragmentManager(), "EditAbilityScore");
 	}
 	public void editAC(View view){
-		
+		DialogFragment newFragment = new EditACFragment();
+	    newFragment.show(getFragmentManager(), "EditAbilityScore");
 	}
 	public void editFF(View view){
-		
+		DialogFragment newFragment = new EditFFFragment();
+	    newFragment.show(getFragmentManager(), "EditAbilityScore");
 	}
 	public void editTouch(View view){
-		
+		DialogFragment newFragment = new EditTouchFragment();
+	    newFragment.show(getFragmentManager(), "EditAbilityScore");
 	}
 	
 	
@@ -240,6 +251,7 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 	    @Override
 	    public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	            Bundle savedInstanceState) {
+	    	getDialog().setTitle("Fortitude");
 	        View view = inflater.inflate(R.layout.edit_saves_fragment, container, false);
 	        main_view = view;
 	        
@@ -259,8 +271,8 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 	        if(con == null){
 	        	con = "0"; com.saveData(CharacterDataKey.CON, "0");}
 	        String con_buff = com.loadData(CharacterDataKey.CON_BUFF);
-	        if(con_buff == null){
-	        	con_buff = "0"; com.saveData(CharacterDataKey.CON_BUFF, "0");}
+	        if(con_buff == null || con_buff.isEmpty()){
+	        	con_buff = "0"; }//com.saveData(CharacterDataKey.CON_BUFF, "0");}
 	        int modifier = (Integer.parseInt(con) + Integer.parseInt(con_buff))/2 -5;
 	        ((TextView)view.findViewById(R.id.save_ability_score)).setText(""+modifier);
 	        
@@ -273,8 +285,7 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 	    			modifier +
 	    			Integer.parseInt(fort_buff) +
 	    			Integer.parseInt(fort_misc);
-	        ((TextView)view.findViewById(R.id.save_value)).setText(fort_save+"");
-	        ((TextView)view.findViewById(R.id.save_name)).setText("Fortitude: ");
+	        ((TextView)view.findViewById(R.id.modifier)).setText("Con: ");
 	        
 	        ((EditText)view.findViewById(R.id.save_misc)).addTextChangedListener(new TextWatcher() {
 			    public void onTextChanged(CharSequence s, int start, int before, int count) {}
@@ -292,7 +303,7 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 			    			Integer.parseInt(com.loadData(CharacterDataKey.FORT_CLASS));
 			    	
 			    	((Button)parent.findViewById(R.id.fort_button)).setText("Fortitude: "+fort_save);
-			    	((TextView)parent.findViewById(R.id.save_value)).setText(fort_save+"");
+			    	//((TextView)parent.findViewById(R.id.save_value)).setText(fort_save+"");
 			    }
 			});
 	        ((EditText)view.findViewById(R.id.save_class)).addTextChangedListener(new TextWatcher() {
@@ -311,7 +322,7 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 			    			Integer.parseInt(com.loadData(CharacterDataKey.FORT));
 			    	
 			    	((Button)parent.findViewById(R.id.fort_button)).setText("Fortitude: "+fort_save);
-			    	((TextView)parent.findViewById(R.id.save_value)).setText(fort_save+"");
+			    	//((TextView)parent.findViewById(R.id.save_value)).setText(fort_save+"");
 			    }
 			});
 	        return view;
@@ -336,6 +347,7 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 	    @Override
 	    public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	            Bundle savedInstanceState) {
+	    	getDialog().setTitle("Reflex");
 	        View view = inflater.inflate(R.layout.edit_saves_fragment, container, false);
 	        main_view = view;
 	        
@@ -353,8 +365,8 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 	        if(dex == null){
 	        	dex = "0"; com.saveData(CharacterDataKey.DEX, "0");}
 	        String dex_buff = com.loadData(CharacterDataKey.DEX_BUFF);
-	        if(dex_buff == null){
-	        	dex_buff = "0"; com.saveData(CharacterDataKey.DEX_BUFF, "0");}
+	        if(dex_buff == null || dex_buff.isEmpty()){
+	        	dex_buff = "0";}// com.saveData(CharacterDataKey.DEX_BUFF, "0");}
 	        int modifier = (Integer.parseInt(dex) + Integer.parseInt(dex_buff))/2 -5;
 	        ((TextView)view.findViewById(R.id.save_ability_score)).setText(""+modifier);
 	        
@@ -367,8 +379,7 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 	    			modifier +
 	    			Integer.parseInt(ref_buff) +
 	    			Integer.parseInt(ref_misc);
-	        ((TextView)view.findViewById(R.id.save_value)).setText(save+"");
-	        ((TextView)view.findViewById(R.id.save_name)).setText("Reflex: ");
+	        ((TextView)view.findViewById(R.id.modifier)).setText("Dex: ");
 	        
 	        
 	        ((EditText)view.findViewById(R.id.save_misc)).addTextChangedListener(new TextWatcher() {
@@ -387,7 +398,7 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 			    			Integer.parseInt(com.loadData(CharacterDataKey.REF_CLASS));
 			    	
 			    	((Button)parent.findViewById(R.id.ref_button)).setText("Reflex: "+ref_save);
-			    	((TextView)parent.findViewById(R.id.save_value)).setText(ref_save+"");
+			    	//((TextView)parent.findViewById(R.id.save_value)).setText(ref_save+"");
 			    }
 			});
 	        ((EditText)view.findViewById(R.id.save_class)).addTextChangedListener(new TextWatcher() {
@@ -406,7 +417,7 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 			    			Integer.parseInt(com.loadData(CharacterDataKey.REF));
 			    	
 			    	((Button)parent.findViewById(R.id.ref_button)).setText("Reflex: "+ref_save);
-			    	((TextView)parent.findViewById(R.id.save_value)).setText(ref_save+"");
+			    	//((TextView)parent.findViewById(R.id.save_value)).setText(ref_save+"");
 			    }
 			});
 	        return view;
@@ -432,6 +443,7 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 	    @Override
 	    public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	            Bundle savedInstanceState) {
+	    	getDialog().setTitle("Will");
 	        View view = inflater.inflate(R.layout.edit_saves_fragment, container, false);
 	        main_view = view;
 	        
@@ -449,8 +461,8 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 	        if(wis == null){
 	        	wis = "0"; com.saveData(CharacterDataKey.WIS, "0");}
 	        String wis_buff = com.loadData(CharacterDataKey.WIS_BUFF);
-	        if(wis_buff == null){
-	        	wis_buff = "0"; com.saveData(CharacterDataKey.WIS_BUFF, "0");}
+	        if(wis_buff == null || wis_buff.isEmpty()){
+	        	wis_buff = "0";}// com.saveData(CharacterDataKey.WIS_BUFF, "0");}
 	        int modifier = (Integer.parseInt(wis) + Integer.parseInt(wis_buff))/2 -5;
 	        ((TextView)view.findViewById(R.id.save_ability_score)).setText(""+modifier);
 	        
@@ -463,8 +475,7 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 	    			modifier +
 	    			Integer.parseInt(will_buff) +
 	    			Integer.parseInt(will_misc);
-	        ((TextView)view.findViewById(R.id.save_value)).setText(save+"");
-	        ((TextView)view.findViewById(R.id.save_name)).setText("Will: ");
+	        ((TextView)view.findViewById(R.id.modifier)).setText("Wis: ");
 	        
 	        ((EditText)view.findViewById(R.id.save_misc)).addTextChangedListener(new TextWatcher() {
 			    public void onTextChanged(CharSequence s, int start, int before, int count) {}
@@ -482,7 +493,7 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 			    			Integer.parseInt(com.loadData(CharacterDataKey.WILL_CLASS));
 			    	
 			    	((Button)parent.findViewById(R.id.will_button)).setText("Will: "+wil_save);
-			    	((TextView)parent.findViewById(R.id.save_value)).setText(wil_save+"");
+			    	//((TextView)parent.findViewById(R.id.save_value)).setText(wil_save+"");
 			    }
 			});
 	        ((EditText)view.findViewById(R.id.save_class)).addTextChangedListener(new TextWatcher() {
@@ -501,10 +512,588 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 			    			Integer.parseInt(com.loadData(CharacterDataKey.WILL));
 			    	
 			    	((Button)parent.findViewById(R.id.will_button)).setText("Will: "+wil_save);
-			    	((TextView)parent.findViewById(R.id.save_value)).setText(wil_save+"");
+			    	//((TextView)parent.findViewById(R.id.save_value)).setText(wil_save+"");
 			    }
 			});
 	        return view;
 	    }
+	}
+	
+	
+	public void printData(String data){
+		System.out.println(data);
+	}
+	
+	public class EditACFragment extends DialogFragment {
+	    FragmentCommunicator com;
+		Activity parent;
+		View main_view;
+		Button acButton;
+		
+		String dex, armor, shield, natural, deflection, dodge, buff, misc;
+
+		public void onAttach(Activity activity){
+			super.onAttach(activity);
+			parent = activity;
+			com = (FragmentCommunicator)activity;			
+		}
+	    
+	    @Override
+	    public void onCreate(Bundle savedInstanceState) {
+	        super.onCreate(savedInstanceState);
+	    }
+
+	    
+	    public EditText createDialogEdit(String value){
+	    	EditText retVal = new EditText(parent);
+	    	retVal.setText(value);
+	    	retVal.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1));
+	    	retVal.setInputType(InputType.TYPE_CLASS_NUMBER);
+	    	
+	    	return retVal;	
+	    }
+	    
+	    public TextView createDialogText(String value){
+	    	TextView retVal = new TextView(parent);
+	    	retVal.setText(value);
+	    	retVal.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1));
+	    	retVal.setGravity(Gravity.RIGHT);
+	    	return retVal;	
+	    }
+	    
+	    @Override
+	    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+	            Bundle savedInstanceState) {
+	    	getDialog().setTitle("Total AC");
+	    	
+	    	String dex_buff = loadData(CharacterDataKey.DEX_BUFF);
+	    	if(dex_buff == null || dex_buff.isEmpty())
+	    		dex_buff = "0";
+	    	dex = ((Integer.parseInt(loadData(CharacterDataKey.DEX)) +
+	    			Integer.parseInt(dex_buff))/2 - 5) +"";
+	    	
+	    	armor = loadData(CharacterDataKey.AC_ARMOR);
+	    	shield = loadData(CharacterDataKey.AC_SHIELD);
+	    	natural = loadData(CharacterDataKey.AC_NATURAL);
+	    	deflection = loadData(CharacterDataKey.AC_DEFLECTION);
+	    	dodge = loadData(CharacterDataKey.AC_DODGE);
+	    	misc = loadData(CharacterDataKey.AC_MISC);
+	    	buff = loadData(CharacterDataKey.AC_BUFF);
+	    	
+	    	
+	        LinearLayout view ;//= inflater.inflate(R.layout.edit_saves_fragment, container, false);
+	       view = new LinearLayout(parent);
+	        LinearLayout row1 = new LinearLayout(parent);
+	        LinearLayout row2 = new LinearLayout(parent);
+	        
+	        EditText armor_b = createDialogEdit(armor);
+	        armor_b.addTextChangedListener(new TextWatcher() {
+			    public void onTextChanged(CharSequence s, int start, int before, int count) {}
+			    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+			    public void afterTextChanged(Editable s) {			    			    	
+			    	armor = s.toString();
+			    	if(armor.isEmpty())
+			    		armor = "0";
+			    	updateButtons();
+			    }
+			});
+	        
+	        EditText shield_b =  createDialogEdit(shield);
+	        shield_b.addTextChangedListener(new TextWatcher() {
+			    public void onTextChanged(CharSequence s, int start, int before, int count) {}
+			    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+			    public void afterTextChanged(Editable s) {			    			    	
+			    	shield = s.toString();
+			    	if(shield.isEmpty())
+			    		shield = "0";
+			    	updateButtons();
+			    	//buffButton.setText(buff.getDescription());
+			    }
+			});
+	        
+	        EditText natural_b =  createDialogEdit(natural);
+	        natural_b.addTextChangedListener(new TextWatcher() {
+			    public void onTextChanged(CharSequence s, int start, int before, int count) {}
+			    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+			    public void afterTextChanged(Editable s) {			    			    	
+			    	natural = s.toString();
+			    	if(natural.isEmpty())
+			    		natural = "0";
+			    	//buffButton.setText(buff.getDescription());
+			    }
+			});
+	        
+	        EditText deflection_b =  createDialogEdit(deflection);
+	        deflection_b.addTextChangedListener(new TextWatcher() {
+			    public void onTextChanged(CharSequence s, int start, int before, int count) {}
+			    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+			    public void afterTextChanged(Editable s) {			    			    	
+			    	deflection = s.toString();
+			    	if(deflection.isEmpty())
+			    		deflection = "0";
+			    	updateButtons();
+			    	//buffButton.setText(buff.getDescription());
+			    }
+			});
+	        
+	        EditText dodge_b =  createDialogEdit(dodge);
+	        dodge_b.addTextChangedListener(new TextWatcher() {
+			    public void onTextChanged(CharSequence s, int start, int before, int count) {}
+			    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+			    public void afterTextChanged(Editable s) {			    			    	
+			    	dodge = s.toString();
+			    	if(dodge.isEmpty())
+			    		dodge = "0";
+			    	updateButtons();
+			    	//buffButton.setText(buff.getDescription());
+			    }
+			});
+	        
+	        EditText misc_b =  createDialogEdit(misc);
+	        misc_b.addTextChangedListener(new TextWatcher() {
+			    public void onTextChanged(CharSequence s, int start, int before, int count) {}
+			    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+			    public void afterTextChanged(Editable s) {			    			    	
+			    	misc = s.toString();
+			    	if(misc.isEmpty())
+			    		misc = "0";
+			    	updateButtons();
+			    	//buffButton.setText(buff.getDescription());
+			    }
+			});	        
+	        
+	        TextView armor_text = createDialogText("Armor:");
+	        TextView shield_text = createDialogText("Shield:");
+	        TextView natural_text = createDialogText("Natural:");
+	        TextView deflection_text =createDialogText("Deflection:");
+	        TextView dodge_text = createDialogText("Dodge:");
+	        TextView misc_text = createDialogText("Misc:");
+	        TextView dex_text =createDialogText("Dex:");
+	        TextView dex_edit_text = createDialogText(dex);
+	        TextView buff_text =createDialogText("Buff:");
+	        TextView buff_edit_text = createDialogText(buff);
+	        
+	        view.setOrientation(LinearLayout.VERTICAL);
+	        	        
+	        row1.setOrientation(LinearLayout.HORIZONTAL);
+	        row2.setOrientation(LinearLayout.HORIZONTAL);
+	        	        
+	        row1.addView(dex_text);
+	        row1.addView(dex_edit_text);
+	        row1.addView(armor_text);
+	        row1.addView(armor_b);
+	        row1.addView(shield_text);
+	        row1.addView(shield_b);
+	        row1.addView(natural_text);
+	        row1.addView(natural_b);
+	        row2.addView(deflection_text);
+	        row2.addView(deflection_b);
+	        row2.addView(dodge_text);
+	        row2.addView(dodge_b);
+	        row2.addView(misc_text);
+	        row2.addView(misc_b);
+	        row2.addView(buff_text);
+	        row2.addView(buff_edit_text);
+	       
+	        
+	        view.addView(row1);
+	        view.addView(row2);
+	        
+	        main_view = view;
+	        
+	        return view;
+	    }
+	    public void updateButtons(){
+	    	int ac_total, ac_ff, ac_touch;
+	    	int dex_n = Integer.parseInt(dex);
+	    	int armor_n = Integer.parseInt(armor);
+	    	int shield_n = Integer.parseInt(shield);
+	    	int natural_n = Integer.parseInt(natural);
+	    	int deflection_n = Integer.parseInt(deflection);
+	    	int dodge_n = Integer.parseInt(dodge);
+	    	int misc_n = Integer.parseInt(misc);
+	    	int buff_n = Integer.parseInt(buff);
+	    	
+	    	ac_total = 10 + dex_n + armor_n + shield_n + natural_n + deflection_n + dodge_n + misc_n + buff_n;
+	    	ac_ff = 10 + armor_n + shield_n + natural_n + deflection_n + misc_n + buff_n;
+	    	ac_touch = 10 + dex_n + deflection_n + dodge_n + misc_n + buff_n;
+	    	
+	    	((Button)parent.findViewById(R.id.ac_button)).setText("AC: "+ac_total);
+	    	((Button)parent.findViewById(R.id.ff_button)).setText("Flat Footed: "+ac_ff);
+	    	((Button)parent.findViewById(R.id.touch_button)).setText("Touch: "+ac_touch);
+	    }
+	    public void onDestroy(){
+	    	super.onDestroy();
+	    	com.saveData(CharacterDataKey.AC_ARMOR, armor);
+	    	com.saveData(CharacterDataKey.AC_SHIELD, shield);
+	    	com.saveData(CharacterDataKey.AC_NATURAL, natural);
+	    	com.saveData(CharacterDataKey.AC_DEFLECTION, deflection);
+	    	com.saveData(CharacterDataKey.AC_DODGE, dodge);
+	    	com.saveData(CharacterDataKey.AC_MISC, misc);
+	    }    
+	}
+	
+	public class EditFFFragment extends DialogFragment {
+	    FragmentCommunicator com;
+		Activity parent;
+		View main_view;
+		Button acButton;
+		
+		String dex, armor, shield, natural, deflection, dodge, buff, misc;
+
+		public void onAttach(Activity activity){
+			super.onAttach(activity);
+			parent = activity;
+			com = (FragmentCommunicator)activity;			
+		}
+	    
+	    @Override
+	    public void onCreate(Bundle savedInstanceState) {
+	        super.onCreate(savedInstanceState);
+	    }
+
+	    
+	    public EditText createDialogEdit(String value){
+	    	EditText retVal = new EditText(parent);
+	    	retVal.setText(value);
+	    	retVal.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1));
+	    	retVal.setInputType(InputType.TYPE_CLASS_NUMBER);
+	    	
+	    	return retVal;	
+	    }
+	    
+	    public TextView createDialogText(String value){
+	    	TextView retVal = new TextView(parent);
+	    	retVal.setText(value);
+	    	retVal.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1));
+	    	retVal.setGravity(Gravity.RIGHT);
+	    	return retVal;	
+	    }
+	    
+	    @Override
+	    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+	            Bundle savedInstanceState) {
+	    	getDialog().setTitle("Flat Footed AC");
+	    	String dex_buff = loadData(CharacterDataKey.DEX_BUFF);
+	    	if(dex_buff == null || dex_buff.isEmpty())
+	    		dex_buff = "0";
+	    	dex = ((Integer.parseInt(loadData(CharacterDataKey.DEX)) +
+	    			Integer.parseInt(dex_buff))/2 - 5) +"";
+	    	
+	    	armor = loadData(CharacterDataKey.AC_ARMOR);
+	    	shield = loadData(CharacterDataKey.AC_SHIELD);
+	    	natural = loadData(CharacterDataKey.AC_NATURAL);
+	    	deflection = loadData(CharacterDataKey.AC_DEFLECTION);
+	    	dodge = loadData(CharacterDataKey.AC_DODGE);
+	    	misc = loadData(CharacterDataKey.AC_MISC);
+	    	buff = loadData(CharacterDataKey.AC_BUFF);
+	    	
+	    	
+	        //LinearLayout view ;//= inflater.inflate(R.layout.edit_saves_fragment, container, false);
+	       //view = new LinearLayout(parent);
+	        LinearLayout row1 = new LinearLayout(parent);
+	        //LinearLayout row2 = new LinearLayout(parent);
+	        
+	        EditText armor_b = createDialogEdit(armor);
+	        armor_b.addTextChangedListener(new TextWatcher() {
+			    public void onTextChanged(CharSequence s, int start, int before, int count) {}
+			    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+			    public void afterTextChanged(Editable s) {			    			    	
+			    	armor = s.toString();
+			    	if(armor.isEmpty())
+			    		armor = "0";
+			    	updateButtons();
+			    }
+			});
+	        
+	        EditText shield_b =  createDialogEdit(shield);
+	        shield_b.addTextChangedListener(new TextWatcher() {
+			    public void onTextChanged(CharSequence s, int start, int before, int count) {}
+			    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+			    public void afterTextChanged(Editable s) {			    			    	
+			    	shield = s.toString();
+			    	if(shield.isEmpty())
+			    		shield = "0";
+			    	updateButtons();
+			    	//buffButton.setText(buff.getDescription());
+			    }
+			});
+	        
+	        EditText natural_b =  createDialogEdit(natural);
+	        natural_b.addTextChangedListener(new TextWatcher() {
+			    public void onTextChanged(CharSequence s, int start, int before, int count) {}
+			    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+			    public void afterTextChanged(Editable s) {			    			    	
+			    	natural = s.toString();
+			    	if(natural.isEmpty())
+			    		natural = "0";
+			    	//buffButton.setText(buff.getDescription());
+			    }
+			});
+	        
+	        EditText deflection_b =  createDialogEdit(deflection);
+	        deflection_b.addTextChangedListener(new TextWatcher() {
+			    public void onTextChanged(CharSequence s, int start, int before, int count) {}
+			    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+			    public void afterTextChanged(Editable s) {			    			    	
+			    	deflection = s.toString();
+			    	if(deflection.isEmpty())
+			    		deflection = "0";
+			    	updateButtons();
+			    	//buffButton.setText(buff.getDescription());
+			    }
+			});
+	        
+	        EditText misc_b =  createDialogEdit(misc);
+	        misc_b.addTextChangedListener(new TextWatcher() {
+			    public void onTextChanged(CharSequence s, int start, int before, int count) {}
+			    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+			    public void afterTextChanged(Editable s) {			    			    	
+			    	misc = s.toString();
+			    	if(misc.isEmpty())
+			    		misc = "0";
+			    	updateButtons();
+			    	//buffButton.setText(buff.getDescription());
+			    }
+			});	        
+	        
+	        TextView armor_text = createDialogText("Armor:");
+	        TextView shield_text = createDialogText("Shield:");
+	        TextView natural_text = createDialogText("Natural:");
+	        TextView deflection_text =createDialogText("Deflection:");
+	       // TextView dodge_text = createDialogText("Dodge:");
+	        TextView misc_text = createDialogText("Misc:");
+	       // TextView dex_text =createDialogText("Dex:");
+	       // TextView dex_edit_text = createDialogText(dex);
+	        TextView buff_text =createDialogText("Buff:");
+	        TextView buff_edit_text = createDialogText(buff);
+	        
+	      //  view.setOrientation(LinearLayout.VERTICAL);
+	        	        
+	        row1.setOrientation(LinearLayout.HORIZONTAL);
+	       // row2.setOrientation(LinearLayout.HORIZONTAL);
+	        	        
+	       // row1.addView(dex_text);
+	       // row1.addView(dex_edit_text);
+	        row1.addView(armor_text);
+	        row1.addView(armor_b);
+	        row1.addView(shield_text);
+	        row1.addView(shield_b);
+	        row1.addView(natural_text);
+	        row1.addView(natural_b);
+	        row1.addView(deflection_text);
+	        row1.addView(deflection_b);
+	      //  row2.addView(dodge_text);
+	       // row2.addView(dodge_b);
+	        row1.addView(misc_text);
+	        row1.addView(misc_b);
+	        row1.addView(buff_text);
+	        row1.addView(buff_edit_text);
+	       
+	        
+	      //  view.addView(row1);
+	       // view.addView(row2);
+	        
+	        main_view = row1;
+	        
+	        return row1;
+	    }
+	    public void updateButtons(){
+	    	int ac_total, ac_ff, ac_touch;
+	    	int dex_n = Integer.parseInt(dex);
+	    	int armor_n = Integer.parseInt(armor);
+	    	int shield_n = Integer.parseInt(shield);
+	    	int natural_n = Integer.parseInt(natural);
+	    	int deflection_n = Integer.parseInt(deflection);
+	    	int dodge_n = Integer.parseInt(dodge);
+	    	int misc_n = Integer.parseInt(misc);
+	    	int buff_n = Integer.parseInt(buff);
+	    	
+	    	ac_total = 10 + dex_n + armor_n + shield_n + natural_n + deflection_n + dodge_n + misc_n + buff_n;
+	    	ac_ff = 10 + armor_n + shield_n + natural_n + deflection_n + misc_n + buff_n;
+	    	ac_touch = 10 + dex_n + deflection_n + dodge_n + misc_n + buff_n;
+	    	
+	    	((Button)parent.findViewById(R.id.ac_button)).setText("AC: "+ac_total);
+	    	((Button)parent.findViewById(R.id.ff_button)).setText("Flat Footed: "+ac_ff);
+	    	((Button)parent.findViewById(R.id.touch_button)).setText("Touch: "+ac_touch);
+	    }
+	    public void onDestroy(){
+	    	super.onDestroy();
+	    	com.saveData(CharacterDataKey.AC_ARMOR, armor);
+	    	com.saveData(CharacterDataKey.AC_SHIELD, shield);
+	    	com.saveData(CharacterDataKey.AC_NATURAL, natural);
+	    	com.saveData(CharacterDataKey.AC_DEFLECTION, deflection);
+	    	com.saveData(CharacterDataKey.AC_DODGE, dodge);
+	    	com.saveData(CharacterDataKey.AC_MISC, misc);
+	    }    
+	}
+	public class EditTouchFragment extends DialogFragment {
+	    FragmentCommunicator com;
+		Activity parent;
+		View main_view;
+		Button acButton;
+		
+		String dex, armor, shield, natural, deflection, dodge, buff, misc;
+
+		public void onAttach(Activity activity){
+			super.onAttach(activity);
+			parent = activity;
+			com = (FragmentCommunicator)activity;			
+		}
+	    
+	    @Override
+	    public void onCreate(Bundle savedInstanceState) {
+	        super.onCreate(savedInstanceState);
+	    }
+
+	    
+	    public EditText createDialogEdit(String value){
+	    	EditText retVal = new EditText(parent);
+	    	retVal.setText(value);
+	    	retVal.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1));
+	    	retVal.setInputType(InputType.TYPE_CLASS_NUMBER);
+	    	
+	    	return retVal;	
+	    }
+	    
+	    public TextView createDialogText(String value){
+	    	TextView retVal = new TextView(parent);
+	    	retVal.setText(value);
+	    	retVal.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1));
+	    	retVal.setGravity(Gravity.RIGHT);
+	    	return retVal;	
+	    }
+	    
+	    @Override
+	    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+	            Bundle savedInstanceState) {
+	    	
+	    	getDialog().setTitle("Touch AC");
+	    	
+	    	String dex_buff = loadData(CharacterDataKey.DEX_BUFF);
+	    	if(dex_buff == null || dex_buff.isEmpty())
+	    		dex_buff = "0";
+	    	dex = ((Integer.parseInt(loadData(CharacterDataKey.DEX)) +
+	    			Integer.parseInt(dex_buff))/2 - 5) +"";
+	    	
+	    	armor = loadData(CharacterDataKey.AC_ARMOR);
+	    	shield = loadData(CharacterDataKey.AC_SHIELD);
+	    	natural = loadData(CharacterDataKey.AC_NATURAL);
+	    	deflection = loadData(CharacterDataKey.AC_DEFLECTION);
+	    	dodge = loadData(CharacterDataKey.AC_DODGE);
+	    	misc = loadData(CharacterDataKey.AC_MISC);
+	    	buff = loadData(CharacterDataKey.AC_BUFF);
+	    	
+	    	
+	        //LinearLayout view ;//= inflater.inflate(R.layout.edit_saves_fragment, container, false);
+	       //view = new LinearLayout(parent);
+	        LinearLayout row1 = new LinearLayout(parent);
+	        //LinearLayout row2 = new LinearLayout(parent);
+	        
+	        
+	        
+	        EditText deflection_b =  createDialogEdit(deflection);
+	        deflection_b.addTextChangedListener(new TextWatcher() {
+			    public void onTextChanged(CharSequence s, int start, int before, int count) {}
+			    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+			    public void afterTextChanged(Editable s) {			    			    	
+			    	deflection = s.toString();
+			    	if(deflection.isEmpty())
+			    		deflection = "0";
+			    	updateButtons();
+			    	//buffButton.setText(buff.getDescription());
+			    }
+			});
+	        
+	        EditText dodge_b =  createDialogEdit(dodge);
+	        dodge_b.addTextChangedListener(new TextWatcher() {
+			    public void onTextChanged(CharSequence s, int start, int before, int count) {}
+			    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+			    public void afterTextChanged(Editable s) {			    			    	
+			    	dodge = s.toString();
+			    	if(dodge.isEmpty())
+			    		dodge = "0";
+			    	updateButtons();
+			    	//buffButton.setText(buff.getDescription());
+			    }
+			});
+	        
+	        EditText misc_b =  createDialogEdit(misc);
+	        misc_b.addTextChangedListener(new TextWatcher() {
+			    public void onTextChanged(CharSequence s, int start, int before, int count) {}
+			    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+			    public void afterTextChanged(Editable s) {			    			    	
+			    	misc = s.toString();
+			    	if(misc.isEmpty())
+			    		misc = "0";
+			    	updateButtons();
+			    	//buffButton.setText(buff.getDescription());
+			    }
+			});	        
+	        
+	       // TextView armor_text = createDialogText("Armor:");
+	       // TextView shield_text = createDialogText("Shield:");
+	       // TextView natural_text = createDialogText("Natural:");
+	        TextView deflection_text =createDialogText("Deflection:");
+	        TextView dodge_text = createDialogText("Dodge:");
+	        TextView misc_text = createDialogText("Misc:");
+	        TextView dex_text =createDialogText("Dex:");
+	        TextView dex_edit_text = createDialogText(dex);
+	        TextView buff_text =createDialogText("Buff:");
+	        TextView buff_edit_text = createDialogText(buff);
+	        
+	     //   view.setOrientation(LinearLayout.VERTICAL);
+	        	        
+	        row1.setOrientation(LinearLayout.HORIZONTAL);
+	       // row2.setOrientation(LinearLayout.HORIZONTAL);
+	        	        
+	        row1.addView(dex_text);
+	        row1.addView(dex_edit_text);
+	     
+	        row1.addView(deflection_text);
+	        row1.addView(deflection_b);
+	        row1.addView(dodge_text);
+	        row1.addView(dodge_b);
+	        row1.addView(misc_text);
+	        row1.addView(misc_b);
+	        row1.addView(buff_text);
+	        row1.addView(buff_edit_text);
+	       
+	        
+	       // view.addView(row1);
+	       // view.addView(row2);
+	        
+	        main_view = row1;
+	        
+	        return row1;
+	    }
+	    public void updateButtons(){
+	    	int ac_total, ac_ff, ac_touch;
+	    	int dex_n = Integer.parseInt(dex);
+	    	int armor_n = Integer.parseInt(armor);
+	    	int shield_n = Integer.parseInt(shield);
+	    	int natural_n = Integer.parseInt(natural);
+	    	int deflection_n = Integer.parseInt(deflection);
+	    	int dodge_n = Integer.parseInt(dodge);
+	    	int misc_n = Integer.parseInt(misc);
+	    	int buff_n = Integer.parseInt(buff);
+	    	
+	    	ac_total = 10 + dex_n + armor_n + shield_n + natural_n + deflection_n + dodge_n + misc_n + buff_n;
+	    	ac_ff = 10 + armor_n + shield_n + natural_n + deflection_n + misc_n + buff_n;
+	    	ac_touch = 10 + dex_n + deflection_n + dodge_n + misc_n + buff_n;
+	    	
+	    	((Button)parent.findViewById(R.id.ac_button)).setText("AC: "+ac_total);
+	    	((Button)parent.findViewById(R.id.ff_button)).setText("Flat Footed: "+ac_ff);
+	    	((Button)parent.findViewById(R.id.touch_button)).setText("Touch: "+ac_touch);
+	    }
+	    public void onDestroy(){
+	    	super.onDestroy();
+	    	com.saveData(CharacterDataKey.AC_ARMOR, armor);
+	    	com.saveData(CharacterDataKey.AC_SHIELD, shield);
+	    	com.saveData(CharacterDataKey.AC_NATURAL, natural);
+	    	com.saveData(CharacterDataKey.AC_DEFLECTION, deflection);
+	    	com.saveData(CharacterDataKey.AC_DODGE, dodge);
+	    	com.saveData(CharacterDataKey.AC_MISC, misc);
+	    }    
 	}
 }

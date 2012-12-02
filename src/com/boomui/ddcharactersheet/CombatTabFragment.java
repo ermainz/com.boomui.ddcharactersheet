@@ -1,5 +1,9 @@
 package com.boomui.ddcharactersheet;
 
+import java.util.ArrayList;
+
+import com.boomui.ddcharactersheet.BuffsSavedListAdapter.EditBuffFragment;
+
 import android.annotation.SuppressLint;
 import android.app.*;
 import android.content.Intent;
@@ -9,22 +13,32 @@ import android.util.Log;
 import android.view.*;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class CombatTabFragment extends Fragment{
+public class CombatTabFragment extends Fragment implements CombatTabRollListener{
+	
+	public static String ATTACK_SPLIT = "!###@!";
+	public static String ATTACK_VALUE_SPLIT = "!##@#!";
 	
 	FragmentCommunicator com;
 	Activity parent;
 	View main_view;
+	ArrayList<Attack> attacks;
+	AttackAdapter adapter;
+	
 	
 	public void onAttach(Activity activity){
 		super.onAttach(activity);
@@ -86,7 +100,7 @@ public class CombatTabFragment extends Fragment{
 			com.saveData(CharacterDataKey.STR, str);} 
 		((EditText)view.findViewById(R.id.str_base)).setText(str);
 		String str_buff = com.loadData(CharacterDataKey.STR_BUFF);
-		if(str_buff == null){
+		if(str_buff == null || str_buff.isEmpty()){
 			((TextView)view.findViewById(R.id.str_value)).setText("STR: "+str+" = ");	
 			str_total = Integer.parseInt(str);
 		} else {
@@ -100,7 +114,7 @@ public class CombatTabFragment extends Fragment{
 			com.saveData(CharacterDataKey.DEX, dex);} 
 		((EditText)view.findViewById(R.id.dex_base)).setText(dex);
 		String dex_buff = com.loadData(CharacterDataKey.DEX_BUFF);
-		if(dex_buff == null){
+		if(dex_buff == null || dex_buff.isEmpty()){
 			((TextView)view.findViewById(R.id.dex_value)).setText("DEX: "+dex+" = ");
 			dex_total = Integer.parseInt(dex);
 		} else {
@@ -114,7 +128,7 @@ public class CombatTabFragment extends Fragment{
 			com.saveData(CharacterDataKey.CON, con);} 
 		((EditText)view.findViewById(R.id.con_base)).setText(con);
 		String con_buff = com.loadData(CharacterDataKey.CON_BUFF);
-		if(con_buff == null){
+		if(con_buff == null || con_buff.isEmpty()){
 			((TextView)view.findViewById(R.id.con_value)).setText("CON: "+con+" = ");
 			con_total = Integer.parseInt(con);
 		} else {
@@ -128,7 +142,7 @@ public class CombatTabFragment extends Fragment{
 			com.saveData(CharacterDataKey.INT, intelligence);} 
 		((EditText)view.findViewById(R.id.int_base)).setText(intelligence);
 		String int_buff = com.loadData(CharacterDataKey.INT_BUFF);
-		if(int_buff == null){
+		if(int_buff == null || int_buff.isEmpty()){
 			((TextView)view.findViewById(R.id.int_value)).setText("INT: "+intelligence+" = ");
 			int_total = Integer.parseInt(intelligence);
 		} else {
@@ -142,10 +156,8 @@ public class CombatTabFragment extends Fragment{
 			com.saveData(CharacterDataKey.WIS, wis);} 
 		((EditText)view.findViewById(R.id.wis_base)).setText(wis);
 		
-		com.saveData(CharacterDataKey.WIS_BUFF, "2");
-		
 		String wis_buff = com.loadData(CharacterDataKey.WIS_BUFF);
-		if(wis_buff == null){
+		if(wis_buff == null || wis_buff.isEmpty()){
 			((TextView)view.findViewById(R.id.wis_value)).setText("WIS: "+wis+" = ");
 			wis_total = Integer.parseInt(wis);
 		} else {
@@ -159,7 +171,7 @@ public class CombatTabFragment extends Fragment{
 			com.saveData(CharacterDataKey.CHA, cha);} 
 		((EditText)view.findViewById(R.id.cha_base)).setText(cha);
 		String cha_buff = com.loadData(CharacterDataKey.CHA_BUFF);
-		if(cha_buff == null){
+		if(cha_buff == null || cha_buff.isEmpty()){
 			((TextView)view.findViewById(R.id.cha_value)).setText("CHA: "+cha+" = ");
 			cha_total = Integer.parseInt(cha);
 		} else {
@@ -185,7 +197,7 @@ public class CombatTabFragment extends Fragment{
 		((TextView)view.findViewById(R.id.cha_modifier)).setText(""+cha_mod);
 		
 		
-		int armor, shield, deflection, natural, dodge, misc;
+		final int armor, shield, deflection, natural, dodge, misc, buff;
 		String ac_armor = com.loadData(CharacterDataKey.AC_ARMOR);
 		if(ac_armor == null){ac_armor = "0"; com.saveData(CharacterDataKey.AC_ARMOR, "0"); armor = 0;}
 		else armor = Integer.parseInt(ac_armor);
@@ -204,15 +216,37 @@ public class CombatTabFragment extends Fragment{
 		String ac_misc = com.loadData(CharacterDataKey.AC_MISC);
 		if(ac_misc == null){ac_misc = "0"; com.saveData(CharacterDataKey.AC_MISC, "0"); misc = 0;}
 		else misc = Integer.parseInt(ac_misc);
+		String ac_buff = com.loadData(CharacterDataKey.AC_BUFF);
+		if(ac_buff == null){ac_buff = "0"; com.saveData(CharacterDataKey.AC_BUFF, "0"); buff = 0;}
+		else buff = Integer.parseInt(ac_misc);
 		
 		//int ac_dex = Integer.parseInt();
-		int ac_total = 10 + dex_mod+ armor + shield + deflection + natural + dodge + misc ;
-		int ac_ff = 10 + armor + shield + deflection + natural + misc ;
-		int ac_touch = 10 +dex_mod+ deflection + dodge;
+		int ac_total = 10 + dex_mod+ armor + shield + deflection + natural + dodge + misc +buff;
+		int ac_ff = 10 + armor + shield + deflection + natural + misc + buff ;
+		int ac_touch = 10 +dex_mod+ deflection + dodge + buff;
 		
-		((Button)view.findViewById(R.id.ac_button)).setText("AC: "+ac_total);
-		((Button)view.findViewById(R.id.ff_button)).setText("Flat Footed: "+ac_ff);
-		((Button)view.findViewById(R.id.touch_button)).setText("Touch: "+ac_touch);
+		final int dex_mod_dialog = dex_mod;
+		
+		final Button ac_button = ((Button)view.findViewById(R.id.ac_button));
+		ac_button.setText("AC: "+ac_total);
+		
+		/*
+		((Button)view.findViewById(R.id.ac_button)).setOnClickListener(new OnClickListener(){
+			public void onClick(View v) {
+				DialogFragment newFragment = new EditACFragment(ac_button, 
+						dex_mod_dialog+"", ""+armor, ""+shield,
+						""+natural, ""+deflection, ""+dodge, ""+buff, ""+misc);
+				newFragment.show(parent.getFragmentManager(), "EditAbilityScore");
+			}			
+		});*/
+		
+		Button ac_ff_button = ((Button)view.findViewById(R.id.ff_button));
+		ac_ff_button.setText("Flat Footed: "+ac_ff);
+		
+		Button ac_touch_button = ((Button)view.findViewById(R.id.touch_button));
+		ac_touch_button.setText("Touch: "+ac_touch);
+		
+		
 		
 		
 		int initiative_total = 0;
@@ -223,7 +257,7 @@ public class CombatTabFragment extends Fragment{
 		((EditText)view.findViewById(R.id.initiative_misc)).setText(initiative_misc);
 		
 		String initiative_buff = com.loadData(CharacterDataKey.INITIATIVE_BUFF);
-		if(initiative_buff == null){
+		if(initiative_buff == null || initiative_buff.isEmpty()){
 			initiative_buff = "0"; com.saveData(CharacterDataKey.INITIATIVE_BUFF, "0");}
 		else { 
 			initiative_total += Integer.parseInt(initiative_buff);
@@ -232,6 +266,7 @@ public class CombatTabFragment extends Fragment{
 		
 		initiative_total += dex_mod;
 		
+		((TextView)view.findViewById(R.id.initiative_dex)).setText("Dex +"+dex_mod);
 		((TextView)view.findViewById(R.id.initiative_text)).setText("Initiative: "+initiative_total+" = ");
 		
 		
@@ -251,7 +286,7 @@ public class CombatTabFragment extends Fragment{
 			fortitude = "0"; com.saveData(CharacterDataKey.FORT_CLASS, "0");}
 		else fortitude_total += Integer.parseInt(fortitude_class);
 		String fortitude_buff = com.loadData(CharacterDataKey.FORT_BUFF);
-		if (fortitude_buff == null){
+		if (fortitude_buff == null || fortitude_buff.isEmpty()){
 			fortitude = "0"; com.saveData(CharacterDataKey.FORT_BUFF, "0");}
 		else fortitude_total += Integer.parseInt(fortitude_buff);
 		fortitude_total += con_mod;
@@ -267,7 +302,7 @@ public class CombatTabFragment extends Fragment{
 			reflex = "0"; com.saveData(CharacterDataKey.REF_CLASS, "0");}
 		else reflex_total += Integer.parseInt(reflex_class);
 		String reflex_buff = com.loadData(CharacterDataKey.REF_BUFF);
-		if (reflex_buff == null){
+		if (reflex_buff == null || reflex_buff.isEmpty()){
 			reflex = "0"; com.saveData(CharacterDataKey.REF_BUFF, "0");}
 		else reflex_total += Integer.parseInt(reflex_buff);
 		reflex_total += dex_mod;
@@ -283,7 +318,7 @@ public class CombatTabFragment extends Fragment{
 			will = "0"; com.saveData(CharacterDataKey.WILL_CLASS, "0");}
 		else will_total += Integer.parseInt(will_class);
 		String will_buff = com.loadData(CharacterDataKey.WILL_BUFF);
-		if (will_buff == null){
+		if (will_buff == null || will_buff.isEmpty()){
 			will = "0"; com.saveData(CharacterDataKey.WILL_BUFF, "0");}
 		else will_total += Integer.parseInt(will_buff);
 		will_total += wis_mod;
@@ -359,7 +394,7 @@ public class CombatTabFragment extends Fragment{
 		    	int str_total = 0;
 		    	String str = s.toString();
 				String str_buff = com.loadData(CharacterDataKey.STR_BUFF);
-				if(str_buff == null){
+				if(str_buff == null || str_buff.isEmpty()){
 					((TextView)main_view.findViewById(R.id.str_value)).setText("STR: "+str+" = ");	
 					str_total = Integer.parseInt(str);
 				} else {
@@ -387,28 +422,36 @@ public class CombatTabFragment extends Fragment{
 		    	int dex_total = 0;
 		    	String dex = s.toString();
 				String dex_buff = com.loadData(CharacterDataKey.DEX_BUFF);
-				if(dex_buff == null){
+				int dex_buff_number;
+				
+				if(dex_buff == null || dex_buff.isEmpty()){
 					((TextView)main_view.findViewById(R.id.dex_value)).setText("DEX: "+dex+" = ");	
 					dex_total = Integer.parseInt(dex);
+					dex_buff_number = 0;
 				} else {
-					dex_total = Integer.parseInt(dex) + Integer.parseInt(dex_buff);
+					dex_buff_number = Integer.parseInt(dex_buff);
+					dex_total = Integer.parseInt(dex) + dex_buff_number;
 					((TextView)main_view.findViewById(R.id.dex_value)).setText("DEX: "+dex_total+" = ");
 					((TextView)main_view.findViewById(R.id.dex_buff)).setText(dex_buff);
+					
 				}
 				int dex_mod = dex_total / 2 - 5;
 				((TextView)main_view.findViewById(R.id.dex_modifier)).setText(""+dex_mod);
 				
-				int armor, natural, shield, deflection, dodge, misc;
+				int armor, natural, shield, deflection, dodge, misc, ac_buff;
 				armor = Integer.parseInt(com.loadData(CharacterDataKey.AC_ARMOR));
 				shield = Integer.parseInt(com.loadData(CharacterDataKey.AC_SHIELD));
 				natural = Integer.parseInt(com.loadData(CharacterDataKey.AC_NATURAL));
 				deflection = Integer.parseInt(com.loadData(CharacterDataKey.AC_DEFLECTION));
 				dodge = Integer.parseInt(com.loadData(CharacterDataKey.AC_DODGE));
 				misc = Integer.parseInt(com.loadData(CharacterDataKey.AC_MISC));
+				ac_buff = Integer.parseInt(com.loadData(CharacterDataKey.AC_BUFF));
 				
-				int ac_total = 10 + dex_mod + armor + shield + natural + deflection + dodge + misc;
+				int ac_total = 10 + dex_mod + armor + shield + natural + deflection + dodge + misc + ac_buff;
 				((Button)main_view.findViewById(R.id.ac_button)).setText("AC: "+ac_total);
-				int ac_ff = 10 + dex_mod + deflection + dodge + misc;
+				int ac_touch = 10 + dex_mod + deflection + dodge + misc+ ac_buff;
+				((Button)main_view.findViewById(R.id.touch_button)).setText("Touch: "+ac_touch);
+				int ac_ff = 10 + armor + shield + natural + deflection + misc+ ac_buff;
 				((Button)main_view.findViewById(R.id.ff_button)).setText("Flat Footed: "+ac_ff);
 				
 				int ref_misc, ref_class, ref_buff;
@@ -435,7 +478,7 @@ public class CombatTabFragment extends Fragment{
 		    	int con_total = 0;
 		    	String con = s.toString();
 				String con_buff = com.loadData(CharacterDataKey.CON_BUFF);
-				if(con_buff == null){
+				if(con_buff == null || con_buff.isEmpty()){
 					((TextView)main_view.findViewById(R.id.str_value)).setText("CON: "+con+" = ");	
 					con_total = Integer.parseInt(con);
 				} else {
@@ -470,7 +513,7 @@ public class CombatTabFragment extends Fragment{
 		    	int int_total = 0;
 		    	String intelligence = s.toString();
 				String int_buff = com.loadData(CharacterDataKey.INT_BUFF);
-				if(int_buff == null){
+				if(int_buff == null || int_buff.isEmpty()){
 					((TextView)main_view.findViewById(R.id.str_value)).setText("INT: "+intelligence+" = ");	
 					int_total = Integer.parseInt(intelligence);
 				} else {
@@ -497,7 +540,7 @@ public class CombatTabFragment extends Fragment{
 		    	int wis_total = 0;
 		    	String wis = s.toString();
 				String wis_buff = com.loadData(CharacterDataKey.WIS_BUFF);
-				if(wis_buff == null){
+				if(wis_buff == null || wis_buff.isEmpty()){
 					((TextView)main_view.findViewById(R.id.wis_value)).setText("WIS: "+wis+" = ");	
 					wis_total = Integer.parseInt(wis);
 				} else {
@@ -531,7 +574,7 @@ public class CombatTabFragment extends Fragment{
 		    	int cha_total = 0;
 		    	String cha = s.toString();
 				String cha_buff = com.loadData(CharacterDataKey.CHA_BUFF);
-				if(cha_buff == null){
+				if(cha_buff == null || cha_buff.isEmpty()){
 					((TextView)main_view.findViewById(R.id.cha_value)).setText("CHA: "+cha+" = ");	
 					cha_total = Integer.parseInt(cha);
 				} else {
@@ -544,6 +587,72 @@ public class CombatTabFragment extends Fragment{
 		    }
 		});
 		
+		String data = com.loadData(CharacterDataKey.ATTACKS);
+		System.err.println("Data "+data);
+        if(data == null || data.isEmpty())
+        	data = "Giant Dildo" + ATTACK_VALUE_SPLIT + "3" + ATTACK_VALUE_SPLIT + "d8 + 3" + ATTACK_VALUE_SPLIT + "30ft" + ATTACK_VALUE_SPLIT +"19-20 x3" + ATTACK_VALUE_SPLIT +"Bludgeon" + ATTACK_VALUE_SPLIT +"It's also purple";
+        
+        attacks = new ArrayList<Attack>();
+        if(data != null && !data.isEmpty()){
+        	String[] attack_array = data.split(ATTACK_SPLIT);       	
+        	for(String attack_data : attack_array ){
+        		Attack attack = new Attack();
+        		String[] attack_values = attack_data.split(ATTACK_VALUE_SPLIT);
+        		System.err.println("Length "+ attack_values.length);
+        		System.err.println("0 "+attack_values[0]);
+        		System.err.println("1 "+attack_values[1]);
+        		if(attack_values.length < 7)
+        			continue;
+        		attack.name = attack_values[0];
+        		attack.attack = attack_values[1];
+        		attack.damage = attack_values[2];
+        		attack.range = attack_values[3];
+        		attack.crit = attack_values[4];
+        		attack.type = attack_values[5];
+        		attack.notes = attack_values[6];
+        		attacks.add(attack);
+        	}      		
+        }
+		
+		ListView attacksView = (ListView)view.findViewById(R.id.attacks);
+		adapter = new AttackAdapter(parent, R.layout.attack_item, attacks, com, this );
+		attacksView.setAdapter(adapter);
+		
+		((Button)view.findViewById(R.id.add_attack_button)).setOnClickListener(new OnClickListener(){
+			public void onClick(View v) {
+				//buffsSaved.getBuffs().add(new Buff());
+				Attack newAttack = new Attack();
+				//adapter.add(newAttack);
+				adapter.getAttacks().add(newAttack);
+				adapter.notifyDataSetChanged();
+			}		
+		});
+		
+		//adapter.notifyDataSetChanged();
+		
 		return view;	
 	}	
+	
+	public void roll(String value){
+		if(value != null && !value.isEmpty())
+			((TextView)main_view.findViewById(R.id.recent_roll)).setText(value);
+	}
+	
+	public void onDestroyView(){
+		super.onDestroyView();
+		String data = "";
+		for(Attack attack : adapter.getAttacks()){
+			data+=attack.save()+ATTACK_SPLIT;
+		}
+		com.saveData(CharacterDataKey.ATTACKS, data);
+		//com.saveData(CharacterDataKey.BUFFS_ACTIVE, buffsActive.save());
+		
+		
+		
+	}
+	
+	
+	
+	
+	
 }

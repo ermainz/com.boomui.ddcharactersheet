@@ -28,7 +28,6 @@ public class DiceRollerTabFragment extends Fragment {
 
 		View.OnClickListener onClickListener = new View.OnClickListener() {
 
-			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				switch (v.getId()) {
