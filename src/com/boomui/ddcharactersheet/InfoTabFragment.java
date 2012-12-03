@@ -5,10 +5,13 @@ import java.util.Map;
 
 import android.annotation.SuppressLint;
 import android.app.*;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.*;
+import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -33,6 +36,7 @@ public class InfoTabFragment extends Fragment{
 		editableFields = new HashMap<CharacterDataKey, Integer>();
 		editableFields.put(CharacterDataKey.NAME, R.id.character_name);
 		editableFields.put(CharacterDataKey.INFO_CLASS_AND_LEVEL, R.id.class_and_level);
+		editableFields.put(CharacterDataKey.INFO_EXPERIENCE, R.id.experience);
 		editableFields.put(CharacterDataKey.INFO_RACE, R.id.race);
 		editableFields.put(CharacterDataKey.INFO_PATRON_DEITY, R.id.patron_deity);
 		editableFields.put(CharacterDataKey.INFO_ALIGNMENT, R.id.alignment);
@@ -59,6 +63,5 @@ public class InfoTabFragment extends Fragment{
 			EditText txtBox = (EditText) mainView.findViewById( editableFields.get(key) );
 			com.saveData( key, txtBox.getText().toString() );
 		}
-		
 	}
 }
