@@ -13,4 +13,6 @@ public interface FragmentCommunicator{
 	 */
 	public void saveData(CharacterDataKey tag, String strTag, String data);
 	public String loadData(CharacterDataKey tag, String strTag);
+	
+	public void printData(String data);
 }

@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.*;
-import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -18,6 +17,7 @@ import android.widget.TextView;
 
 public class InfoTabFragment extends Fragment{
 	FragmentCommunicator com;
+	Activity activity;
 	View mainView;
 	Map<CharacterDataKey, Integer> editableFields;
 	
@@ -28,6 +28,11 @@ public class InfoTabFragment extends Fragment{
 	public void onAttach(Activity activity){
 		super.onAttach(activity);
 		com = (FragmentCommunicator) activity;
+		this.activity = activity;
+
+		//This code hides the keyboard
+		InputMethodManager inputManager = (InputMethodManager)activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+		inputManager.hideSoftInputFromWindow((null == activity.getCurrentFocus()) ? null : activity.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 	}
 	
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){

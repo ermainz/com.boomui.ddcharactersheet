@@ -3,30 +3,59 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal" >
-    <TextView android:id="@+id/save_name"
-            		    	android:layout_width="wrap_content"
-            		    	android:layout_height="wrap_content"
-            		    	style="@android:style/TextAppearance.Medium"
-            		    	/>
-    <TextView android:id="@+id/save_value"
-            		    	android:layout_width="wrap_content"
-            		    	android:layout_height="wrap_content"
-            		    	style="@android:style/TextAppearance.Medium"
-            		    	/>
-    <TextView android:id="@+id/save_ability_score"
+   	 	<TextView android:id="@+id/modifier"
             			    android:layout_width="wrap_content"
-            		    	android:layout_height="wrap_content"/>
-	<EditText android:id="@+id/save_class"
+            		    	android:layout_height="wrap_content"
+            		    	style="@android:style/TextAppearance.Medium"
+            		    	android:layout_weight="1"
+            		    	android:gravity="right"/>
+   	 	
+   	 	   	 	<TextView android:id="@+id/save_ability_score"
+            			    android:layout_width="wrap_content"
+            		    	android:layout_height="wrap_content"
+            		    	style="@android:style/TextAppearance.Medium"
+            		    	android:layout_weight="1"/>
+		<TextView android:text="Class:"
             			    android:inputType="number"
             			    android:layout_width="wrap_content"
-            		    	android:layout_height="wrap_content"/>
-	<EditText android:id="@+id/save_misc"
+            		    	android:layout_height="wrap_content"
+            		    	style="@android:style/TextAppearance.Medium"
+            		    	android:layout_weight="1"
+            		    	android:gravity="right"/>
+		<EditText android:id="@+id/save_class"
             			    android:inputType="number"
             			    android:layout_width="wrap_content"
-            		    	android:layout_height="wrap_content"/>
-    <TextView android:id="@+id/save_buff"
+            		    	android:layout_height="wrap_content"
+            		    	style="@android:style/TextAppearance.Medium"
+            		    	android:layout_weight="1"/>
+		<TextView android:text="Misc:"
+            			    android:inputType="number"
+            			    android:layout_width="wrap_content"
+            		    	android:layout_height="wrap_content"
+            		    	style="@android:style/TextAppearance.Medium"
+            		    	android:layout_weight="1"
+            		    	android:gravity="right"/>
+
+
+		
+		<EditText android:id="@+id/save_misc"
+            			    android:inputType="number"
+            			    android:layout_width="wrap_content"
+            		    	android:layout_height="wrap_content"
+            		    	style="@android:style/TextAppearance.Medium"
+            		    	android:layout_weight="1"/>
+		
+		<TextView android:text="Buff: "
             		    	android:layout_width="wrap_content"
             		    	android:layout_height="wrap_content"
             		    	style="@android:style/TextAppearance.Medium"
+            		    	android:layout_weight="1"
+            		    	android:gravity="right"/>
+		
+    	<TextView android:id="@+id/save_buff"
+            		    	android:layout_width="wrap_content"
+            		    	android:layout_height="wrap_content"
+            		    	style="@android:style/TextAppearance.Medium"
+            		    	android:layout_weight="1"
             		    	/>
 </LinearLayout>

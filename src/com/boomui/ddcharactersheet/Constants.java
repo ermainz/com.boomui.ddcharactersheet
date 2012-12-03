@@ -8,4 +8,8 @@ public class Constants{
 	public static int SPELL_USED = Color.rgb(50, 50, 50);
 	public static int BACKGROUND_COLOR = Color.rgb(255, 255, 255);
 	public static int TRANSPARENT = Color.argb(0, 0, 0, 0);
+	public static String CHARACTER_CLASS_SEPARATOR = "!###!";
+	public static int MAGIC_TAB_ANIMATION_LENGTH = 500;
+	
+	public static String defaultClasses = "Misc."+CHARACTER_CLASS_SEPARATOR+"Sorcerer"+CHARACTER_CLASS_SEPARATOR+"Wizard";
 }

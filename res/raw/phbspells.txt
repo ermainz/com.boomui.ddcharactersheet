@@ -1,0 +1,1814 @@
+Sorcerer 6, Wizard 6, Warmage 6, Water 7
+Acid Fog
+
+Sorcerer 0, Wizard 0, Warmage 0
+Acid Splash
+
+Cleric 2, Adept 2, Good 2, Luck 2
+Aid
+
+Cleric 4, Druid 4, Air 4
+Air Walk
+
+Bard 1, Ranger 1, Sorcerer 1, Wizard 1, Wealth 1
+Alarm
+
+Cleric 2
+Align Weapon
+
+Bard 2, Sorcerer 2, Wizard 2
+Alter Self
+
+Bard 6, Sorcerer 6, Wizard 6
+Analyze Dweomer
+
+Ranger 4, Druid 5, Sorcerer 5, Wizard 5
+Animal Growth
+
+Ranger 1, Bard 2, Druid 2
+Animal Messenger
+
+Druid 8, Animal 7
+Animal Shapes
+
+Bard 2, Druid 2, Adept 2
+Animal Trance
+
+Cleric 3, Adept 3, Sorcerer 4, Wizard 4, Death 3
+Animate Dead
+
+Bard 6, Cleric 6, Chaos 6
+Animate Objects
+
+Druid 7, Plant 7
+Animate Plants
+
+Bard 1, Sorcerer 1, Wizard 1
+Animate Rope
+
+Cleric 6, Druid 6, Animal 6
+Antilife Shell
+
+Sorcerer 6, Wizard 6, Cleric 8, Magic 6, Protection 6
+Antimagic Field
+
+Sorcerer 8, Wizard 8, Druid 9, Wealth 9
+Antipathy
+
+Druid 4
+Antiplant Shell
+
+Sorcerer 4, Wizard 4, Hoardstealer 4
+Arcane Eye
+
+Sorcerer 2, Wizard 2
+Arcane Lock
+
+Sorcerer 0, Wizard 0
+Arcane Mark
+
+Sorcerer 3, Wizard 3, Hoardstealer 3
+Arcane Sight
+
+Sorcerer 7, Wizard 7
+Arcane Sight, Greater
+
+Cleric 9, Sorcerer 9, Wizard 9, Travel 9
+Astral Projection
+
+Cleric 5, Druid 5, Healer 5
+Atonement
+
+Cleric 2, Destiny 2
+Augury
+
+Druid 5
+Awaken
+
+Druid 5, Sorcerer 5, Wizard 5
+Baleful Polymorph
+
+Cleric 1, Dread Necromancer 1
+Bane
+
+Cleric 6, Sorcerer 7, Wizard 7, Portal 6
+Banishment
+
+Druid 2, Ranger 2, Plant 2
+Barkskin
+
+Cleric 2, Druid 2, Ranger 2, Sorcerer 2, Wizard 2, Adept 2
+Bear's Endurance
+
+Cleric 6, Druid 6, Sorcerer 6, Wizard 6
+Bear's Endurance, Mass
+
+Cleric 3, Adept 3, Sorcerer 4, Wizard 4, Destiny 4
+Bestow Curse
+
+Sorcerer 8, Wizard 8, Strength 8
+Bigby's Clenched Fist
+
+Sorcerer 9, Wizard 9, Strength 9
+Bigby's Crushing Hand
+
+Sorcerer 6, Wizard 6
+Bigby's Forceful Hand
+
+Sorcerer 7, Wizard 7, Strength 7
+Bigby's Grasping Hand
+
+Sorcerer 5, Wizard 5
+Bigby's Interposing Hand
+
+Sorcerer 8, Wizard 8
+Binding
+
+Cleric 6, Warmage 6, Good 6, War 6
+Blade Barrier
+
+Cleric 7, Evil 7
+Blasphemy
+
+Cleric 1, Paladin 1, Adept 1
+Bless
+
+Cleric 1, Paladin 1, Healer 1
+Bless Water
+
+Paladin 1, Glory 2
+Bless Weapon
+
+Druid 4, Sorcerer 5, Wizard 5
+Blight
+
+Bard 2, Sorcerer 2, Wizard 2, Cleric 3
+Blindness/deafness
+
+Bard 3, Sorcerer 3, Wizard 3
+Blink
+
+Bard 2, Sorcerer 2, Wizard 2
+Blur
+
+Bard 4, Paladin 4, Cleric 5, Sorcerer 5, Wizard 5, Healer 5, Luck 5
+Break Enchantment
+
+Cleric 2, Druid 2, Paladin 2, Sorcerer 2, Wizard 2, Adept 2, Disciple of Thrym 2, Strength 2
+Bull's Strength
+
+Cleric 6, Druid 6, Sorcerer 6, Wizard 6
+Bull's Strength, Mass
+
+Sorcerer 1, Wizard 1, Adept 1, Warmage 1, Fire 1
+Burning Hands
+
+Druid 3, Storm 3
+Call Lightning
+
+Druid 5, Storm 6
+Call Lightning Storm
+
+Druid 1, Ranger 1, Animal 1
+Calm Animals
+
+Bard 2, Cleric 2, Healer 2, Law 2
+Calm Emotions
+
+Bard 2, Druid 2, Ranger 2, Sorcerer 2, Wizard 2, Adept 2, Hoardstealer 2
+Cat's Grace
+
+Bard 6, Druid 6, Sorcerer 6, Wizard 6
+Cat's Grace, Mass
+
+Bard 1, Cleric 1, Sorcerer 1, Wizard 1, Dread Necromancer 1, Adept 1, Disciple of Thrym 1, Death 1, Blackwater 1
+Cause Fear
+
+Sorcerer 6, Wizard 6, Warmage 6, Air 6
+Chain Lightning
+
+Druid 7
+Changestaff
+
+Chaos 4
+Chaos Hammer
+
+Druid 1, Ranger 1
+Charm Animal
+
+Bard 3, Sorcerer 4, Wizard 4
+Charm Monster
+
+Bard 6, Sorcerer 8, Wizard 8
+Charm Monster, Mass
+
+Bard 1, Sorcerer 1, Wizard 1
+Charm Person
+
+Druid 2, Disciple of Thrym 2, Cold 2
+Chill Metal
+
+Sorcerer 1, Wizard 1, Dread Necromancer 1, Warmage 1, Cold 1
+Chill Touch
+
+Sorcerer 6, Wizard 6, Warmage 6
+Circle of Death
+
+Bard 3, Sorcerer 3, Wizard 3, Hoardstealer 3, Knowledge 3
+Clairaudience/clairvoyance
+
+Cleric 8, Chaos 8
+Cloak of Chaos
+
+Sorcerer 8, Wizard 8
+Clone
+
+Sorcerer 5, Wizard 5, Warmage 5
+Cloudkill
+
+Sorcerer 1, Wizard 1
+Color Spray
+
+Cleric 1, Adept 1, Domination 1
+Command
+
+Ranger 3, Druid 4, Plant 4
+Command Plants
+
+Sorcerer 2, Wizard 2
+Command Undead
+
+Cleric 5, Domination 5
+Command, Greater
+
+Cleric 5
+Commune
+
+Ranger 4, Druid 5, Animal 5, Seafolk 5
+Commune With Nature
+
+Bard 1, Cleric 1, Sorcerer 1, Wizard 1, Adept 1
+Comprehend Languages
+
+Sorcerer 5, Wizard 5, Warmage 5, Water 6, Cold 6
+Cone of Cold
+
+Bard 3, Sorcerer 4, Wizard 4, Trickery 4
+Confusion
+
+Bard 1
+Confusion, Lesser
+
+Cleric 2
+Consecrate
+
+Sorcerer 5, Wizard 5
+Contact Other Plane
+
+Cleric 3, Druid 3, Adept 3, Sorcerer 4, Wizard 4, Warmage 4, Destruction 3
+Contagion
+
+Sorcerer 6, Wizard 6
+Contingency
+
+Sorcerer 2, Wizard 2, Adept 2, Warmage 2, Cleric 3
+Continual Flame
+
+Druid 8, Plant 8
+Control Plants
+
+Sorcerer 7, Wizard 7
+Control Undead
+
+Cleric 4, Druid 4, Sorcerer 6, Wizard 6, Water 4
+Control Water
+
+Cleric 7, Druid 7, Sorcerer 7, Wizard 7, Air 7, Storm 7, Cold 7, Winter 7
+Control Weather
+
+Druid 5, Air 5
+Control Winds
+
+Cleric 3, Healer 3
+Create Food and Water
+
+Cleric 8, Sorcerer 8, Wizard 8, Death 8
+Create Greater Undead
+
+Cleric 6, Sorcerer 6, Wizard 6, Death 6, Evil 6
+Create Undead
+
+Cleric 0, Druid 0, Adept 0, Healer 0, Paladin 1
+Create Water
+
+Druid 7
+Creeping Doom
+
+Bard 3, Sorcerer 4, Wizard 4
+Crushing Despair
+
+Bard 4, Cleric 4, Healer 4, Druid 5, Healing 4
+Cure Critical Wounds
+
+Healer 7, Cleric 8, Druid 9, Healing 8
+Cure Critical Wounds, Mass
+
+Bard 1, Cleric 1, Druid 1, Paladin 1, Adept 1, Healer 1, Ranger 2, Healing 1
+Cure Light Wounds
+
+Healer 4, Bard 5, Cleric 5, Druid 6, Healing 5
+Cure Light Wounds, Mass
+
+Cleric 0, Druid 0, Adept 0, Healer 0
+Cure Minor Wounds
+
+Bard 2, Cleric 2, Adept 2, Healer 2, Druid 3, Paladin 3, Ranger 3, Healing 2
+Cure Moderate Wounds
+
+Healer 5, Bard 6, Cleric 6, Druid 7
+Cure Moderate Wounds, Mass
+
+Bard 3, Cleric 3, Adept 3, Healer 3, Druid 4, Paladin 4, Ranger 4, Healing 3
+Cure Serious Wounds
+
+Healer 6, Cleric 7, Druid 8
+Cure Serious Wounds, Mass
+
+Cleric 1
+Curse Water
+
+Bard 0, Sorcerer 0, Wizard 0
+Dancing Lights
+
+Bard 2, Cleric 2, Sorcerer 2, Wizard 2, Adept 2
+Darkness
+
+Sorcerer 2, Wizard 2, Ranger 3
+Darkvision
+
+Bard 3, Cleric 3, Druid 3, Paladin 3, Sorcerer 3, Wizard 3, Adept 3
+Daylight
+
+Bard 0, Sorcerer 0, Wizard 0
+Daze
+
+Bard 2, Sorcerer 2, Wizard 2
+Daze Monster
+
+Cleric 2, Death 2
+Death Knell
+
+Cleric 4, Paladin 4, Healer 4, Druid 5, Death 4
+Death Ward
+
+Healer 0, Cleric 1
+Deathwatch
+
+Bard 3, Sorcerer 3, Wizard 3
+Deep Slumber
+
+Cleric 3
+Deeper Darkness
+
+Ranger 1, Bard 2, Cleric 2, Druid 2, Paladin 2, Adept 2, Healer 2
+Delay Poison
+
+Sorcerer 7, Wizard 7, Warmage 7
+Delayed Blast Fireball
+
+Sorcerer 8, Wizard 8
+Demand
+
+Cleric 2, Evil 2
+Desecrate
+
+Cleric 7, Death 7
+Destruction
+
+Druid 1, Ranger 1
+Detect Animals Or Plants
+
+Cleric 1, Adept 1
+Detect Chaos
+
+Cleric 1, Adept 1
+Detect Evil
+
+Cleric 1, Adept 1
+Detect Good
+
+Cleric 1, Adept 1
+Detect Law
+
+Bard 0, Cleric 0, Druid 0, Sorcerer 0, Wizard 0, Adept 0, Healer 0, Dread Necromancer 1, Hoardstealer 1
+Detect Magic
+
+Cleric 0, Druid 0, Sorcerer 0, Wizard 0, Healer 0, Paladin 1, Ranger 1
+Detect Poison
+
+Bard 4, Sorcerer 4, Wizard 4, Wealth 4
+Detect Scrying
+
+Bard 1, Sorcerer 1, Wizard 1, Hoardstealer 1, Knowledge 1
+Detect Secret Doors
+
+Druid 1, Ranger 1
+Detect Snares and Pits
+
+Bard 2, Sorcerer 2, Wizard 2, Knowledge 2
+Detect Thoughts
+
+Cleric 1, Paladin 1, Sorcerer 1, Wizard 1, Dread Necromancer 1
+Detect Undead
+
+Cleric 7, Law 7
+Dictum
+
+Bard 4, Sorcerer 4, Wizard 4, Hoardstealer 4, Travel 4, Portal (Alternative) 4, Portal 4
+Dimension Door
+
+Cleric 4, Sorcerer 4, Wizard 4, Portal 3
+Dimensional Anchor
+
+Cleric 8, Sorcerer 8, Wizard 8, Portal 8
+Dimensional Lock
+
+Druid 3, Ranger 3
+Diminish Plants
+
+Paladin 3, Cleric 4
+Discern Lies
+
+Cleric 8, Sorcerer 8, Wizard 8, Healer 8, Knowledge 8, Wealth 8
+Discern Location
+
+Bard 1, Sorcerer 1, Wizard 1, Trickery 1
+Disguise Self
+
+Sorcerer 6, Wizard 6, Warmage 6, Destruction 7
+Disintegrate
+
+Cleric 4, Sorcerer 5, Wizard 5
+Dismissal
+
+Paladin 4, Cleric 5, Law 5
+Dispel Chaos
+
+Paladin 4, Cleric 5, Good 5
+Dispel Evil
+
+Cleric 5, Disciple of Thrym 5, Evil 5
+Dispel Good
+
+Cleric 5, Disciple of Thrym 5, Chaos 5
+Dispel Law
+
+Bard 3, Cleric 3, Paladin 3, Sorcerer 3, Wizard 3, Hoardstealer 3, Druid 4, Magic 3
+Dispel Magic
+
+Bard 5, Cleric 6, Druid 6, Sorcerer 6, Wizard 6
+Dispel Magic, Greater
+
+Bard 3, Sorcerer 3, Wizard 3
+Displacement
+
+Sorcerer 0, Wizard 0, Warmage 0, Glory 1
+Disrupt Undead
+
+Cleric 5
+Disrupting Weapon
+
+Cleric 4, Knowledge 4
+Divination
+
+Cleric 1, Paladin 1, Disciple of Thrym 1
+Divine Favor
+
+Cleric 4, War 4
+Divine Power
+
+Druid 3, Animal 3
+Dominate Animal
+
+Sorcerer 9, Wizard 9, Dragon 9
+Dominate Monster
+
+Bard 4, Sorcerer 5, Wizard 5, Domination 4
+Dominate Person
+
+Cleric 1, Dread Necromancer 1, Disciple of Thrym 1
+Doom
+
+Sorcerer 7, Wizard 7
+Drawmij's Instant Summons
+
+Bard 5, Sorcerer 5, Wizard 5
+Dream
+
+Bard 2, Cleric 2, Paladin 2, Sorcerer 2, Wizard 2, Disciple of Thrym 2
+Eagle's Splendor
+
+Bard 6, Cleric 6, Sorcerer 6, Wizard 6
+Eagle's Splendor, Mass
+
+Warmage 7, Cleric 8, Druid 8, Earth 7, Destruction 8
+Earthquake
+
+Druid 9, Warmage 9, Air 9, Earth 9, Fire 9, Water 9, Ocean 9
+Elemental Swarm
+
+Cleric 1, Druid 1, Paladin 1, Ranger 1, Sorcerer 1, Wizard 1, Adept 1, Sun 1, Ocean 1
+Endure Elements
+
+Cleric 9, Sorcerer 9, Wizard 9
+Energy Drain
+
+Sorcerer 4, Wizard 4
+Enervation
+
+Sorcerer 1, Wizard 1, Strength 1
+Enlarge Person
+
+Sorcerer 4, Wizard 4
+Enlarge Person, Mass
+
+Druid 1, Ranger 1, Plant 1
+Entangle
+
+Bard 2, Cleric 2, Domination 2
+Enthrall
+
+Cleric 1, Luck 1, Storm 1
+Entropic Shield
+
+Bard 1, Sorcerer 1, Wizard 1
+Erase
+
+Cleric 7, Sorcerer 7, Wizard 7
+Ethereal Jaunt
+
+Cleric 9, Sorcerer 9, Wizard 9, Portal (Alternative) 7, Portal 7
+Etherealness
+
+Sorcerer 4, Wizard 4, Warmage 4, Blackwater 3
+Evard's Black Tentacles
+
+Bard 1, Sorcerer 1, Wizard 1, Hoardstealer 1
+Expeditious Retreat
+
+Sorcerer 3, Wizard 3
+Explosive Runes
+
+Bard 6, Sorcerer 6, Wizard 6
+Eyebite
+
+Sorcerer 5, Wizard 5, Greed 5
+Fabricate
+
+Druid 1
+Faerie Fire
+
+Sorcerer 2, Wizard 2
+False Life
+
+Bard 5, Sorcerer 5, Wizard 5, Trickery 5
+False Vision
+
+Bard 3, Sorcerer 4, Wizard 4
+Fear
+
+Bard 1, Sorcerer 1, Wizard 1
+Feather Fall
+
+Sorcerer 5, Wizard 5
+Feeblemind
+
+Bard 6, Cleric 6, Druid 6, Knowledge 6, Travel 6
+Find the Path
+
+Cleric 2
+Find Traps
+
+Sorcerer 7, Wizard 7, Warmage 7, Druid 8
+Finger of Death
+
+Druid 6, Warmage 6, Fire 6, Sun 6
+Fire Seeds
+
+Warmage 3, Sorcerer 4, Wizard 4, Sun 4, Fire 5
+Fire Shield
+
+Druid 7, Warmage 7, Cleric 8, Fire 7
+Fire Storm
+
+Druid 2, Warmage 2, Sorcerer 4, Wizard 4, Greed 4
+Fire Trap
+
+Sorcerer 3, Wizard 3, Warmage 3
+Fireball
+
+Sorcerer 3, Wizard 3, Warmage 3
+Flame Arrow
+
+Druid 2
+Flame Blade
+
+Druid 4, Cleric 5, Warmage 5, Sun 5, War 5
+Flame Strike
+
+Druid 2, Sorcerer 2, Wizard 2, Warmage 2
+Flaming Sphere
+
+Bard 0, Druid 0, Sorcerer 0, Wizard 0
+Flare
+
+Sorcerer 6, Wizard 6
+Flesh to Stone
+
+Sorcerer 3, Wizard 3, Travel 3
+Fly
+
+Druid 2, Sorcerer 2, Wizard 2, Disciple of Thrym 2, Water 2
+Fog Cloud
+
+Cleric 6, Wealth 6
+Forbiddance
+
+Sorcerer 7, Wizard 7
+Forcecage
+
+Druid 9, Sorcerer 9, Wizard 9, Healer 9, Knowledge 9
+Foresight
+
+Bard 2, Sorcerer 2, Wizard 2
+Fox's Cunning
+
+Bard 6, Sorcerer 6, Wizard 6
+Fox's Cunning, Mass
+
+Sorcerer 9, Wizard 9
+Freedom
+
+Bard 4, Cleric 4, Druid 4, Ranger 4, Healer 4, Hoardstealer 4, Luck 4, Ocean 4
+Freedom of Movement
+
+Bard 3, Sorcerer 3, Wizard 3, Air 3
+Gaseous Form
+
+Cleric 9, Sorcerer 9, Wizard 9, Healer 9, Portal (Alternative) 9, Portal 9, Glory 9
+Gate
+
+Bard 3, Sorcerer 4, Wizard 4
+Geas, Lesser
+
+Bard 6, Cleric 6, Sorcerer 6, Wizard 6, Domination 6
+Geas/quest
+
+Cleric 2, Healer 2, Sorcerer 3, Wizard 3
+Gentle Repose
+
+Bard 0, Sorcerer 0, Wizard 0, Adept 0, Hoardstealer 1
+Ghost Sound
+
+Sorcerer 2, Wizard 2
+Ghoul Touch
+
+Cleric 4, Druid 4
+Giant Vermin
+
+Bard 3
+Glibness
+
+Bard 2, Sorcerer 2, Wizard 2
+Glitterdust
+
+Sorcerer 6, Wizard 6
+Globe of Invulnerability
+
+Sorcerer 4, Wizard 4
+Globe of Invulnerability, Lesser
+
+Cleric 3, Wealth 3
+Glyph of Warding
+
+Cleric 6
+Glyph of Warding, Greater
+
+Bard 3
+Good Hope
+
+Druid 1, Healer 1
+Goodberry
+
+Bard 1, Sorcerer 1, Wizard 1
+Grease
+
+Sorcerer 6, Wizard 6, Greed 6
+Guards and Wards
+
+Cleric 0, Druid 0, Adept 0
+Guidance
+
+Druid 2, Sorcerer 2, Wizard 2, Warmage 3, Storm 2
+Gust of Wind
+
+Cleric 5, Druid 5
+Hallow
+
+Bard 4, Sorcerer 4, Wizard 4
+Hallucinatory Terrain
+
+Sorcerer 3, Wizard 3
+Halt Undead
+
+Cleric 6, Destruction 6
+Harm
+
+Bard 3, Sorcerer 3, Wizard 3
+Haste
+
+Cleric 6, Healer 6, Druid 7, Healing 6
+Heal
+
+Paladin 3
+Heal Mount
+
+Healer 8, Cleric 9, Healing 9
+Heal, Mass
+
+Druid 2, Sun 2
+Heat Metal
+
+Cleric 3
+Helping Hand
+
+Bard 6, Cleric 6, Healer 6
+Heroes' Feast
+
+Bard 2, Sorcerer 3, Wizard 3
+Heroism
+
+Bard 5, Sorcerer 6, Wizard 6
+Heroism, Greater
+
+Druid 1, Ranger 1
+Hide from Animals
+
+Cleric 1, Dread Necromancer 1
+Hide from Undead
+
+Druid 2, Ranger 2, Animal 2
+Hold Animal
+
+Bard 4, Sorcerer 5, Wizard 5, Law 6
+Hold Monster
+
+Sorcerer 9, Wizard 9
+Hold Monster, Mass
+
+Bard 2, Cleric 2, Sorcerer 3, Wizard 3
+Hold Person
+
+Sorcerer 7, Wizard 7
+Hold Person, Mass
+
+Sorcerer 1, Wizard 1
+Hold Portal
+
+Cleric 8, Healer 8, Good 8
+Holy Aura
+
+Good 4, Glory 4
+Holy Smite
+
+Paladin 4, Glory 5
+Holy Sword
+
+Cleric 7, Good 7
+Holy Word
+
+Sorcerer 8, Wizard 8, Warmage 8, Water 8
+Horrid Wilting
+
+Bard 2, Sorcerer 2, Wizard 2
+Hypnotic Pattern
+
+Bard 1, Sorcerer 1, Wizard 1
+Hypnotism
+
+Warmage 3, Druid 4, Sorcerer 4, Wizard 4, Disciple of Thrym 5, Cold 4, Winter 4, Water 5, Storm 5
+Ice Storm
+
+Bard 1, Sorcerer 1, Wizard 1, Hoardstealer 1, Magic 2
+Identify
+
+Bard 3, Sorcerer 3, Wizard 3
+Illusory Script
+
+Sorcerer 4, Wizard 4
+Illusory Wall
+
+Cleric 4, Magic 4
+Imbue With Spell Ability
+
+Cleric 9, Warmage 9, Destruction 9
+Implosion
+
+Sorcerer 9, Wizard 9
+Imprisonment
+
+Sorcerer 8, Wizard 8, Warmage 8, Fire 8
+Incendiary Cloud
+
+Cleric 4, Destruction 4
+Inflict Critical Wounds
+
+Cleric 8
+Inflict Critical Wounds, Mass
+
+Cleric 1, Dread Necromancer 1, Destruction 1
+Inflict Light Wounds
+
+Cleric 5, Destruction 5
+Inflict Light Wounds, Mass
+
+Cleric 0
+Inflict Minor Wounds
+
+Cleric 2
+Inflict Moderate Wounds
+
+Cleric 6
+Inflict Moderate Wounds, Mass
+
+Cleric 3
+Inflict Serious Wounds
+
+Cleric 7
+Inflict Serious Wounds, Mass
+
+Sorcerer 7, Wizard 7
+Insanity
+
+Cleric 5, Druid 5
+Insect Plague
+
+Bard 2, Sorcerer 2, Wizard 2, Adept 2, Hoardstealer 2, Trickery 2
+Invisibility
+
+Cleric 3
+Invisibility Purge
+
+Bard 3, Sorcerer 3, Wizard 3
+Invisibility Sphere
+
+Bard 4, Sorcerer 4, Wizard 4
+Invisibility, Greater
+
+Sorcerer 7, Wizard 7
+Invisibility, Mass
+
+Sorcerer 8, Wizard 8, Earth 8
+Iron Body
+
+Druid 6
+Ironwood
+
+Druid 1, Ranger 1, Sorcerer 1, Wizard 1
+Jump
+
+Sorcerer 3, Wizard 3
+Keen Edge
+
+Sorcerer 2, Wizard 2, Hoardstealer 2, Greed 3
+Knock
+
+Bard 0, Druid 0
+Know Direction
+
+Bard 4, Sorcerer 6, Wizard 6, Knowledge 7
+Legend Lore
+
+Sorcerer 5, Wizard 5, Wealth 5
+Leomund's Secret Chest
+
+Bard 4, Sorcerer 4, Wizard 4
+Leomund's Secure Shelter
+
+Bard 3, Sorcerer 3, Wizard 3
+Leomund's Tiny Hut
+
+Sorcerer 2, Wizard 2
+Leomund's Trap
+
+Sorcerer 2, Wizard 2
+Levitate
+
+Bard 0, Cleric 0, Druid 0, Sorcerer 0, Wizard 0, Adept 0, Warmage 0, Healer 0
+Light
+
+Sorcerer 3, Wizard 3, Warmage 3
+Lightning Bolt
+
+Sorcerer 7, Wizard 7
+Limited Wish
+
+Druid 6
+Liveoak
+
+Bard 4, Sorcerer 4, Wizard 4
+Locate Creature
+
+Bard 2, Sorcerer 2, Wizard 2, Hoardstealer 2, Cleric 3, Travel 2
+Locate Object
+
+Druid 1, Ranger 1, Travel 1
+Longstrider
+
+Bard 0
+Lullaby
+
+Sorcerer 1, Wizard 1
+Mage Armor
+
+Bard 0, Sorcerer 0, Wizard 0
+Mage Hand
+
+Cleric 3, Paladin 3, Sorcerer 3, Wizard 3, Law 3
+Magic Circle Against Chaos
+
+Cleric 3, Paladin 3, Sorcerer 3, Wizard 3, Good 3
+Magic Circle Against Evil
+
+Cleric 3, Sorcerer 3, Wizard 3, Evil 3
+Magic Circle Against Good
+
+Cleric 3, Sorcerer 3, Wizard 3, Chaos 3
+Magic Circle Against Law
+
+Druid 1, Ranger 1, Dragon 1
+Magic Fang
+
+Druid 3, Ranger 3, Dragon 3
+Magic Fang, Greater
+
+Sorcerer 5, Wizard 5
+Magic Jar
+
+Sorcerer 1, Wizard 1, Warmage 1
+Magic Missile
+
+Bard 1, Sorcerer 2, Wizard 2
+Magic Mouth
+
+Cleric 1, Druid 1, Earth 1
+Magic Stone
+
+Cleric 3, Strength 3, War 3
+Magic Vestment
+
+Cleric 1, Paladin 1, Sorcerer 1, Wizard 1, Disciple of Thrym 1, War 1
+Magic Weapon
+
+Paladin 3, Sorcerer 3, Wizard 3, Cleric 4
+Magic Weapon, Greater
+
+Sorcerer 5, Wizard 5
+Major Creation
+
+Bard 3, Sorcerer 3, Wizard 3
+Major Image
+
+Cleric 2
+Make Whole
+
+Paladin 4, Cleric 5
+Mark of Justice
+
+Sorcerer 8, Wizard 8
+Maze
+
+Cleric 3, Druid 3
+Meld Into Stone
+
+Sorcerer 2, Wizard 2, Warmage 2
+Melf's Acid Arrow
+
+Bard 0, Cleric 0, Druid 0, Sorcerer 0, Wizard 0, Adept 0, Healer 0
+Mending
+
+Bard 0, Sorcerer 0, Wizard 0
+Message
+
+Sorcerer 9, Wizard 9, Warmage 9
+Meteor Swarm
+
+Sorcerer 8, Wizard 8, Protection 8
+Mind Blank
+
+Bard 5, Sorcerer 5, Wizard 5
+Mind Fog
+
+Sorcerer 4, Wizard 4
+Minor Creation
+
+Bard 2, Sorcerer 2, Wizard 2
+Minor Image
+
+Cleric 9, Luck 9
+Miracle
+
+Bard 5, Sorcerer 5, Wizard 5
+Mirage Arcana
+
+Bard 2, Sorcerer 2, Wizard 2, Adept 2
+Mirror Image
+
+Bard 2, Sorcerer 2, Wizard 2
+Misdirection
+
+Bard 5, Sorcerer 6, Wizard 6, Luck 6, Trickery 6
+Mislead
+
+Bard 4
+Modify Memory
+
+Sorcerer 8, Wizard 8, Luck 8, Destiny 8
+Moment of Prescience
+
+Sorcerer 9, Wizard 9, Magic 9
+Mordenkainen's Disjunction
+
+Sorcerer 5, Wizard 5
+Mordenkainen's Faithful Hound
+
+Wizard 6
+Mordenkainen's Lucubration
+
+Sorcerer 7, Wizard 7
+Mordenkainen's Magnificent Mansion
+
+Sorcerer 5, Wizard 5
+Mordenkainen's Private Sanctum
+
+Sorcerer 7, Wizard 7, Warmage 7
+Mordenkainen's Sword
+
+Sorcerer 1, Wizard 1
+Mount
+
+Druid 6, Sorcerer 6, Wizard 6
+Move Earth
+
+Druid 3, Ranger 3, Healer 3, Bard 4, Cleric 4, Paladin 4
+Neutralize Poison
+
+Bard 5, Sorcerer 5, Wizard 5
+Nightmare
+
+Sorcerer 3, Wizard 3, Ranger 4, Trickery 3
+Nondetection
+
+Bard 1, Sorcerer 1, Wizard 1, Hoardstealer 1, Magic 1
+Nystul's Magic Aura
+
+Bard 1, Sorcerer 2, Wizard 2, Cleric 3, Wealth 2
+Obscure Object
+
+Cleric 1, Druid 1, Sorcerer 1, Wizard 1, Adept 1, Disciple of Thrym 1, Air 1, Water 1
+Obscuring Mist
+
+Bard 0, Sorcerer 0, Wizard 0
+Open/close
+
+Law 4
+Order's Wrath
+
+Sorcerer 6, Wizard 6, Warmage 6, Ocean 6
+Otiluke's Freezing Sphere
+
+Sorcerer 4, Wizard 4
+Otiluke's Resilient Sphere
+
+Sorcerer 8, Wizard 8
+Otiluke's Telekinetic Sphere
+
+Bard 6, Sorcerer 8, Wizard 8
+Otto's Irresistible Dance
+
+Sorcerer 5, Wizard 5
+Overland Flight
+
+Cleric 2, Druid 2, Paladin 2, Ranger 2, Sorcerer 2, Wizard 2
+Owl's Wisdom
+
+Cleric 6, Druid 6, Sorcerer 6, Wizard 6
+Owl's Wisdom, Mass
+
+Druid 1, Ranger 1
+Pass Without Trace
+
+Sorcerer 5, Wizard 5
+Passwall
+
+Sorcerer 5, Wizard 5
+Permanency
+
+Bard 6, Sorcerer 6, Wizard 6
+Permanent Image
+
+Bard 5, Sorcerer 5, Wizard 5
+Persistent Image
+
+Sorcerer 4, Wizard 4, Warmage 4
+Phantasmal Killer
+
+Bard 3, Sorcerer 3, Wizard 3
+Phantom Steed
+
+Sorcerer 7, Wizard 7, Travel 8
+Phase Door
+
+Cleric 6
+Planar Ally
+
+Cleric 8
+Planar Ally, Greater
+
+Cleric 4
+Planar Ally, Lesser
+
+Sorcerer 6, Wizard 6
+Planar Binding
+
+Sorcerer 8, Wizard 8
+Planar Binding, Greater
+
+Sorcerer 5, Wizard 5
+Planar Binding, Lesser
+
+Cleric 5, Sorcerer 7, Wizard 7
+Plane Shift
+
+Druid 3, Ranger 3, Plant 3
+Plant Growth
+
+Druid 3, Warmage 3, Cleric 4
+Poison
+
+Sorcerer 8, Wizard 8, Warmage 8, Cold 8
+Polar Ray
+
+Sorcerer 4, Wizard 4
+Polymorph
+
+Sorcerer 8, Wizard 8, Trickery 8
+Polymorph Any Object
+
+Sorcerer 7, Wizard 7, War 7
+Power Word Blind
+
+Sorcerer 9, Wizard 9, War 9
+Power Word Kill
+
+Sorcerer 8, Wizard 8, War 8
+Power Word Stun
+
+Cleric 3, Paladin 3
+Prayer
+
+Bard 0, Sorcerer 0, Wizard 0
+Prestidigitation
+
+Sorcerer 9, Wizard 9, Warmage 9, Protection 9, Sun 9
+Prismatic Sphere
+
+Sorcerer 7, Wizard 7, Warmage 7
+Prismatic Spray
+
+Sorcerer 8, Wizard 8, Warmage 8
+Prismatic Wall
+
+Druid 1, Fire 2
+Produce Flame
+
+Bard 6, Sorcerer 6, Wizard 6
+Programmed Image
+
+Bard 6, Sorcerer 7, Wizard 7
+Project Image
+
+Sorcerer 2, Wizard 2
+Protection from Arrows
+
+Cleric 1, Paladin 1, Sorcerer 1, Wizard 1, Adept 1, Law 1
+Protection from Chaos
+
+Ranger 2, Cleric 3, Druid 3, Sorcerer 3, Wizard 3, Hoardstealer 3, Luck 3, Protection 3
+Protection from Energy
+
+Cleric 1, Paladin 1, Sorcerer 1, Wizard 1, Adept 1, Healer 1, Good 1
+Protection from Evil
+
+Cleric 1, Sorcerer 1, Wizard 1, Adept 1, Disciple of Thrym 1, Evil 1
+Protection from Good
+
+Cleric 1, Sorcerer 1, Wizard 1, Adept 1, Disciple of Thrym 1, Chaos 1
+Protection from Law
+
+Sorcerer 8, Wizard 8, Magic 8
+Protection from Spells
+
+Sorcerer 5, Wizard 5
+Prying Eyes
+
+Sorcerer 8, Wizard 8
+Prying Eyes, Greater
+
+Cleric 0, Druid 0, Adept 0, Healer 0
+Purify Food and Drink
+
+Bard 2, Sorcerer 2, Wizard 2, Warmage 2
+Pyrotechnics
+
+Druid 3
+Quench
+
+Bard 2, Sorcerer 3, Wizard 3
+Rage
+
+Bard 4, Sorcerer 4, Wizard 4
+Rainbow Pattern
+
+Cleric 5, Healer 5
+Raise Dead
+
+Wizard 4
+Rary's Mnemonic Enhancer
+
+Sorcerer 5, Wizard 5
+Rary's Telepathic Bond
+
+Sorcerer 1, Wizard 1, Dread Necromancer 1
+Ray of Enfeeblement
+
+Sorcerer 3, Wizard 3
+Ray of Exhaustion
+
+Sorcerer 0, Wizard 0, Warmage 0
+Ray of Frost
+
+Bard 0, Healer 0, Adept 0, Wizard 0, Sorcerer 0, Druid 0, Cleric 0, Ranger 1, Paladin 1, Hoardstealer 1
+Read Magic
+
+Druid 2, Ranger 3
+Reduce Animal
+
+Sorcerer 1, Wizard 1
+Reduce Person
+
+Sorcerer 4, Wizard 4
+Reduce Person, Mass
+
+Cleric 7, Sorcerer 9, Wizard 9
+Refuge
+
+Healer 6, Cleric 7, Druid 9, Healing 7
+Regenerate
+
+Druid 4
+Reincarnate
+
+Healer 2, Cleric 3, Paladin 3
+Remove Blindness/deafness
+
+Bard 3, Cleric 3, Paladin 3, Healer 3, Sorcerer 4, Wizard 4
+Remove Curse
+
+Healer 2, Cleric 3, Druid 3, Ranger 3
+Remove Disease
+
+Bard 1, Cleric 1, Healer 1
+Remove Fear
+
+Healer 1, Cleric 2, Paladin 2
+Remove Paralysis
+
+Druid 8
+Repel Metal Or Stone
+
+Ranger 3, Bard 4, Cleric 4, Druid 4
+Repel Vermin
+
+Druid 6, Plant 6
+Repel Wood
+
+Sorcerer 6, Wizard 6, Cleric 7, Healer 7, Protection 7
+Repulsion
+
+Ranger 1, Cleric 2, Druid 2, Paladin 2, Sorcerer 2, Wizard 2, Adept 2, Hoardstealer 2, Dragon 2, Fire 3
+Resist Energy
+
+Bard 0, Cleric 0, Druid 0, Sorcerer 0, Wizard 0, Paladin 1
+Resistance
+
+Healer 3, Cleric 4, Paladin 4
+Restoration
+
+Healer 6, Cleric 7
+Restoration, Greater
+
+Paladin 1, Cleric 2, Druid 2, Healer 2
+Restoration, Lesser
+
+Cleric 7, Healer 7
+Resurrection
+
+Sorcerer 7, Wizard 7, Druid 8
+Reverse Gravity
+
+Cleric 5, Strength 5
+Righteous Might
+
+Sorcerer 2, Wizard 2
+Rope Trick
+
+Druid 4
+Rusting Grasp
+
+Cleric 1, Healer 1, Protection 1
+Sanctuary
+
+Bard 2, Sorcerer 2, Wizard 2
+Scare
+
+Sorcerer 8, Wizard 8, Warmage 8
+Scintillating Pattern
+
+Sorcerer 2, Wizard 2, Adept 2, Warmage 2
+Scorching Ray
+
+Sorcerer 8, Wizard 8, Trickery 7
+Screen
+
+Bard 3, Druid 4, Sorcerer 4, Wizard 4, Cleric 5
+Scrying
+
+Bard 6, Cleric 7, Druid 7, Sorcerer 7, Wizard 7
+Scrying, Greater
+
+Bard 3
+Sculpt Sound
+
+Cleric 3, Sun 3, Glory 3
+Searing Light
+
+Bard 3, Sorcerer 3, Wizard 3
+Secret Page
+
+Sorcerer 2, Wizard 2, Adept 2, Bard 3
+See Invisibility
+
+Bard 5, Sorcerer 5, Wizard 5
+Seeming
+
+Cleric 4, Sorcerer 5, Wizard 5
+Sending
+
+Bard 3, Sorcerer 3, Wizard 3
+Sepia Snake Sigil
+
+Sorcerer 7, Wizard 7, Wealth 7
+Sequester
+
+Sorcerer 9, Wizard 9
+Shades
+
+Bard 4, Sorcerer 4, Wizard 4
+Shadow Conjuration
+
+Sorcerer 7, Wizard 7
+Shadow Conjuration, Greater
+
+Bard 5, Sorcerer 5, Wizard 5
+Shadow Evocation
+
+Sorcerer 8, Wizard 8
+Shadow Evocation, Greater
+
+Bard 5, Sorcerer 6, Wizard 6
+Shadow Walk
+
+Druid 9, Plant 9
+Shambler
+
+Druid 9, Sorcerer 9, Wizard 9, Animal 9
+Shapechange
+
+Bard 2, Cleric 2, Sorcerer 2, Wizard 2, Warmage 2, Chaos 2, Destruction 2
+Shatter
+
+Sorcerer 1, Wizard 1
+Shield
+
+Cleric 1
+Shield of Faith
+
+Cleric 8, Law 8
+Shield of Law
+
+Cleric 2, Paladin 2, Protection 2
+Shield Other
+
+Druid 1
+Shillelagh
+
+Sorcerer 1, Wizard 1, Warmage 1
+Shocking Grasp
+
+Bard 4, Sorcerer 4, Wizard 4, Warmage 4
+Shout
+
+Bard 6, Sorcerer 8, Wizard 8, Warmage 8
+Shout, Greater
+
+Sorcerer 3, Wizard 3, Hoardstealer 3
+Shrink Item
+
+Bard 2, Cleric 2
+Silence
+
+Bard 1, Sorcerer 1, Wizard 1
+Silent Image
+
+Sorcerer 7, Wizard 7
+Simulacrum
+
+Cleric 5, Death 5
+Slay Living
+
+Bard 1, Sorcerer 1, Wizard 1, Adept 1
+Sleep
+
+Druid 3, Sorcerer 3, Wizard 3, Disciple of Thrym 3, Warmage 3, Cold 3, Storm 4
+Sleet Storm
+
+Bard 3, Sorcerer 3, Wizard 3
+Slow
+
+Ranger 2, Druid 3
+Snare
+
+Druid 2, Earth 2
+Soften Earth and Stone
+
+Sorcerer 4, Wizard 4
+Solid Fog
+
+Bard 5
+Song of Discord
+
+Cleric 9, Sorcerer 9, Wizard 9
+Soul Bind
+
+Bard 2, Cleric 2, Ocean 2
+Sound Burst
+
+Druid 1, Ranger 1, Healer 1, Bard 3
+Speak With Animals
+
+Cleric 3
+Speak With Dead
+
+Ranger 2, Druid 3, Bard 4
+Speak With Plants
+
+Sorcerer 2, Wizard 2
+Spectral Hand
+
+Cleric 4, Protection 4, Strength 4
+Spell Immunity
+
+Cleric 8
+Spell Immunity, Greater
+
+Cleric 5, Magic 5, Protection 5
+Spell Resistance
+
+Sorcerer 7, Wizard 7, Luck 7, Magic 7
+Spell Turning
+
+Druid 6
+Spellstaff
+
+Druid 2, Sorcerer 2, Wizard 2, Hoardstealer 2
+Spider Climb
+
+Ranger 2, Druid 3
+Spike Growth
+
+Druid 4, Earth 4
+Spike Stones
+
+Cleric 2, War 2
+Spiritual Weapon
+
+Sorcerer 7, Wizard 7
+Statue
+
+Cleric 2, Healer 3
+Status
+
+Sorcerer 3, Wizard 3, Warmage 3
+Stinking Cloud
+
+Cleric 3, Druid 3, Sorcerer 4, Wizard 4, Earth 3
+Stone Shape
+
+Druid 6
+Stone Tell
+
+Healer 5, Sorcerer 6, Wizard 6
+Stone to Flesh
+
+Sorcerer 4, Wizard 4, Druid 5, Disciple of Thrym 5, Earth 6, Strength 6, Dragon 6
+Stoneskin
+
+Druid 9, Cleric 9, Storm 9
+Storm of Vengeance
+
+Bard 2, Sorcerer 3, Wizard 3, Domination 3
+Suggestion
+
+Bard 5, Sorcerer 6, Wizard 6, Domination 7, Dragon 8
+Suggestion, Mass
+
+Bard 0
+Summon Instrument
+
+Bard 1, Cleric 1, Sorcerer 1, Wizard 1, Portal 1
+Summon Monster I
+
+Bard 2, Cleric 2, Sorcerer 2, Wizard 2
+Summon Monster II
+
+Bard 3, Cleric 3, Sorcerer 3, Wizard 3
+Summon Monster III
+
+Bard 4, Cleric 4, Sorcerer 4, Wizard 4
+Summon Monster IV
+
+Cleric 9, Sorcerer 9, Wizard 9, Chaos 9, Evil 9, Good 9, Law 9
+Summon Monster IX
+
+Bard 5, Cleric 5, Sorcerer 5, Wizard 5
+Summon Monster V
+
+Bard 6, Cleric 6, Sorcerer 6, Wizard 6
+Summon Monster VI
+
+Cleric 7, Sorcerer 7, Wizard 7
+Summon Monster VII
+
+Cleric 8, Sorcerer 8, Wizard 8
+Summon Monster VIII
+
+Druid 1, Ranger 1
+Summon Nature's Ally I
+
+Druid 2, Ranger 2
+Summon Nature's Ally Ii
+
+Druid 3, Ranger 3
+Summon Nature's Ally Iii
+
+Druid 4, Ranger 4, Animal 4
+Summon Nature's Ally Iv
+
+Druid 9
+Summon Nature's Ally Ix
+
+Druid 5
+Summon Nature's Ally V
+
+Druid 6
+Summon Nature's Ally Vi
+
+Druid 7
+Summon Nature's Ally Vii
+
+Druid 8, Animal 8
+Summon Nature's Ally Viii
+
+Bard 2, Druid 2, Sorcerer 2, Wizard 2
+Summon Swarm
+
+Druid 7, Warmage 7, Sun 7, Glory 7
+Sunbeam
+
+Druid 8, Sorcerer 8, Wizard 8, Warmage 8, Sun 8
+Sunburst
+
+Cleric 8, Sorcerer 8, Wizard 8
+Symbol of Death
+
+Cleric 6, Sorcerer 6, Wizard 6
+Symbol of Fear
+
+Cleric 8, Sorcerer 8, Wizard 8
+Symbol of Insanity
+
+Cleric 5, Sorcerer 5, Wizard 5
+Symbol of Pain
+
+Cleric 6, Sorcerer 6, Wizard 6
+Symbol of Persuasion
+
+Cleric 5, Sorcerer 5, Wizard 5
+Symbol of Sleep
+
+Cleric 7, Sorcerer 7, Wizard 7
+Symbol of Stunning
+
+Cleric 7, Sorcerer 7, Wizard 7
+Symbol of Weakness
+
+Bard 6
+Sympathetic Vibration
+
+Sorcerer 8, Wizard 8, Druid 9, Greed 9
+Sympathy
+
+Bard 1, Sorcerer 2, Wizard 2
+Tasha's Hideous Laughter
+
+Sorcerer 5, Wizard 5
+Telekinesis
+
+Sorcerer 5, Wizard 5, Travel 5, Portal 5
+Teleport
+
+Sorcerer 7, Wizard 7, Greed 7
+Teleport Object
+
+Sorcerer 7, Wizard 7, Travel 7
+Teleport, Greater
+
+Sorcerer 9, Wizard 9
+Teleportation Circle
+
+Sorcerer 8, Wizard 8
+Temporal Stasis
+
+Sorcerer 1, Wizard 1, Hoardstealer 1
+Tenser's Floating Disk
+
+Sorcerer 6, Wizard 6, Warmage 6
+Tenser's Transformation
+
+Sorcerer 9, Wizard 9, Trickery 9
+Time Stop
+
+Bard 2, Sorcerer 3, Wizard 3, Cleric 4
+Tongues
+
+Sorcerer 0, Wizard 0, Adept 0
+Touch of Fatigue
+
+Sorcerer 2, Wizard 2
+Touch of Idiocy
+
+Druid 7
+Transmute Metal to Wood
+
+Druid 5, Sorcerer 5, Wizard 5
+Transmute Mud to Rock
+
+Druid 5, Sorcerer 5, Wizard 5
+Transmute Rock to Mud
+
+Druid 6
+Transport Via Plants
+
+Sorcerer 8, Wizard 8
+Trap the Soul
+
+Druid 2, Ranger 3
+Tree Shape
+
+Ranger 4, Druid 5
+Tree Stride
+
+Cleric 9, Healer 9
+True Resurrection
+
+Cleric 5, Healer 5, Sorcerer 6, Wizard 6, Druid 7, Knowledge 5, Dragon 5
+True Seeing
+
+Sorcerer 1, Wizard 1, Warmage 1
+True Strike
+
+Cleric 6, Sorcerer 6, Wizard 6
+Undeath to Death
+
+Bard 1, Dread Necromancer 1, Cleric 2, Paladin 2
+Undetectable Alignment
+
+Cleric 5, Druid 5
+Unhallow
+
+Cleric 8, Evil 8
+Unholy Aura
+
+Evil 4
+Unholy Blight
+
+Bard 1, Sorcerer 1, Wizard 1, Hoardstealer 1
+Unseen Servant
+
+Sorcerer 3, Wizard 3
+Vampiric Touch
+
+Bard 6, Sorcerer 6, Wizard 6
+Veil
+
+Bard 1, Sorcerer 1, Wizard 1
+Ventriloquism
+
+Cleric 0, Druid 0, Paladin 1
+Virtue
+
+Sorcerer 7, Wizard 7
+Vision
+
+Sorcerer 9, Wizard 9, Warmage 9, Death 9
+Wail of the Banshee
+
+Sorcerer 4, Wizard 4, Warmage 4, Druid 5, Fire 4
+Wall of Fire
+
+Sorcerer 5, Wizard 5
+Wall of Force
+
+Sorcerer 4, Wizard 4, Disciple of Thrym 5, Ocean 5, Cold 5
+Wall of Ice
+
+Sorcerer 6, Wizard 6
+Wall of Iron
+
+Cleric 5, Sorcerer 5, Wizard 5, Druid 6, Earth 5
+Wall of Stone
+
+Druid 5, Plant 5
+Wall of Thorns
+
+Druid 2
+Warp Wood
+
+Cleric 3, Druid 3, Sorcerer 3, Wizard 3, Water 3, Ocean 3
+Water Breathing
+
+Cleric 3, Ranger 3
+Water Walk
+
+Sorcerer 7, Wizard 7, Warmage 7
+Waves of Exhaustion
+
+Sorcerer 5, Wizard 5
+Waves of Fatigue
+
+Sorcerer 2, Wizard 2, Adept 2
+Web
+
+Sorcerer 9, Wizard 9, Warmage 9
+Weird
+
+Druid 8, Air 8, Storm 8
+Whirlwind
+
+Bard 2, Sorcerer 2, Wizard 2
+Whispering Wind
+
+Cleric 6, Druid 7
+Wind Walk
+
+Ranger 2, Cleric 3, Druid 3, Sorcerer 3, Wizard 3, Air 2
+Wind Wall
+
+Sorcerer 9, Wizard 9
+Wish
+
+Druid 2
+Wood Shape
+
+Cleric 7, Chaos 7
+Word of Chaos
+
+Cleric 6, Druid 8
+Word of Recall
+
+Bard 4
+Zone of Silence
+
+Cleric 2, Paladin 2
+Zone of Truth
