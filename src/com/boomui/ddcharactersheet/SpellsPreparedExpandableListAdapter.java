@@ -1,6 +1,9 @@
 package com.boomui.ddcharactersheet;
 
 import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.ClipData;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -14,6 +17,7 @@ import android.view.View;
 import android.view.View.DragShadowBuilder;
 import android.view.View.OnClickListener;
 import android.view.View.OnDragListener;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.BaseExpandableListAdapter;
@@ -111,11 +115,36 @@ class SpellsPreparedExpandableListAdapter extends BaseExpandableListAdapter{
 	public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup p){
 		LinearLayout lView = new LinearLayout(parent);
 		
-		CheckBox cbox = new CheckBox(parent);
+		final CheckBox cbox = new CheckBox(parent);
 		
 		final TextView name = getGenericView();
 		name.setText(data.getSpellName(groupPosition, childPosition));
 		name.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1) );
+
+		final Activity listenerActivity = parent;
+		final int gPos = groupPosition;
+		final int cPos = childPosition;
+		name.setOnClickListener(new OnClickListener(){
+			public void onClick(View v){
+				cbox.setChecked(!cbox.isChecked() );
+			}
+		});
+		name.setOnLongClickListener(new OnLongClickListener(){
+			public boolean onLongClick(View v){
+				FragmentManager fragmentManager = listenerActivity.getFragmentManager();
+				Fragment currentFragment = fragmentManager.findFragmentById(R.id.fragmentView);
+				
+				FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+				fragmentTransaction.remove(currentFragment);
+				fragmentTransaction.commit();
+
+				fragmentTransaction = fragmentManager.beginTransaction();
+				fragmentTransaction.add(R.id.fragmentView, new SpellDataDisplayFragment(data.getSpellName(gPos, cPos), currentFragment) );
+				fragmentTransaction.commit();
+				
+				return true;
+			}
+		});
 		
 		PreparedSpell listenerSpell = getChild(groupPosition, childPosition);
 		cbox.setOnCheckedChangeListener(new SpellsPreparedOnCheckedChangeListener(lView, name, listenerSpell, this));
@@ -127,8 +156,6 @@ class SpellsPreparedExpandableListAdapter extends BaseExpandableListAdapter{
 		delete.setLayoutParams(new LinearLayout.LayoutParams(35, 35, 0) );
 		delete.setPadding(0, 0, 0, 0);
 		
-		final int gPos = groupPosition;
-		final int cPos = childPosition;
 		final SpellsPreparedExpandableListAdapter spela = this;
 		delete.setOnClickListener(new OnClickListener(){
 			public void onClick(View v){

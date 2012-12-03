@@ -31,6 +31,8 @@ public class MagicTabFragment extends Fragment implements SpellInteractionListen
 	int maxHeight = -1;
 	int selected = -1;
 	
+	Fragment spellbookTab;
+	
 	List<BaseExpandableListAdapter> expandableListAdapters;
 	
 	//For saving
@@ -50,6 +52,10 @@ public class MagicTabFragment extends Fragment implements SpellInteractionListen
 		//This code hides the keyboard
 		InputMethodManager inputManager = (InputMethodManager)activity.getSystemService(Context.INPUT_METHOD_SERVICE);
 		inputManager.hideSoftInputFromWindow((null == activity.getCurrentFocus()) ? null : activity.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+	}
+	
+	public void setSpellbookTab(Fragment spellbookTab){
+		this.spellbookTab = spellbookTab;
 	}
 	
 	public void onDestroyView(){
@@ -260,6 +266,23 @@ public class MagicTabFragment extends Fragment implements SpellInteractionListen
 		Button addSpell = new Button(parent);
 		addSpell.setText("Add Spells");
 		addSpell.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, 0) );
+		
+		final Activity listenerActivity = parent;
+		addSpell.setOnClickListener(new OnClickListener(){
+			public void onClick(View v){
+				FragmentManager fragmentManager = listenerActivity.getFragmentManager();
+				Fragment currentFragment = fragmentManager.findFragmentById(R.id.fragmentView);
+				
+				FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+				fragmentTransaction.remove(currentFragment);
+				fragmentTransaction.commit();
+
+				fragmentTransaction = fragmentManager.beginTransaction();
+				fragmentTransaction.add(R.id.fragmentView, spellbookTab);
+				fragmentTransaction.commit();
+			}
+		});
+
 		
 		LinearLayout column = new LinearLayout(parent);
 		column.setOrientation(LinearLayout.VERTICAL);

@@ -9,5 +9,7 @@ public interface SpellLoader{
 	 */
 	public List<SpellListSpell> getAllSpells();
 	
-	public boolean isNameOfClass(String s);
+	public boolean isNameOfCasterClass(String s);
+	
+	public String loadSpellData(String spellName);
 }

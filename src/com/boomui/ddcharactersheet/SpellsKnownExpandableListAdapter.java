@@ -1,10 +1,14 @@
 package com.boomui.ddcharactersheet;
 
 import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.graphics.Color;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.BaseExpandableListAdapter;
@@ -73,9 +77,26 @@ class SpellsKnownExpandableListAdapter extends BaseExpandableListAdapter{
 		
 		final int gPos = groupPosition;
 		final int cPos = childPosition;
+		final Activity listenerActivity = parent;
 		textView.setOnClickListener(new OnClickListener(){
 			public void onClick(View v){
 				listener.spellClicked(getChild(gPos, cPos), gPos);
+			}
+		});
+		textView.setOnLongClickListener(new OnLongClickListener(){
+			public boolean onLongClick(View v){
+				FragmentManager fragmentManager = listenerActivity.getFragmentManager();
+				Fragment currentFragment = fragmentManager.findFragmentById(R.id.fragmentView);
+				
+				FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+				fragmentTransaction.remove(currentFragment);
+				fragmentTransaction.commit();
+
+				fragmentTransaction = fragmentManager.beginTransaction();
+				fragmentTransaction.add(R.id.fragmentView, new SpellDataDisplayFragment(getChild(gPos, cPos), currentFragment) );
+				fragmentTransaction.commit();
+				
+				return true;
 			}
 		});
 
