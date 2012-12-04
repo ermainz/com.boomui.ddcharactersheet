@@ -35,8 +35,8 @@ public class NotesTabFragment extends Fragment{
 	}
 	
 	@Override
-	public void onPause(){
-		super.onPause();
+	public void onDestroy(){
+		super.onDestroy();
 		com.saveData(CharacterDataKey.NOTES, ((EditText)main_view.findViewById(R.id.notes)).getText().toString());
 	}
 	

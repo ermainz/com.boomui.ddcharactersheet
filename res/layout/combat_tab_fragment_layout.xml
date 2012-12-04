@@ -230,6 +230,7 @@
         	    		<ImageButton android:src="@drawable/die_roll"
                     		android:layout_width="wrap_content"
     							android:layout_height="wrap_content"
+    							
     							android:onClick="roll_fort"/>
         	    	</LinearLayout>
         	    	
@@ -317,10 +318,16 @@
             		    android:layout_height="wrap_content"
             		    android:layout_weight="1"
             		    android:inputType="number"/>
+            <ImageButton android:src="@drawable/die_roll"
+                    		android:layout_width="wrap_content"
+    							android:layout_height="wrap_content"
+    							
+    							android:onClick="roll_initiative"/>
         	<TextView android:id="@+id/bab_text"
             		    android:layout_width="wrap_content"
             		    android:layout_height="wrap_content"
             		    style="@android:style/TextAppearance.Medium"
+            		    android:paddingLeft="30dip"
             		    android:layout_weight="1"
             		    android:text="Base Attack = "/>
             <EditText android:id="@+id/bab_edit"
