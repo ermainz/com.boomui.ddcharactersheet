@@ -306,9 +306,12 @@ public class BuffsTabFragment extends Fragment implements BuffActivationListener
 						size --;
 					}
 					else{
-						int new_turns = Integer.parseInt( buffsActive.getBuffs().get(i).turns);
-						new_turns --;
-						buffsActive.getBuffs().get(i).turns = new_turns + "";
+						try{
+							int new_turns = Integer.parseInt( buffsActive.getBuffs().get(i).turns);
+							new_turns --;
+							buffsActive.getBuffs().get(i).turns = new_turns + "";
+						}
+						catch(NumberFormatException ex){}
 					}
 				}
 				adapter.notifyDataSetChanged();

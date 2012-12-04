@@ -92,17 +92,28 @@ public class SpellLookupTabFragment extends Fragment implements SearchedSpellInt
 		com.saveData(CharacterDataKey.SPELLS_KNOWN, saveStr);
 	}
 	
+	@SuppressWarnings("rawtypes")
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 		allSpellsKnown = new LinkedList<SpellsKnown>();
 		allAdapters = new LinkedList();
 		
-		String allClasses = Constants.defaultClasses;
-		classes = allClasses.split(Constants.CHARACTER_CLASS_SEPARATOR);
+		//TODO: This will load the set of classes later
+		String[] allClasses = Constants.allCasterClassNames;
+		String characterClasses = com.loadData(CharacterDataKey.INFO_CLASS_AND_LEVEL);
+		String toSplit = Constants.miscCasterClass;
+		
+		for(String s : allClasses){
+			if(characterClasses.indexOf(s) != -1){
+				toSplit += Constants.CHARACTER_CLASS_SEPARATOR + s;
+			}
+		}
+		
+		classes = toSplit.split(Constants.CHARACTER_CLASS_SEPARATOR);
 		String classOpen = com.loadData(CharacterDataKey.MAGIC_TAB_CLASS_PAGE_OPEN);
 		
 		//Default spell page that will always be there
-		if(classOpen == null || allClasses.indexOf(classOpen) == -1){
-			classOpen = "Misc.";
+		if(classOpen == null || toSplit.indexOf(classOpen) == -1){
+			classOpen = Constants.miscCasterClass;
 		}
 		
 		return createFullView(classOpen);

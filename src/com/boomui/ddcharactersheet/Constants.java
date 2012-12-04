@@ -12,4 +12,7 @@ public class Constants{
 	public static int MAGIC_TAB_ANIMATION_LENGTH = 500;
 	
 	public static String defaultClasses = "Misc."+CHARACTER_CLASS_SEPARATOR+"Sorcerer"+CHARACTER_CLASS_SEPARATOR+"Wizard";
+	
+	public static String[] allCasterClassNames = {"Bard", "Cleric", "Druid", "Paladin", "Ranger", "Sorcerer", "Wizard"};
+	public static String miscCasterClass = "Misc.";
 }
