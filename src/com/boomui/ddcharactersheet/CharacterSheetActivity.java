@@ -70,10 +70,9 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 		sltf.setMagicTab(mtf);
 		
 		allCasterClasses = new LinkedList<String>();
-		allCasterClasses.add("Sorcerer");
-		allCasterClasses.add("Wizard");
-		allCasterClasses.add("Cleric");
-		allCasterClasses.add("Druid");
+		for(String s : Constants.allCasterClassNames){
+			allCasterClasses.add(s);
+		}
 	}
 	
   

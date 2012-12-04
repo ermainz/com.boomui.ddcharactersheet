@@ -20,7 +20,11 @@ public class DiceRollSequence {
 			if (isConstant) {
 				value = multiplier * type;
 			} else {
-				value = multiplier * (int) (Math.random() * type + 1);
+				value = 0;
+				
+				for(int i = 0; i < multiplier; i++){
+					value += (int) (Math.random() * type) + 1;
+				}
 			}
 		}
 

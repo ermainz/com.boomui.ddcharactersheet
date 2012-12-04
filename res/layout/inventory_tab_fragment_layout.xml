@@ -12,7 +12,7 @@
         android:layout_weight="0"
         android:text="@string/inventory_title" />
     
-    <TextView
+    <EditText
         android:id="@+id/inventory"
         android:layout_width="match_parent"
         android:layout_height="0dp"
