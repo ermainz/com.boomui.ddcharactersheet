@@ -1,6 +1,7 @@
 package com.boomui.ddcharactersheet;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import android.annotation.SuppressLint;
@@ -19,6 +20,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 public class FeatsTabFragment extends Fragment{
@@ -33,21 +35,29 @@ public class FeatsTabFragment extends Fragment{
 	FeatAdapter adapter;
 	
 	
-	public void onAttach(Activity activity){
-		super.onAttach(activity);
-		
-		parent = activity;
-		com = (FragmentCommunicator)activity;
-	}
+
 	
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 	}
 	
+
 	public void onDestroyView(){
 		super.onDestroyView();
 		adapter.save();
 	}
+	public void onAttach(Activity activity){
+		super.onAttach(activity);
+
+		parent = activity;
+		com = (FragmentCommunicator)activity;
+		
+		//This code hides the keyboard
+		InputMethodManager inputManager = (InputMethodManager)activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+		inputManager.hideSoftInputFromWindow((null == activity.getCurrentFocus()) ? null : activity.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+	}
+
+
 	
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 		LinearLayout view = new LinearLayout(parent);

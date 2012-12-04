@@ -52,16 +52,22 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 	public CharacterSheetActivity(){
 		fragmentMap = new HashMap<String, Fragment>();
 		
+		MagicTabFragment mtf = new MagicTabFragment();
+		SpellLookupTabFragment sltf = new SpellLookupTabFragment();
+		
 		fragmentMap.put("Info", new InfoTabFragment());
 		fragmentMap.put("Combat", new CombatTabFragment());
 		fragmentMap.put("Buffs", new BuffsTabFragment());
 		fragmentMap.put("Skills", new SkillsTabFragment());
-		fragmentMap.put("Magic", new MagicTabFragment());
+		fragmentMap.put("Magic", mtf);
 		fragmentMap.put("Feats", new FeatsTabFragment());
 		fragmentMap.put("Items", new InventoryTabFragment());
 		fragmentMap.put("Notes", new NotesTabFragment());
 		fragmentMap.put("Dice", new DiceRollerTabFragment());
-		fragmentMap.put("Spells", new SpellLookupTabFragment());
+		fragmentMap.put("Spells", sltf);
+		
+		mtf.setSpellbookTab(sltf);
+		sltf.setMagicTab(mtf);
 		
 		allCasterClasses = new LinkedList<String>();
 		allCasterClasses.add("Sorcerer");
@@ -137,7 +143,7 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 		
 		FragmentManager fragmentManager = getFragmentManager();
 		FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-		fragmentTransaction.remove(currentFragment);
+		fragmentTransaction.remove(fragmentManager.findFragmentById(R.id.fragmentView) );
 		fragmentTransaction.commit();
 	}
 	
@@ -535,14 +541,40 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 	}
 	
 	
+	public String loadSpellData(String spellName){
+		//TODO: Fix this
+		InputStream inputStream = getResources().openRawResource(R.raw.phbspelldata);
+		BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream) );
+		
+		String retVal = "";
+		
+		try{
+			String s = reader.readLine();
+			while(s != null && !s.equals(spellName) ){
+				s = reader.readLine();
+			}
+
+			s = reader.readLine();
+			
+			while(s != null && !s.equals("") ){
+				if(s.equals("-n") ){
+					s = "";
+				}
+				
+				s = s.replaceAll("-n", "\n\n");
+				
+				retVal += s + "\n";
+				s = reader.readLine();
+			}
+		}
+		catch(IOException ex){
+			ex.printStackTrace();
+		}
+
+		return retVal;
+	}
 	
 	/**
-	 * This will actually load spells later.
-	 * 
-	 * Possibly the application will load spells with a separate thread, and if
-	 * this is called before they're all loaded, it will block until the rest
-	 * are loaded.
-	 * 
 	 * @return A list of SpellListSpells loaded from file
 	 */
 	public List<SpellListSpell> getAllSpells(){
@@ -582,7 +614,7 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 		}
 	}
 	
-	public boolean isNameOfClass(String name){
+	public boolean isNameOfCasterClass(String name){
 		for(String className : allCasterClasses){
 			if(className.equalsIgnoreCase(name) ){
 				return true;
