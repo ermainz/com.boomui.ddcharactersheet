@@ -24,22 +24,22 @@ public class SkillsListAdapter extends BaseAdapter {
 		inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 	
-	@Override
+	
 	public int getCount() {
 		return data.size();
 	}
 
-	@Override
+	
 	public Object getItem(int position) {
 		return position;
 	}
 
-	@Override
+	
 	public long getItemId(int position) {
 		return position;
 	}
 
-	@Override
+	
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View retView = convertView;
 		if(convertView == null){
