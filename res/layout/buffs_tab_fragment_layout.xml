@@ -57,7 +57,7 @@
             	android:layout_width="match_parent"
     			android:layout_height="wrap_content"
     			android:orientation="horizontal">
-        	    <Button android:text="Back"
+        	    <ImageButton android:src="@drawable/back_turn_arrow"
         	        android:layout_width="100dip"
     				android:layout_height="wrap_content"/>
         	    <Button android:text="Next Turn"

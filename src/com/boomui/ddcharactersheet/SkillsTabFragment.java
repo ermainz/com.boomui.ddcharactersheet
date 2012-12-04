@@ -4,12 +4,14 @@ import java.util.ArrayList;
 
 import android.annotation.SuppressLint;
 import android.app.*;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.*;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 public class SkillsTabFragment extends Fragment {
@@ -87,4 +89,14 @@ public class SkillsTabFragment extends Fragment {
 
 		return mainView;
 	}
+	
+	public void onAttach(Activity activity){
+		super.onAttach(activity);
+		
+		//This code hides the keyboard
+		InputMethodManager inputManager = (InputMethodManager)activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+		inputManager.hideSoftInputFromWindow((null == activity.getCurrentFocus()) ? null : activity.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+	}
+	
+	
 }

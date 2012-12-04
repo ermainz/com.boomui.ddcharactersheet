@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:id="@+id/attackItem">    
+	<LinearLayout 
+            android:layout_width="match_parent"
+    			android:layout_height="wrap_content"
+    			android:orientation="vertical"
+    			android:background="@drawable/combat_border"
+    			android:padding="2dp">
+            <LinearLayout android:layout_width="match_parent"
+    			android:layout_height="wrap_content"
+    			android:orientation="horizontal">
+        	    <LinearLayout android:layout_width="wrap_content"
+    				android:layout_height="wrap_content"
+    				android:layout_weight="1"
+    				android:orientation="vertical">
+                	<TextView android:layout_width="wrap_content"
+    					android:layout_height="wrap_content"
+    					android:text="Name"
+    					
+    					/>
+                	<EditText android:id="@+id/name" 
+                	    android:layout_width="match_parent"
+    					android:layout_height="wrap_content"
+    					android:inputType="text"
+    					android:text="Longsword"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="wrap_content"
+    				android:layout_height="wrap_content"
+    				android:orientation="vertical"
+    				android:layout_weight="1">
+                	<TextView android:layout_width="wrap_content"
+    					android:layout_height="wrap_content"
+    					android:text="Attack"
+    					/>
+                	<EditText android:id="@+id/attack" 
+                	    android:layout_width="match_parent"
+    					android:layout_height="wrap_content"
+    					android:inputType="number"
+    					android:text="+3"
+    					/>
+                </LinearLayout>
+                <ImageButton android:id="@+id/attackRoll" 
+                    android:src="@drawable/die_roll"
+                    android:layout_width="wrap_content"
+    					android:layout_height="wrap_content"/>
+                
+                <LinearLayout android:layout_width="wrap_content"
+                	android:layout_height="wrap_content"
+    				android:orientation="vertical"
+    				android:layout_weight="1">
+                	<TextView android:layout_width="wrap_content"
+    					android:layout_height="wrap_content"
+    					android:text="Damage"
+    					/>
+                	<EditText android:id="@+id/damage"  
+                	    android:layout_width="match_parent"
+    					android:layout_height="wrap_content"
+    					android:inputType="text"
+    					android:text="1d8 + 1"/>
+                </LinearLayout>
+                <ImageButton android:id="@+id/damageRoll"  
+                    android:src="@drawable/die_roll"
+                    android:layout_width="wrap_content"
+    					android:layout_height="wrap_content"
+    					/>
+            </LinearLayout>            
+            <LinearLayout android:layout_width="match_parent"
+    			android:layout_height="wrap_content"
+    			android:orientation="horizontal">
+                <LinearLayout android:layout_width="wrap_content"
+    				android:layout_height="wrap_content"
+    				android:orientation="vertical"
+    				android:layout_weight="1">
+                	<TextView android:layout_width="wrap_content"
+    					android:layout_height="wrap_content"
+    					android:text="Type"
+    					/>
+                	<EditText android:id="@+id/type" 
+                	    android:layout_width="match_parent"
+    					android:layout_height="wrap_content"
+    					android:inputType="text"
+    					android:text="Slash"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="wrap_content"
+                	android:layout_height="wrap_content"
+    				android:orientation="vertical"
+    				android:layout_weight="1">
+                	<TextView android:layout_width="wrap_content"
+    					android:layout_height="wrap_content"
+    					android:text="Range"
+    					/>
+                	<EditText android:id="@+id/range" 
+                	    android:layout_width="match_parent"
+    					android:layout_height="wrap_content"
+    					android:inputType="text"
+    					android:text="NA"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="wrap_content"
+    				android:layout_height="wrap_content"
+    				android:orientation="vertical"
+    				android:layout_weight="1">
+                	<TextView android:layout_width="wrap_content"
+    					android:layout_height="wrap_content"
+    					android:text="Crit"
+    					/>
+                	<EditText android:id="@+id/crit" 
+                	    android:layout_width="match_parent"
+    					android:layout_height="wrap_content"
+    					android:inputType="text"
+    					android:text="STEVE'S SWORD"/>
+                </LinearLayout>
+                
+            </LinearLayout>
+            <EditText android:id="@+id/notes" 
+                android:layout_width="match_parent"
+    					android:layout_height="wrap_content"
+    					android:inputType="text"
+    					android:text="STEVE'S SWORD"/>
+        </LinearLayout>
+    
+</LinearLayout>

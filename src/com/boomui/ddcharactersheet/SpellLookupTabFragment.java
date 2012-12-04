@@ -15,6 +15,7 @@ import android.support.v4.app.NavUtils;
 import android.text.InputType;
 import android.view.*;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AbsListView;
 import android.widget.Adapter;
@@ -53,6 +54,8 @@ public class SpellLookupTabFragment extends Fragment implements SearchedSpellInt
 	String[] classes;
 	LinearLayout[] classPanes;
 	
+	Fragment magicTab;
+	
 	SearchView searcher;
 	ListView spellList;
 	TextView failureField;
@@ -60,6 +63,10 @@ public class SpellLookupTabFragment extends Fragment implements SearchedSpellInt
 	
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
+	}
+	
+	public void setMagicTab(Fragment magicTab){
+		this.magicTab = magicTab;
 	}
 	
 	public void onAttach(Activity activity){
@@ -73,13 +80,6 @@ public class SpellLookupTabFragment extends Fragment implements SearchedSpellInt
 		InputMethodManager inputManager = (InputMethodManager)activity.getSystemService(Context.INPUT_METHOD_SERVICE);
 		inputManager.hideSoftInputFromWindow((null == activity.getCurrentFocus()) ? null : activity.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 	}
-
-	/*public void onResume(){
-		super.onResume();
-		
-		InputMethodManager inputManager = (InputMethodManager)parent.getSystemService(Context.INPUT_METHOD_SERVICE);
-		inputManager.hideSoftInputFromWindow((null == parent.getCurrentFocus()) ? null : parent.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-	}*/
 	
 	public void onDestroyView(){
 		super.onDestroyView();
@@ -108,6 +108,15 @@ public class SpellLookupTabFragment extends Fragment implements SearchedSpellInt
 		return createFullView(classOpen);
 		//return createSpellsKnownColumn(classOpen);
 		//return inflater.inflate(R.layout.spell_lookup_tab_fragment, container, false);
+	}
+	
+	public void onResume(){
+		super.onResume();
+		
+		if(!searcher.getQuery().toString().equals("") ){
+			System.out.println("Query: |" + searcher.getQuery().toString() + "|");
+			this.doSpellSearch(searcher.getQuery().toString() );
+		}
 	}
 	
 	public LinearLayout createSpellsKnownColumn(String classOpen){
@@ -190,6 +199,7 @@ public class SpellLookupTabFragment extends Fragment implements SearchedSpellInt
 		spellListAdapter = new SpellSearchListAdapter(parent, this);
 		spellList.setAdapter(spellListAdapter);
 		allAdapters.add(spellListAdapter);
+		searcher.setQueryHint("Search by spell or class");
 		
 		searcher.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT) );
 		searcher.setIconifiedByDefault(false);
@@ -259,6 +269,22 @@ public class SpellLookupTabFragment extends Fragment implements SearchedSpellInt
 		Button goBack = new Button(parent);
 		goBack.setText("Prepare Spells");
 		goBack.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, 0) );
+		
+		final Activity listenerActivity = parent;
+		goBack.setOnClickListener(new OnClickListener(){
+			public void onClick(View v){
+				FragmentManager fragmentManager = listenerActivity.getFragmentManager();
+				Fragment currentFragment = fragmentManager.findFragmentById(R.id.fragmentView);
+				
+				FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+				fragmentTransaction.remove(currentFragment);
+				fragmentTransaction.commit();
+
+				fragmentTransaction = fragmentManager.beginTransaction();
+				fragmentTransaction.add(R.id.fragmentView, magicTab);
+				fragmentTransaction.commit();
+			}
+		});
 		
 		LinearLayout column = new LinearLayout(parent);
 		column.setOrientation(LinearLayout.VERTICAL);
@@ -360,7 +386,7 @@ public class SpellLookupTabFragment extends Fragment implements SearchedSpellInt
 			}
 		}
 		
-		if(spellLoader.isNameOfClass(searchString) ){
+		if(spellLoader.isNameOfCasterClass(searchString) ){
 			for(SpellListSpell spell : allSpells){
 				if(spell.castBy(searchString, level) ){
 					//spellsFoundByName.add(spell);
@@ -424,6 +450,24 @@ class SpellSearchListAdapter extends BaseAdapter{
 		name.setOnClickListener(new OnClickListener(){
 			public void onClick(View v){
 				listener.spellClicked(listenerSpell);
+			}
+		});
+		final Activity listenerActivity = parent;
+		final int listenerIndex = index;
+		name.setOnLongClickListener(new OnLongClickListener(){
+			public boolean onLongClick(View v){
+				FragmentManager fragmentManager = listenerActivity.getFragmentManager();
+				Fragment currentFragment = fragmentManager.findFragmentById(R.id.fragmentView);
+				
+				FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+				fragmentTransaction.remove(currentFragment);
+				fragmentTransaction.commit();
+
+				fragmentTransaction = fragmentManager.beginTransaction();
+				fragmentTransaction.add(R.id.fragmentView, new SpellDataDisplayFragment(getItem(listenerIndex).name, currentFragment) );
+				fragmentTransaction.commit();
+				
+				return true;
 			}
 		});
 		
