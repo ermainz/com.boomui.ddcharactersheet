@@ -39,7 +39,6 @@ public class SkillsListAdapter extends BaseAdapter {
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		editTextListener = new TextView.OnEditorActionListener() {
 			
-			@Override
 			public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
 				// TODO Auto-generated method stub
 				imm.hideSoftInputFromWindow(v.getWindowToken(), 0);

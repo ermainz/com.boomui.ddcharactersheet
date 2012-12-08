@@ -166,7 +166,6 @@ public class SkillsTabFragment extends Fragment {
 
 		View.OnClickListener onClickListener = new View.OnClickListener() {
 
-			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				View parent = (View) v.getParent();
