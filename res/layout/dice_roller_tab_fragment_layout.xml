@@ -15,13 +15,14 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="horizontal" >
+        android:orientation="horizontal" 
+        android:background="@drawable/dice_roller_border">
 
         <TextView
             android:id="@+id/input_viewer"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="5"
             android:gravity="center_vertical"
             android:text=""
             android:textSize="25sp" />

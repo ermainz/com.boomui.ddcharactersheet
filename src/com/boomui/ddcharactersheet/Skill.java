@@ -21,4 +21,9 @@ public class Skill {
 		this.skillModifier = this.ranks + this.abilityModifier
 				+ this.miscModifier + this.buffsModifier;
 	}
+	
+	public void recalculateMod(){
+		this.skillModifier = this.ranks + this.abilityModifier
+		+ this.miscModifier + this.buffsModifier;
+	}
 }
