@@ -11,14 +11,29 @@
         android:layout_weight="5"
         android:transcriptMode="alwaysScroll" />
 
-    <TextView
-        android:id="@+id/input_viewer"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:gravity="center_vertical"
-        android:text=""
-        android:textSize="25sp" />
+        android:orientation="horizontal" 
+        android:background="@drawable/dice_roller_border">
+
+        <TextView
+            android:id="@+id/input_viewer"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:gravity="center_vertical"
+            android:text=""
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/dice_roller_clear_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="CLEAR" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -202,6 +217,11 @@
         android:layout_weight="1"
         android:orientation="horizontal" >
 
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
         <Button
             android:id="@+id/mult0_button"
             android:layout_width="0dp"
@@ -209,12 +229,27 @@
             android:layout_weight="1"
             android:text="0" />
 
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
         <Button
             android:id="@+id/dConstant_button"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Constant" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
     </LinearLayout>
 
     <LinearLayout
@@ -224,18 +259,11 @@
         android:orientation="horizontal" >
 
         <Button
-            android:id="@+id/dice_roller_clear_button"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="CLEAR" />
-
-        <Button
             android:id="@+id/dice_roller_done_button"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="DONE" />
+            android:text="ROLL" />
     </LinearLayout>
 
 </LinearLayout>

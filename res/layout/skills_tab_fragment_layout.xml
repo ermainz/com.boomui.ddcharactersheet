@@ -18,28 +18,28 @@
             android:id="@+id/skill_name_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="6"
+            android:layout_weight="10"
             android:text="Skill Name"
-            android:textSize="8dp" />
+            android:textSize="7dp" />
 
         <TextView
             android:id="@+id/key_ability_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_weight="3"
             android:text="Key Ability"
-            android:textSize="8dp" />
+            android:textSize="7dp" />
 
         <TextView
             android:id="@+id/skill_modifier_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:text="Skill Mod."
-            android:textSize="8dp" />
+            android:textSize="7dp" />
 
         <TextView
-            android:id="@+id/equas_sign"
+            android:id="@+id/equals_sign"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -49,9 +49,9 @@
             android:id="@+id/ranks_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:text="Ranks"
-            android:textSize="8dp" />
+            android:textSize="7dp" />
 
         <TextView
             android:id="@+id/plus_sign1"
@@ -66,7 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Ability Mod."
-            android:textSize="8dp" />
+            android:textSize="7dp" />
 
         <TextView
             android:id="@+id/plus_sign2"
@@ -79,9 +79,9 @@
             android:id="@+id/misc_modifier_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:text="Misc. Mod."
-            android:textSize="8dp" />
+            android:textSize="7dp" />
 
         <TextView
             android:id="@+id/plus_sign3"
@@ -96,16 +96,15 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Buffs Mod."
-            android:textSize="8dp" />
+            android:textSize="7dp" />
 
         <TextView
-            android:id="@+id/skill_dice_roll_hearder"
-            android:layout_width="wrap_content"
+            android:id="@+id/skill_dice_roll_output"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Roll"
+            android:layout_weight="4"
             android:padding="26dp"
-            android:textSize="8dp" />
+            android:text="" />
     </LinearLayout>
 
     <ListView

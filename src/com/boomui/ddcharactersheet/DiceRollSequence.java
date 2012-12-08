@@ -31,7 +31,7 @@ public class DiceRollSequence {
 		public String toString() {
 			String ret = "";
 			if (isConstant) {
-				ret += multiplier + "*" + type;
+				ret += multiplier;
 			} else {
 				if (multiplier == 1) {
 					ret += "d" + type;
