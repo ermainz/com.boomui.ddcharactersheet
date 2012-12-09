@@ -74,6 +74,10 @@ public class CombatTabFragment extends Fragment implements CombatTabRollListener
 		View view = inflater.inflate(R.layout.combat_tab_fragment_layout, container, false);
 		main_view = view;
 		
+		String roll = com.loadData(CharacterDataKey.DICE_ROLL_LAST);
+		if(roll != null)
+			((TextView)main_view.findViewById(R.id.recent_roll)).setText("Last Roll: "+roll);
+		
 		String hp = com.loadData(CharacterDataKey.HP);
 		if(hp == null){
 			hp = "0";
@@ -658,8 +662,14 @@ public class CombatTabFragment extends Fragment implements CombatTabRollListener
 	}	
 	
 	public void roll(String value){
-		if(value != null && !value.isEmpty())
+		if(value != null && !value.isEmpty()){
 			((TextView)main_view.findViewById(R.id.recent_roll)).setText("Last Roll: "+value);
+			String history = com.loadData(CharacterDataKey.DICE_ROLL_HISTORY);
+			history+="Attack "+value+",";
+			com.saveData(CharacterDataKey.DICE_ROLL_HISTORY, history);
+			com.saveData(CharacterDataKey.DICE_ROLL_LAST, value);
+			//com.saveData(CharacterDataKey.DICE_ROLL_HISTORY, "");
+		}
 		else
 			((TextView)main_view.findViewById(R.id.recent_roll)).setText("Improper syntax; use e.g. 3d4 + d6 + -1");
 	}

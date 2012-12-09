@@ -206,6 +206,10 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 		int fort_save = Integer.parseInt(loadData(CharacterDataKey.FORT_CLASS)) + Integer.parseInt(loadData(CharacterDataKey.FORT_BUFF)) + Integer.parseInt(((TextView) findViewById(R.id.con_modifier)).getText().toString()) + Integer.parseInt(loadData(CharacterDataKey.FORT));
 		int fort_total = roll + fort_save;
 		((TextView) findViewById(R.id.recent_roll)).setText("Last Roll: " + roll + " + " + fort_save + " = " + fort_total);
+		String history = loadData(CharacterDataKey.DICE_ROLL_HISTORY);
+		history+="Fort "+roll + " + " + fort_save + " = " + fort_total+",";
+		saveData(CharacterDataKey.DICE_ROLL_HISTORY, history);
+		saveData(CharacterDataKey.DICE_ROLL_LAST, roll + " + " + fort_save + " = " + fort_total);
 	}
 	
 	public void roll_ref(View v){
@@ -213,6 +217,10 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 		int save = Integer.parseInt(loadData(CharacterDataKey.REF_CLASS)) + Integer.parseInt(loadData(CharacterDataKey.REF_BUFF)) + Integer.parseInt(((TextView) findViewById(R.id.dex_modifier)).getText().toString()) + Integer.parseInt(loadData(CharacterDataKey.REF));
 		int total = roll + save;
 		((TextView) findViewById(R.id.recent_roll)).setText("Last Roll: " + roll + " + " + save + " = " + total);
+		String history = loadData(CharacterDataKey.DICE_ROLL_HISTORY);
+		history+="Ref "+roll + " + " + save + " = " + total+",";
+		saveData(CharacterDataKey.DICE_ROLL_HISTORY, history);
+		saveData(CharacterDataKey.DICE_ROLL_LAST, roll + " + " + save + " = " + total);
 	}
 	
 	public void roll_will(View v){
@@ -220,6 +228,10 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 		int save = Integer.parseInt(loadData(CharacterDataKey.WILL_CLASS)) + Integer.parseInt(loadData(CharacterDataKey.WILL_BUFF)) + Integer.parseInt(((TextView) findViewById(R.id.wis_modifier)).getText().toString()) + Integer.parseInt(loadData(CharacterDataKey.WILL));
 		int total = roll + save;
 		((TextView) findViewById(R.id.recent_roll)).setText("Last Roll: " + roll + " + " + save + " = " + total);
+		String history = loadData(CharacterDataKey.DICE_ROLL_HISTORY);
+		history+="Will "+roll + " + " + save + " = " + total+",";
+		saveData(CharacterDataKey.DICE_ROLL_HISTORY, history);
+		saveData(CharacterDataKey.DICE_ROLL_LAST, roll + " + " + save + " = " + total);
 	}
 	public void roll_initiative(View v){
 		int roll = (int) (Math.random() * 20)+1;
@@ -228,6 +240,10 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 				Integer.parseInt(((TextView) findViewById(R.id.dex_modifier)).getText().toString());
 		int total = roll + save;
 		((TextView) findViewById(R.id.recent_roll)).setText("Last Roll: " + roll + " + " + save + " = " + total);
+		String history = loadData(CharacterDataKey.DICE_ROLL_HISTORY);
+		history+="Initiative "+roll + " + " + save + " = " + total+",";
+		saveData(CharacterDataKey.DICE_ROLL_HISTORY, history);
+		saveData(CharacterDataKey.DICE_ROLL_LAST, roll + " + " + save + " = " + total);
 	}
 	
 	public void editFortitude(View view){
