@@ -183,10 +183,11 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 		catch(IOException ex){
 			System.err.println("Couldn't load data: " + tag.toString());
 		}
-		
 		return null;
 	}
 	
+	
+	//OLD CODE
 	public void roll_damage(View v){
 		int roll = (int) (Math.random() * 8);
 		int damage = roll + 1;
@@ -198,29 +199,31 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 		int attack = roll + 3;
 		((TextView) findViewById(R.id.recent_roll)).setText("Last Roll: " + roll + " + " + "3 = " + attack);
 	}
+	//OLD CODE
+	
 	
 	public void roll_fort(View v){
-		int roll = (int) (Math.random() * 20);
+		int roll = (int) (Math.random() * 20) + 1;
 		int fort_save = Integer.parseInt(loadData(CharacterDataKey.FORT_CLASS)) + Integer.parseInt(loadData(CharacterDataKey.FORT_BUFF)) + Integer.parseInt(((TextView) findViewById(R.id.con_modifier)).getText().toString()) + Integer.parseInt(loadData(CharacterDataKey.FORT));
 		int fort_total = roll + fort_save;
 		((TextView) findViewById(R.id.recent_roll)).setText("Last Roll: " + roll + " + " + fort_save + " = " + fort_total);
 	}
 	
 	public void roll_ref(View v){
-		int roll = (int) (Math.random() * 20);
+		int roll = (int) (Math.random() * 20) + 1;
 		int save = Integer.parseInt(loadData(CharacterDataKey.REF_CLASS)) + Integer.parseInt(loadData(CharacterDataKey.REF_BUFF)) + Integer.parseInt(((TextView) findViewById(R.id.dex_modifier)).getText().toString()) + Integer.parseInt(loadData(CharacterDataKey.REF));
 		int total = roll + save;
 		((TextView) findViewById(R.id.recent_roll)).setText("Last Roll: " + roll + " + " + save + " = " + total);
 	}
 	
 	public void roll_will(View v){
-		int roll = (int) (Math.random() * 20);
+		int roll = (int) (Math.random() * 20)+1;
 		int save = Integer.parseInt(loadData(CharacterDataKey.WILL_CLASS)) + Integer.parseInt(loadData(CharacterDataKey.WILL_BUFF)) + Integer.parseInt(((TextView) findViewById(R.id.wis_modifier)).getText().toString()) + Integer.parseInt(loadData(CharacterDataKey.WILL));
 		int total = roll + save;
 		((TextView) findViewById(R.id.recent_roll)).setText("Last Roll: " + roll + " + " + save + " = " + total);
 	}
 	public void roll_initiative(View v){
-		int roll = (int) (Math.random() * 20);
+		int roll = (int) (Math.random() * 20)+1;
 		int save = Integer.parseInt(loadData(CharacterDataKey.INITIATIVE)) + 
 				Integer.parseInt(loadData(CharacterDataKey.INITIATIVE_BUFF)) + 
 				Integer.parseInt(((TextView) findViewById(R.id.dex_modifier)).getText().toString());
@@ -358,6 +361,12 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 	    FragmentCommunicator com;
 		Activity parent;
 		View main_view;
+		
+		public void onAttach(Activity activity){
+			super.onAttach(activity);
+			parent = activity;
+			com = (FragmentCommunicator) activity;
+		}
 		
 	    @Override
 	    public void onCreate(Bundle savedInstanceState) {
@@ -653,7 +662,7 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 	    	EditText retVal = new EditText(parent);
 	    	retVal.setText(value);
 	    	retVal.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1));
-	    	retVal.setInputType(InputType.TYPE_CLASS_NUMBER);
+	    	retVal.setInputType(InputType.TYPE_NUMBER_FLAG_SIGNED);
 	    	
 	    	return retVal;	
 	    }
@@ -862,7 +871,7 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 	    	EditText retVal = new EditText(parent);
 	    	retVal.setText(value);
 	    	retVal.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1));
-	    	retVal.setInputType(InputType.TYPE_CLASS_NUMBER);
+	    	retVal.setInputType(InputType.TYPE_NUMBER_FLAG_SIGNED);
 	    	
 	    	return retVal;	
 	    }
@@ -1056,7 +1065,7 @@ public class CharacterSheetActivity extends Activity implements ActionBar.TabLis
 	    	EditText retVal = new EditText(parent);
 	    	retVal.setText(value);
 	    	retVal.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1));
-	    	retVal.setInputType(InputType.TYPE_CLASS_NUMBER);
+	    	retVal.setInputType(InputType.TYPE_NUMBER_FLAG_SIGNED);
 	    	
 	    	return retVal;	
 	    }

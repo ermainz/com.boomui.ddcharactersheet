@@ -126,10 +126,30 @@ class Buff{
 	private List<BuffSkill> buffSkills = new ArrayList<BuffSkill>();
 	
 	public Buff(){
+		/*
 		BuffSkill skill1 = new BuffSkill("Concentration","3");
 		BuffSkill skill2 = new BuffSkill("Jump","-2");
 		buffSkills.add(skill1);
 		buffSkills.add(skill2);
+		*/
+	}
+	public Buff(Buff buff){
+		fort = buff.fort;
+		ref = buff.ref;
+		will = buff.will;
+		str = buff.str;
+		dex = buff.dex;
+		con = buff.con;
+		intl = buff.intl;
+		wis = buff.wis;
+		cha = buff.cha;
+		ac = buff.ac;
+		turns = buff.turns;
+		name = buff.name;
+		for(BuffSkill buffSkill: buff.buffSkills){
+			BuffSkill new_buffSkill = new BuffSkill(buffSkill.name, buffSkill.value);
+			buffSkills.add(new_buffSkill);
+		}
 	}
 	
 	public List<BuffSkill> getBuffSkills(){

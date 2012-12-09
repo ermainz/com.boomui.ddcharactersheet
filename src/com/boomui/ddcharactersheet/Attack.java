@@ -37,9 +37,9 @@ public class Attack {
 		String retVal = "";
 		String damage_string = new String(damage);
 		int total_damage = 0;
-		
+		try{
 		damage_string = damage_string.replaceAll("\\s","");
-		System.err.println(damage_string);
+		
 		if(damage_string == null || damage_string.isEmpty() )
 			damage_string = "";
 		else{
@@ -56,7 +56,7 @@ public class Attack {
 					if(!constant[0].isEmpty())
 						die_number = Integer.parseInt(constant[0]);
 					for(int i = 0; i < die_number ; i++)
-						dice_roll += (int)(Math.random()*die_size);
+						dice_roll += (int)(Math.random()*die_size) + 1;
 					total_damage+=dice_roll;
 					retVal += dice_roll + " + ";
 				}
@@ -66,13 +66,16 @@ public class Attack {
 			retVal += "= "+total_damage;
 		}
 		return retVal;
+		} catch (Exception e){
+			return null;
+		}
 	}
 	public String rollAttack(){
 		String retVal = "";
 		if(attack == null || attack.isEmpty())
 			attack = "0";
 		int bonus = Integer.parseInt(attack);
-		int die_roll = (int)(Math.random()*20);
+		int die_roll = (int)(Math.random()*20) + 1;
 		int total = bonus + die_roll;
 		retVal = die_roll + " + " + bonus + " = " + total ;
 		return retVal;

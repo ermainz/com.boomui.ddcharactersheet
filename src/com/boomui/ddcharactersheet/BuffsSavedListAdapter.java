@@ -65,6 +65,7 @@ public class BuffsSavedListAdapter extends BaseExpandableListAdapter{
 		textView.setLayoutParams(lp);
 		// Center the text vertically
 		textView.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
+		textView.setTextAppearance(parent, android.R.style.TextAppearance_Medium);
 		// Set the text starting position
 		textView.setPadding(36, 0, 0, 0);
 		return textView;
@@ -80,7 +81,7 @@ public class BuffsSavedListAdapter extends BaseExpandableListAdapter{
 		textView.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
 		textView.setPadding(36, 0, 0, 0);
 		textView.setText(data.getBuffs().get(level).turns);
-		textView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1) );
+		//textView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1) );
 		
 		final int gPos = level;
 		textView.addTextChangedListener(new TextWatcher() {
@@ -93,6 +94,7 @@ public class BuffsSavedListAdapter extends BaseExpandableListAdapter{
 		final Buff buffEdit = data.getBuffs().get(level);
 		Button add_to_active = new Button(parent);
 		add_to_active.setText("->");
+		//add_to_active.setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
 		add_to_active.setOnClickListener(new OnClickListener(){
 			public void onClick(View v){
 				if(!buffEdit.turns.equals("0")){
@@ -159,6 +161,7 @@ public class BuffsSavedListAdapter extends BaseExpandableListAdapter{
 		editTurnsView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1) );
 		
 		TextView editTurnsText = new TextView(parent);
+		editTurnsText.setTextAppearance(parent, android.R.style.TextAppearance_Medium);
 		editTurnsText.setText("Turns: ");
 		
 		EditText editTurns = new EditText(parent);
@@ -166,9 +169,9 @@ public class BuffsSavedListAdapter extends BaseExpandableListAdapter{
 		editTurns.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
 		
 		editTurns.setText(editBuff.turns);
-		editTurns.setInputType(InputType.TYPE_CLASS_NUMBER);
+		editTurns.setInputType(InputType.TYPE_NUMBER_FLAG_SIGNED);
 		editTurns.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1) );
-
+		editTurns.setSelectAllOnFocus(true);
 		editTurns.addTextChangedListener(new TextWatcher() {
 		    public void onTextChanged(CharSequence s, int start, int before, int count) {}
 		    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -184,12 +187,14 @@ public class BuffsSavedListAdapter extends BaseExpandableListAdapter{
 		//cbox.setOnCheckedChangeListener(new SpellsPreparedOnCheckedChangeListener(lView, name, listenerSpell, this));
 		
 		final Button editBuffs = new Button(parent);
+		//editBuffs.setPadding(36, 0, 0, 0);
+		//editBuffs.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams., LinearLayout.LayoutParams.WRAP_CONTENT, 1) );
 		String description = getChild(groupPosition, childPosition).getDescription();
 		if (description.equals(""))
 			editBuffs.setText("Edit Attributes");
 		else
 			editBuffs.setText(description);
-		editBuffs.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1) );
+		editBuffs.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1) );
 		//editBuffs.setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
 		editBuffs.setOnClickListener(new OnClickListener(){
 			public void onClick(View v){
@@ -205,7 +210,7 @@ public class BuffsSavedListAdapter extends BaseExpandableListAdapter{
 			editSkills.setText("Edit Skills");
 		else
 			editSkills.setText(descriptionSkills);
-		editSkills.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1) );
+		editSkills.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1) );
 		//editBuffs.setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
 		editSkills.setOnClickListener(new OnClickListener(){
 			public void onClick(View v){
@@ -298,8 +303,8 @@ public class BuffsSavedListAdapter extends BaseExpandableListAdapter{
 	    	EditText retVal = new EditText(parent);
 	    	retVal.setText(value);
 	    	retVal.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1));
-	    	retVal.setInputType(InputType.TYPE_CLASS_NUMBER);
-	    	
+	    	retVal.setInputType(InputType.TYPE_NUMBER_FLAG_SIGNED);
+	    	retVal.setSelectAllOnFocus(true);
 	    	return retVal;	
 	    }
 	    
@@ -496,7 +501,7 @@ public class BuffsSavedListAdapter extends BaseExpandableListAdapter{
 	    	EditText retVal = new EditText(parent);
 	    	retVal.setText(value);
 	    	retVal.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1));
-	    	retVal.setInputType(InputType.TYPE_CLASS_NUMBER);
+	    	retVal.setInputType(InputType.TYPE_NUMBER_FLAG_SIGNED);
 	    	
 	    	return retVal;	
 	    }
@@ -517,7 +522,7 @@ public class BuffsSavedListAdapter extends BaseExpandableListAdapter{
 	        GridView gridView = new GridView(parent);
 	        final SkillAdapter adapter = new SkillAdapter(parent, buff, buffButton);	        
 	        gridView.setAdapter(adapter);
-	        gridView.setNumColumns(2);
+	        gridView.setNumColumns(1);
 	        
 	        Button addSkill = new Button(parent);
 	        addSkill.setText("Add Skill Buff");
@@ -589,7 +594,8 @@ public class BuffsSavedListAdapter extends BaseExpandableListAdapter{
 	        
 	        
 	        EditText skillValue = new EditText(parent);
-	        skillValue.setInputType(InputType.TYPE_CLASS_NUMBER);
+	        skillValue.setInputType(InputType.TYPE_NUMBER_FLAG_SIGNED);
+	        skillValue.setSelectAllOnFocus(true);
 	        skillValue.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1));
 	        skillValue.setText(buff.getBuffSkills().get(position).value);
 	        skillValue.addTextChangedListener(new TextWatcher() {
@@ -601,8 +607,18 @@ public class BuffsSavedListAdapter extends BaseExpandableListAdapter{
 			    }
 			});
 	        
+	        Button remove = new Button(parent);
+	        remove.setText("X");
+	        remove.setOnClickListener(new OnClickListener(){
+				public void onClick(View arg0) {
+					buff.getBuffSkills().remove(buffSkill);
+					notifyDataSetChanged();
+				}	        	
+	        });
+	        
 	        view.addView(skillName);
 	        view.addView(skillValue);
+	        view.addView(remove);
 	        
 	        return view;
 	    }

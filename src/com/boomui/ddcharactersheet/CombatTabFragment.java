@@ -107,13 +107,16 @@ public class CombatTabFragment extends Fragment implements CombatTabRollListener
 		((EditText)view.findViewById(R.id.str_base)).setText(str);
 		String str_buff = com.loadData(CharacterDataKey.STR_BUFF);
 		if(str_buff == null || str_buff.isEmpty()){
+			str_buff="0";
+			com.saveData(CharacterDataKey.STR_BUFF, "0");
 			((TextView)view.findViewById(R.id.str_value)).setText("STR: "+str+" = ");	
 			str_total = Integer.parseInt(str);
 		} else {
 			str_total = Integer.parseInt(str) + Integer.parseInt(str_buff);
-			((TextView)view.findViewById(R.id.str_value)).setText("STR: "+str_total+" = ");
-			((TextView)view.findViewById(R.id.str_buff)).setText(str_buff);
+			((TextView)view.findViewById(R.id.str_value)).setText("STR: "+str_total+" = ");			
 		}
+		((TextView)view.findViewById(R.id.str_buff)).setText(str_buff);
+		
 		String dex = com.loadData(CharacterDataKey.DEX);
 		if(dex == null){
 			dex = "0";
@@ -121,13 +124,16 @@ public class CombatTabFragment extends Fragment implements CombatTabRollListener
 		((EditText)view.findViewById(R.id.dex_base)).setText(dex);
 		String dex_buff = com.loadData(CharacterDataKey.DEX_BUFF);
 		if(dex_buff == null || dex_buff.isEmpty()){
+			dex_buff = "0";
+			com.saveData(CharacterDataKey.DEX_BUFF, "0");
 			((TextView)view.findViewById(R.id.dex_value)).setText("DEX: "+dex+" = ");
 			dex_total = Integer.parseInt(dex);
 		} else {
 			dex_total = Integer.parseInt(dex) + Integer.parseInt(dex_buff);
-			((TextView)view.findViewById(R.id.dex_value)).setText("DEX: "+dex_total+" = ");
-			((TextView)view.findViewById(R.id.dex_buff)).setText(dex_buff);
+			((TextView)view.findViewById(R.id.dex_value)).setText("DEX: "+dex_total+" = ");			
 		}
+		((TextView)view.findViewById(R.id.dex_buff)).setText(dex_buff);
+		
 		String con = com.loadData(CharacterDataKey.CON);
 		if(con == null){
 			con = "0";
@@ -135,13 +141,16 @@ public class CombatTabFragment extends Fragment implements CombatTabRollListener
 		((EditText)view.findViewById(R.id.con_base)).setText(con);
 		String con_buff = com.loadData(CharacterDataKey.CON_BUFF);
 		if(con_buff == null || con_buff.isEmpty()){
+			con_buff="0";
+			com.saveData(CharacterDataKey.CON_BUFF, "0");
 			((TextView)view.findViewById(R.id.con_value)).setText("CON: "+con+" = ");
 			con_total = Integer.parseInt(con);
 		} else {
 			con_total = Integer.parseInt(con) + Integer.parseInt(con_buff);
-			((TextView)view.findViewById(R.id.con_value)).setText("CON: "+con_total+" = ");
-			((TextView)view.findViewById(R.id.con_buff)).setText(str_buff);
+			((TextView)view.findViewById(R.id.con_value)).setText("CON: "+con_total+" = ");			
 		}
+		((TextView)view.findViewById(R.id.con_buff)).setText(str_buff);
+		
 		String intelligence = com.loadData(CharacterDataKey.INT);
 		if(intelligence == null){
 			intelligence = "0";
@@ -149,13 +158,16 @@ public class CombatTabFragment extends Fragment implements CombatTabRollListener
 		((EditText)view.findViewById(R.id.int_base)).setText(intelligence);
 		String int_buff = com.loadData(CharacterDataKey.INT_BUFF);
 		if(int_buff == null || int_buff.isEmpty()){
+			int_buff = "0";
+			com.saveData(CharacterDataKey.INT_BUFF, "0");
 			((TextView)view.findViewById(R.id.int_value)).setText("INT: "+intelligence+" = ");
 			int_total = Integer.parseInt(intelligence);
 		} else {
 			int_total = Integer.parseInt(intelligence) + Integer.parseInt(int_buff);
-			((TextView)view.findViewById(R.id.int_value)).setText("INT: "+int_total+" = ");
-			((TextView)view.findViewById(R.id.int_buff)).setText(int_buff);
+			((TextView)view.findViewById(R.id.int_value)).setText("INT: "+int_total+" = ");			
 		}
+		((TextView)view.findViewById(R.id.int_buff)).setText(int_buff);
+		
 		String wis = com.loadData(CharacterDataKey.WIS);
 		if(wis == null){
 			wis = "0";
@@ -164,13 +176,16 @@ public class CombatTabFragment extends Fragment implements CombatTabRollListener
 		
 		String wis_buff = com.loadData(CharacterDataKey.WIS_BUFF);
 		if(wis_buff == null || wis_buff.isEmpty()){
+			wis_buff="0";
+			com.saveData(CharacterDataKey.WIS_BUFF, "0");
 			((TextView)view.findViewById(R.id.wis_value)).setText("WIS: "+wis+" = ");
 			wis_total = Integer.parseInt(wis);
 		} else {
 			wis_total = Integer.parseInt(wis) + Integer.parseInt(wis_buff);
 			((TextView)view.findViewById(R.id.wis_value)).setText("WIS: "+wis_total+" = ");
-			((TextView)view.findViewById(R.id.wis_buff)).setText(" + "+wis_buff+ " ");
 		}
+		((TextView)view.findViewById(R.id.wis_buff)).setText(wis_buff);
+		
 		String cha = com.loadData(CharacterDataKey.CHA);
 		if(cha == null){
 			cha = "0";
@@ -178,14 +193,15 @@ public class CombatTabFragment extends Fragment implements CombatTabRollListener
 		((EditText)view.findViewById(R.id.cha_base)).setText(cha);
 		String cha_buff = com.loadData(CharacterDataKey.CHA_BUFF);
 		if(cha_buff == null || cha_buff.isEmpty()){
+			cha_buff="0";
+			com.saveData(CharacterDataKey.CHA_BUFF, "0");
 			((TextView)view.findViewById(R.id.cha_value)).setText("CHA: "+cha+" = ");
 			cha_total = Integer.parseInt(cha);
 		} else {
 			cha_total = Integer.parseInt(cha) + Integer.parseInt(cha_buff);
 			((TextView)view.findViewById(R.id.cha_value)).setText("CHA: "+cha_total+" = ");
-			((TextView)view.findViewById(R.id.cha_buff)).setText(cha_buff);
 		}
-		
+		((TextView)view.findViewById(R.id.cha_buff)).setText(cha_buff);
 		
 		int str_mod, dex_mod, con_mod, int_mod, wis_mod, cha_mod;
 		str_mod = str_total / 2 - 5;
@@ -273,7 +289,7 @@ public class CombatTabFragment extends Fragment implements CombatTabRollListener
 		
 		initiative_total += dex_mod;
 		
-		((TextView)view.findViewById(R.id.initiative_dex)).setText("Dex +"+dex_mod);
+		((TextView)view.findViewById(R.id.initiative_dex)).setText("Dex: "+dex_mod);
 		((TextView)view.findViewById(R.id.initiative_text)).setText("Initiative: "+initiative_total+" = ");
 		
 		
@@ -486,7 +502,7 @@ public class CombatTabFragment extends Fragment implements CombatTabRollListener
 		    	String con = s.toString();
 				String con_buff = com.loadData(CharacterDataKey.CON_BUFF);
 				if(con_buff == null || con_buff.isEmpty()){
-					((TextView)main_view.findViewById(R.id.str_value)).setText("CON: "+con+" = ");	
+					((TextView)main_view.findViewById(R.id.con_value)).setText("CON: "+con+" = ");	
 					con_total = Integer.parseInt(con);
 				} else {
 					con_total = Integer.parseInt(con) + Integer.parseInt(con_buff);
@@ -521,7 +537,7 @@ public class CombatTabFragment extends Fragment implements CombatTabRollListener
 		    	String intelligence = s.toString();
 				String int_buff = com.loadData(CharacterDataKey.INT_BUFF);
 				if(int_buff == null || int_buff.isEmpty()){
-					((TextView)main_view.findViewById(R.id.str_value)).setText("INT: "+intelligence+" = ");	
+					((TextView)main_view.findViewById(R.id.int_value)).setText("INT: "+intelligence+" = ");	
 					int_total = Integer.parseInt(intelligence);
 				} else {
 					int_total = Integer.parseInt(intelligence) + Integer.parseInt(int_buff);
@@ -596,6 +612,7 @@ public class CombatTabFragment extends Fragment implements CombatTabRollListener
 		
 		String data = com.loadData(CharacterDataKey.ATTACKS);
 		System.err.println("Data "+data);
+		
         if(data == null || data.isEmpty())
         	data = "Giant Dildo" + ATTACK_VALUE_SPLIT + "3" + ATTACK_VALUE_SPLIT + "d8 + 3" + ATTACK_VALUE_SPLIT + "30ft" + ATTACK_VALUE_SPLIT +"19-20 x3" + ATTACK_VALUE_SPLIT +"Bludgeon" + ATTACK_VALUE_SPLIT +"It's also purple";
         
@@ -643,6 +660,8 @@ public class CombatTabFragment extends Fragment implements CombatTabRollListener
 	public void roll(String value){
 		if(value != null && !value.isEmpty())
 			((TextView)main_view.findViewById(R.id.recent_roll)).setText("Last Roll: "+value);
+		else
+			((TextView)main_view.findViewById(R.id.recent_roll)).setText("Improper syntax; use e.g. 3d4 + d6 + -1");
 	}
 	
 	public void onDestroyView(){

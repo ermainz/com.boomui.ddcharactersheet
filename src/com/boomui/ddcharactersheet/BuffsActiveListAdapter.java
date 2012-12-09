@@ -51,6 +51,7 @@ public class BuffsActiveListAdapter extends BaseExpandableListAdapter{
 		TextView textView = new TextView(parent);
 		textView.setLayoutParams(lp);
 		// Center the text vertically
+		textView.setTextAppearance(parent, android.R.style.TextAppearance_Medium);
 		textView.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
 		// Set the text starting position
 		textView.setPadding(36, 0, 0, 0);
@@ -123,6 +124,7 @@ public class BuffsActiveListAdapter extends BaseExpandableListAdapter{
 			editBuffs.setText(description);
 		editBuffs.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, 0) );
 		editBuffs.setPadding(0, 0, 0, 0);
+		editBuffs.setTextAppearance(parent, android.R.style.TextAppearance_Medium);
 		
 		TextView editSkills = new TextView(parent);
 		String descriptionSkills = getChild(groupPosition, childPosition).getSkillDescription();
@@ -132,7 +134,7 @@ public class BuffsActiveListAdapter extends BaseExpandableListAdapter{
 			editSkills.setText(descriptionSkills);
 		editSkills.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, 0) );
 		editSkills.setPadding(0, 0, 0, 0);
-		
+		editSkills.setTextAppearance(parent, android.R.style.TextAppearance_Medium);
 		
 		final int gPos = groupPosition;
 		final int cPos = childPosition;

@@ -176,7 +176,9 @@ public class BuffsTabFragment extends Fragment implements BuffActivationListener
 	}
 	
 	public void onActivateClick(int groupPosition){
-		buffsActive.getBuffs().add(buffsSaved.getBuffs().get(groupPosition));
+		
+		Buff newBuff = new Buff(buffsSaved.getBuffs().get(groupPosition));
+		buffsActive.getBuffs().add(newBuff);
 		
 		for(BaseExpandableListAdapter bela : expandableListAdapters){
 			bela.notifyDataSetChanged();
