@@ -19,6 +19,7 @@
     <string name="notes_nav">Notes</string>
     <string name="character_name">Character Name</string>
     <string name="class_and_level">Class and Level</string>
+    <string name="experience">Experience</string>
     <string name="character_pic">Character Picture</string>
     <string name="race">Race</string>
     <string name="patron_deity">Patron Deity</string>
@@ -27,5 +28,6 @@
     <string name="gender">Gender</string>
     <string name="age">Age</string>
     <string name="character_description">Character Description</string>
+    <string name="inventory_title">Inventory</string>
     
 </resources>

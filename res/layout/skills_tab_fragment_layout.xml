@@ -1,17 +1,116 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/edit_textA"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Skills"
-        tools:context=".MyNewActivity" />
+        android:layout_weight="0"
+        android:orientation="horizontal" >
 
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-    
-</RelativeLayout>
+        <TextView
+            android:id="@+id/skill_name_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="10"
+            android:text="Skill Name"
+            android:textSize="7dp" />
+
+        <TextView
+            android:id="@+id/key_ability_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="Key Ability"
+            android:textSize="7dp" />
+
+        <TextView
+            android:id="@+id/skill_modifier_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Skill Mod."
+            android:textSize="7dp" />
+
+        <TextView
+            android:id="@+id/equals_sign"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="=" />
+
+        <TextView
+            android:id="@+id/ranks_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Ranks"
+            android:textSize="7dp" />
+
+        <TextView
+            android:id="@+id/plus_sign1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="+" />
+
+        <TextView
+            android:id="@+id/ability_modifier_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Ability Mod."
+            android:textSize="7dp" />
+
+        <TextView
+            android:id="@+id/plus_sign2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="+" />
+
+        <TextView
+            android:id="@+id/misc_modifier_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Misc. Mod."
+            android:textSize="7dp" />
+
+        <TextView
+            android:id="@+id/plus_sign3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="+" />
+
+        <TextView
+            android:id="@+id/buffs_modifier_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Buffs Mod."
+            android:textSize="7dp" />
+
+        <TextView
+            android:id="@+id/skill_dice_roll_output"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:padding="26dp"
+            android:text="" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/skill_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0" />
+
+</LinearLayout>

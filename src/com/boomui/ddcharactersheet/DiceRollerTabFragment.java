@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 public class DiceRollerTabFragment extends Fragment {
 
+	FragmentCommunicator com;
 	View mainView;
 	TextView inputField;
 	ListView historyListView;
@@ -27,13 +28,17 @@ public class DiceRollerTabFragment extends Fragment {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 	}
-	
-	public void onAttach(Activity activity){
+
+	public void onAttach(Activity activity) {
 		super.onAttach(activity);
-		
-		//This code hides the keyboard
-		InputMethodManager inputManager = (InputMethodManager)activity.getSystemService(Context.INPUT_METHOD_SERVICE);
-		inputManager.hideSoftInputFromWindow((null == activity.getCurrentFocus()) ? null : activity.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+		com = (FragmentCommunicator) activity;
+
+		// This code hides the keyboard
+		InputMethodManager inputManager = (InputMethodManager) activity
+				.getSystemService(Context.INPUT_METHOD_SERVICE);
+		inputManager.hideSoftInputFromWindow((null == activity
+				.getCurrentFocus()) ? null : activity.getCurrentFocus()
+				.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 	}
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,6 +49,13 @@ public class DiceRollerTabFragment extends Fragment {
 		inputField = (TextView) mainView.findViewById(R.id.input_viewer);
 
 		historyList = new ArrayList<String>();
+		String historyString = com.loadData(CharacterDataKey.DICE_ROLL_HISTORY);
+		if (historyString != null) {
+			String[] historyStringList = historyString.split(",");
+			for (String cur : historyStringList) {
+				historyList.add(cur);
+			}
+		}
 
 		historyListAdapter = new ArrayAdapter<String>(getActivity()
 				.getApplicationContext(), android.R.layout.simple_list_item_1,
@@ -186,6 +198,16 @@ public class DiceRollerTabFragment extends Fragment {
 		clearButton.setOnClickListener(onClickListener);
 
 		return mainView;
+	}
+
+	public void onPause() {
+		super.onPause();
+		int count = historyListAdapter.getCount();
+		String data = "";
+		for (int i = 0; i < count; i++) {
+			data = data + historyListAdapter.getItem(i) + ",";
+		}
+		com.saveData(CharacterDataKey.DICE_ROLL_HISTORY, data);
 	}
 
 }

@@ -1,7 +1,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true" >
 
     <ImageView
         android:id="@+id/character_pic"
@@ -29,11 +32,28 @@
     
     <EditText
         android:id="@+id/class_and_level"
-        android:layout_width="match_parent"
+        android:layout_width="450dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/class_and_level_label"
         android:text="@string/class_and_level"
         android:hint="@string/class_and_level" />
+    
+    <EditText
+        android:id="@+id/experience"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/class_and_level_label"
+        android:layout_toRightOf="@id/class_and_level"
+        android:text="@string/experience"
+        android:hint="@string/experience" />
+    
+	<TextView
+        android:id="@+id/experience_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/character_pic"
+        android:layout_alignLeft="@id/experience"
+        android:text="@string/experience" />
     
     <TextView
         android:id="@+id/race_label"

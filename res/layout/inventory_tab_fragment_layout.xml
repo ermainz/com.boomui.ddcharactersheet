@@ -1,17 +1,25 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/inventory_layout"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
     <TextView
-        android:id="@+id/edit_textA"
-        android:layout_width="wrap_content"
+        android:id="@+id/inventory_label"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Inventory"
-        tools:context=".MyNewActivity" />
+        android:layout_weight="0"
+        android:text="@string/inventory_title" />
+    
+    <EditText
+        android:id="@+id/inventory"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="@string/inventory_title"
+        android:hint="@string/inventory_title" />
 
 
     
-</RelativeLayout>
+</LinearLayout>

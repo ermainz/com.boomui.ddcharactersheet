@@ -41,6 +41,7 @@ public class InfoTabFragment extends Fragment{
 		editableFields = new HashMap<CharacterDataKey, Integer>();
 		editableFields.put(CharacterDataKey.NAME, R.id.character_name);
 		editableFields.put(CharacterDataKey.INFO_CLASS_AND_LEVEL, R.id.class_and_level);
+		editableFields.put(CharacterDataKey.INFO_EXPERIENCE, R.id.experience);
 		editableFields.put(CharacterDataKey.INFO_RACE, R.id.race);
 		editableFields.put(CharacterDataKey.INFO_PATRON_DEITY, R.id.patron_deity);
 		editableFields.put(CharacterDataKey.INFO_ALIGNMENT, R.id.alignment);
@@ -67,6 +68,5 @@ public class InfoTabFragment extends Fragment{
 			EditText txtBox = (EditText) mainView.findViewById( editableFields.get(key) );
 			com.saveData( key, txtBox.getText().toString() );
 		}
-		
 	}
 }
