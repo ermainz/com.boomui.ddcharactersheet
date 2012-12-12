@@ -8,6 +8,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -161,6 +162,15 @@ public class AttackAdapter extends ArrayAdapter<Attack>{
 				roll.roll(attack.rollDamage());
 			}
 		});
+        
+        Button remove_attack = (Button)v.findViewById(R.id.remove_attack);
+        remove_attack.setOnLongClickListener(new OnLongClickListener(){
+			public boolean onLongClick(View arg0) {
+				attacks.remove(attack);
+				notifyDataSetChanged();
+				return true;
+			}        	
+        });
         /*
         LinearLayout labels1 = createRow();
         LinearLayout fields1 = createRow();

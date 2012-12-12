@@ -618,7 +618,7 @@ public class CombatTabFragment extends Fragment implements CombatTabRollListener
 		System.err.println("Data "+data);
 		
         if(data == null || data.isEmpty())
-        	data = "Giant Dildo" + ATTACK_VALUE_SPLIT + "3" + ATTACK_VALUE_SPLIT + "d8 + 3" + ATTACK_VALUE_SPLIT + "30ft" + ATTACK_VALUE_SPLIT +"19-20 x3" + ATTACK_VALUE_SPLIT +"Bludgeon" + ATTACK_VALUE_SPLIT +"It's also purple";
+        	data = "Longsword" + ATTACK_VALUE_SPLIT + "3" + ATTACK_VALUE_SPLIT + "d8 + 3" + ATTACK_VALUE_SPLIT + "5ft" + ATTACK_VALUE_SPLIT +"19-20 x2" + ATTACK_VALUE_SPLIT +"Slash" + ATTACK_VALUE_SPLIT +"It's also purple";
         
         attacks = new ArrayList<Attack>();
         if(data != null && !data.isEmpty()){
